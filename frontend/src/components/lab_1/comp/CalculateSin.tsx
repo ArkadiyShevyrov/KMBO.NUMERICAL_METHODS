@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Form, Button, Container, Row, Col, Alert} from 'react-bootstrap';
 import axios from 'axios';
+import CopyableResult from '../../CopyableResult';
 
 const CalculateSin: React.FC = () => {
     const [x, setX] = useState<string>('');
@@ -12,12 +13,12 @@ const CalculateSin: React.FC = () => {
         e.preventDefault();
         try {
             const response = await axios.get('http://localhost:8080/calculate/sin', {
-                params: {x: x, predication: precision},
+                params: {x: String(x), predication: String(precision)},
             });
             setResult(response.data);
             setError(null);
         } catch (err) {
-            setError('Ошибка при вычислении:' + err);
+            setError('Ошибка при вычислении: ' + err);
             setResult(null);
         }
     };
@@ -50,8 +51,8 @@ const CalculateSin: React.FC = () => {
                             Вычислить
                         </Button>
                     </Form>
-                    {result && <Alert variant="success">Результат: {result}</Alert>}
                     {error && <Alert variant="danger">{error}</Alert>}
+                    {result && <CopyableResult result={result}/>}
                 </Col>
             </Row>
         </Container>

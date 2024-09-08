@@ -1,7 +1,7 @@
 import React from 'react';
 import {Container, Nav, Navbar} from 'react-bootstrap';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import CalculateSin from './components/CalculateSin';
+import CalculateSin from './components/lab_1/comp/CalculateSin';
 import {MathRenderer} from "./components/MathRenderer";
 
 const App: React.FC = () => {
