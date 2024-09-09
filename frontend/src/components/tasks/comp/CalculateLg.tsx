@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
-import {Form, Button, Container, Row, Col, Alert} from 'react-bootstrap';
+import {Alert, Button, Col, Container, Form, Row} from 'react-bootstrap';
 import axios from 'axios';
 import CopyableResult from '../../CopyableResult';
+import {MathRenderer} from "../../MathRenderer";
 
 const CalculateSin: React.FC = () => {
     const [x, setX] = useState<string>('');
@@ -12,7 +13,7 @@ const CalculateSin: React.FC = () => {
     const handleCalculate = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const response = await axios.get('http://localhost:8080/calculate/sin', {
+            const response = await axios.get('http://localhost:8080/calculate/lg', {
                 params: {x: String(x), predication: String(precision)},
             });
             setResult(response.data);
@@ -27,7 +28,7 @@ const CalculateSin: React.FC = () => {
         <Container>
             <Row className="justify-content-center">
                 <Col md={6}>
-                    <h2>Вычисление sin(x)</h2>
+                    <h2>Вычисление <MathRenderer mathContent={"lg(x)"}/></h2>
                     <Form onSubmit={handleCalculate}>
                         <Form.Group controlId="formX">
                             <Form.Label>Введите значение x</Form.Label>

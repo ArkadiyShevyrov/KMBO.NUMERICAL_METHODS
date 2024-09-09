@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import {Alert, Button} from 'react-bootstrap';
+import {Alert, Button, Container, ListGroup, ListGroupItem} from 'react-bootstrap';
+import {MathRenderer} from "./MathRenderer";
 
 const CopyableResult = ({result}: { result: string }) => {
     const [copied, setCopied] = useState(false);
@@ -79,7 +80,6 @@ const CopyableResult = ({result}: { result: string }) => {
                             padding: '0.25rem 0.5rem',
                             marginTop: '5px',
                             marginBottom: '5px',
-                            color: 'green',
                         }}
                     >
                         Скопировано!
