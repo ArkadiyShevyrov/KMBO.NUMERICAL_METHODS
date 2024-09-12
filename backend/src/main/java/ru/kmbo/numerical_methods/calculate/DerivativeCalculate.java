@@ -1,7 +1,7 @@
 package ru.kmbo.numerical_methods.calculate;
 
 import lombok.experimental.UtilityClass;
-import ru.kmbo.numerical_methods.model.TabularFunction;
+import ru.kmbo.numerical_methods.model.function.TabularFunction;
 import java.util.Map;
 import java.util.NavigableMap;
 

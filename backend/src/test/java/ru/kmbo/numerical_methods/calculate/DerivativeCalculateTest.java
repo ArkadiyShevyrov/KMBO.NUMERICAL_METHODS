@@ -1,7 +1,7 @@
 package ru.kmbo.numerical_methods.calculate;
 
 import org.junit.jupiter.api.Test;
-import ru.kmbo.numerical_methods.model.TabularFunction;
+import ru.kmbo.numerical_methods.model.function.TabularFunction;
 import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

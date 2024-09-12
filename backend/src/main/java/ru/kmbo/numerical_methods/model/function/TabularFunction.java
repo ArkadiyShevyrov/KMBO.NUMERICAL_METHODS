@@ -1,4 +1,4 @@
-package ru.kmbo.numerical_methods.model;
+package ru.kmbo.numerical_methods.model.function;
 
 import lombok.Getter;
 import java.util.Map;
