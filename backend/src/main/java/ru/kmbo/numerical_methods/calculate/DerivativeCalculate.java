@@ -10,7 +10,7 @@ public class DerivativeCalculate {
     public static final double EPSILON = 1e-10;
 
     public Double firstDerivative(TabularFunction tabularFunction, double xStar) {
-        NavigableMap<Double, Double> data = tabularFunction.getFunctionSignatures();
+        NavigableMap<Double, Double> data = tabularFunction.getNodes();
         Map.Entry<Double, Double> lowerEntry = data.lowerEntry(xStar);
         Map.Entry<Double, Double> upperEntry = data.higherEntry(xStar);
 
@@ -29,7 +29,7 @@ public class DerivativeCalculate {
     }
 
     public Double secondDerivative(TabularFunction tabularFunction, double xStar) {
-        NavigableMap<Double, Double> data = tabularFunction.getFunctionSignatures();
+        NavigableMap<Double, Double> data = tabularFunction.getNodes();
         Map.Entry<Double, Double> lowerEntry = data.lowerEntry(xStar);
         Map.Entry<Double, Double> currentEntry = data.floorEntry(xStar);
         Map.Entry<Double, Double> upperEntry = data.higherEntry(xStar);

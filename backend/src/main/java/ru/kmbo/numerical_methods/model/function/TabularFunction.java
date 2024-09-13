@@ -7,19 +7,19 @@ import java.util.TreeMap;
 
 @Getter
 public class TabularFunction {
-    private final TreeMap<Double, Double> functionSignatures = new TreeMap<>();
+    private final TreeMap<Double, Double> nodes = new TreeMap<>();
 
-    public TabularFunction(Map<Double, Double> functionSignatures) {
-        this.functionSignatures.putAll(functionSignatures);
+    public TabularFunction(Map<Double, Double> nodes) {
+        this.nodes.putAll(nodes);
     }
 
     public TabularFunction(double[] xValues, Operand operand) {
         for (double x : xValues) {
-            functionSignatures.put(x, operand.getResult(x));
+            nodes.put(x, operand.getResult(x));
         }
     }
 
     public Double getResult(double x) {
-        return functionSignatures.get(x);
+        return nodes.get(x);
     }
 }

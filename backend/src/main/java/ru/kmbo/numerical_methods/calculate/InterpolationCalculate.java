@@ -7,7 +7,7 @@ import ru.kmbo.numerical_methods.model.function.TabularFunction;
 public class InterpolationCalculate {
 
     public static double lagrangeInterpolate(TabularFunction func, Double xStar) {
-        Double[] x = func.getFunctionSignatures().keySet().toArray(new Double[0]);
+        Double[] x = func.getNodes().keySet().toArray(new Double[0]);
         Double[] y = new Double[x.length];
         for (int i = 0; i < x.length; i++) {
             y[i] = func.getResult(x[i]);
@@ -33,7 +33,7 @@ public class InterpolationCalculate {
     }
 
     public static double newtonInterpolate(TabularFunction func, Double xStar) {
-        Double[] x = func.getFunctionSignatures().keySet().toArray(new Double[0]);
+        Double[] x = func.getNodes().keySet().toArray(new Double[0]);
         Double[] y = new Double[x.length];
         for (int i = 0; i < x.length; i++) {
             y[i] = func.getResult(x[i]);
