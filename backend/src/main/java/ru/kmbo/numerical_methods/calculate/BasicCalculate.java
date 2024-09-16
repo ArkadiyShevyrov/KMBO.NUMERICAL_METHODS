@@ -5,6 +5,10 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class BasicCalculate {
 
+    public double pow(double base, double exp) {
+        return fastPow(base, (int) exp);
+    }
+
     public double pow(double base, int exp) {
         return fastPow(base, exp);
     }

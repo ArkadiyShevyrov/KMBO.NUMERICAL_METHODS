@@ -1,7 +1,7 @@
 package ru.kmbo.numerical_methods;
 
 import org.junit.jupiter.api.Test;
-import ru.kmbo.numerical_methods.model.operand.Number;
+import ru.kmbo.numerical_methods.model.operand.Num;
 import ru.kmbo.numerical_methods.model.operand.Operand;
 import ru.kmbo.numerical_methods.model.operand.Sin;
 import ru.kmbo.numerical_methods.model.operand.Add;
@@ -14,8 +14,8 @@ class OperandTest {
     void test1() {
 
         Operand operand = new Add(
-                new Sin(new Number(1)),
-                new Sin(new Number(1))
+                new Sin(new Num(1)),
+                new Sin(new Num(1))
         );
 
         assertEquals(1.6829419696, operand.getResult());
@@ -23,38 +23,40 @@ class OperandTest {
 
     @Test
     void test2() {
+        Num num = new Num(1.);
 
         Operand operand = new Add(
-                new Sin(new Number()),
-                new Sin(new Number())
+                new Sin(num),
+                new Sin(num)
         );
 
-        assertEquals(1.6829419696, operand.getResult(1.));
+        assertEquals(1.6829419696, operand.getResult());
     }
 
     @Test
     void test3() {
+        Num num = new Num(1.);
 
         Operand operand = new Add(
-                new Sin(),
-                new Sin()
+                new Sin(num),
+                new Sin(num)
         );
 
-        assertEquals(1.6829419696, operand.getResult(1.));
+        assertEquals(1.6829419696, operand.getResult());
     }
 
     @Test
     void test4() {
-        Number number1 = new Number();
-        Number number2 = new Number();
+        Num num1 = new Num();
+        Num num2 = new Num();
 
         Operand operand = new Add(
-                new Sin(number1),
-                new Sin(number2)
+                new Sin(num1),
+                new Sin(num2)
         );
 
-        number1.setNumber(1.);
-        number2.setNumber(0.);
+        num1.setNumber(1.);
+        num2.setNumber(0.);
 
         assertEquals(0.8414709848, operand.getResult());
     }

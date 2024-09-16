@@ -7,20 +7,15 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Number implements Operand {
+public class Num implements Operand {
     private Double number;
 
-    public Number(Integer number) {
+    public Num(Integer number) {
         this.number = Double.valueOf(number);
     }
 
     @Override
     public Double getResult() {
         return number;
-    }
-
-    @Override
-    public Double getResult(Double arg) {
-        return arg;
     }
 }

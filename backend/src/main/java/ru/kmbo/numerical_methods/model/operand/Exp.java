@@ -8,16 +8,11 @@ public class Exp implements Operand {
     private Operand operand;
 
     public Exp() {
-        this.operand = new Number();
+        this.operand = new Num();
     }
 
     @Override
     public Double getResult() {
         return TaylorCalculate.exp(operand.getResult());
-    }
-
-    @Override
-    public Double getResult(Double arg) {
-        return TaylorCalculate.exp(operand.getResult(arg));
     }
 }

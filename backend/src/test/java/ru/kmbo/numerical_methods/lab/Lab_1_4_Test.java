@@ -3,14 +3,9 @@ package ru.kmbo.numerical_methods.lab;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.kmbo.numerical_methods.calculate.CubicSplineInterpolatorCalculate;
-import ru.kmbo.numerical_methods.calculate.InterpolationCalculate;
 import ru.kmbo.numerical_methods.model.function.TabularFunction;
-import ru.kmbo.numerical_methods.model.operand.Number;
-import ru.kmbo.numerical_methods.model.operand.*;
 import java.util.Map;
-import java.util.TreeMap;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static ru.kmbo.numerical_methods.constant.Constant.PI;
 import static ru.kmbo.numerical_methods.constant.Constant.PRECISION;
 
 public class Lab_1_4_Test {

@@ -1,6 +1,7 @@
 package ru.kmbo.numerical_methods.model.function;
 
 import lombok.Getter;
+import ru.kmbo.numerical_methods.model.operand.Num;
 import ru.kmbo.numerical_methods.model.operand.Operand;
 import java.util.Map;
 import java.util.TreeMap;
@@ -13,9 +14,10 @@ public class TabularFunction {
         this.nodes.putAll(nodes);
     }
 
-    public TabularFunction(double[] xValues, Operand operand) {
+    public TabularFunction(double[] xValues, Operand operand, Num num) {
         for (double x : xValues) {
-            nodes.put(x, operand.getResult(x));
+            num.setNumber(x);
+            nodes.put(x, operand.getResult());
         }
     }
 

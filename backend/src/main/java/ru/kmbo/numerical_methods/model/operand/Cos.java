@@ -8,16 +8,11 @@ public class Cos implements Operand {
     private Operand operand;
 
     public Cos() {
-        this.operand = new Number();
+        this.operand = new Num();
     }
 
     @Override
     public Double getResult() {
         return TaylorCalculate.cos(operand.getResult());
-    }
-
-    @Override
-    public Double getResult(Double arg) {
-        return TaylorCalculate.cos(operand.getResult(arg));
     }
 }

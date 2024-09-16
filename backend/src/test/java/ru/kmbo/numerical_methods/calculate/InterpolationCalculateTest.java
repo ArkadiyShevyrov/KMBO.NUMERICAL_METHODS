@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.kmbo.numerical_methods.model.function.TabularFunction;
+import ru.kmbo.numerical_methods.model.operand.Num;
 import ru.kmbo.numerical_methods.model.operand.Operand;
 import ru.kmbo.numerical_methods.model.operand.Add;
 import ru.kmbo.numerical_methods.model.operand.Sin;
@@ -13,11 +14,12 @@ class InterpolationCalculateTest {
 
     private TabularFunction function;
     private final double[] xValues = {1.0, 2.0, 3.0};
-    private final Operand operand = new Add(new Sin(), new Sin());
+    private final Num num = new Num();
+    private final Operand operand = new Add(new Sin(num), new Sin(num));
 
     @BeforeEach
     void setUp() {
-        function = new TabularFunction(xValues, operand);
+        function = new TabularFunction(xValues, operand, num);
     }
 
     @Test

@@ -14,9 +14,4 @@ public class Subtract implements Operand {
     public Double getResult() {
         return operand1.getResult() - operand2.getResult();
     }
-
-    @Override
-    public Double getResult(Double arg) {
-        return operand1.getResult(arg) - operand2.getResult(arg);
-    }
 }
