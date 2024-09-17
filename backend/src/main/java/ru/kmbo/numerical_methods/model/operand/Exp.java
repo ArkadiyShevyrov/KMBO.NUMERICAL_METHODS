@@ -7,10 +7,6 @@ import ru.kmbo.numerical_methods.calculate.TaylorCalculate;
 public class Exp implements Operand {
     private Operand operand;
 
-    public Exp() {
-        this.operand = new Num();
-    }
-
     @Override
     public Double getResult() {
         return TaylorCalculate.exp(operand.getResult());

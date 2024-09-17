@@ -1,32 +1,58 @@
 package ru.kmbo.numerical_methods.model.operand;
 
+import lombok.Getter;
+import java.util.ArrayList;
+import java.util.List;
+
+@Getter
 public class Multiply implements Operand {
-    private final Operand operand1;
+    private final List<Operand> operands = new ArrayList<>();
 
-    private final Operand operand2;
-
-    public Multiply(Double o1, Double o2) {
-        this.operand1 = new Num(o1);
-        this.operand2 = new Num(o2);
+    public Multiply(List<Operand> operands) {
+        this.operands.addAll(operands);
     }
 
-    public Multiply(Double o1, Operand o2) {
-        this.operand1 = new Num(o1);
-        this.operand2 = o2;
-    }
-
-    public Multiply(Operand o1, Double o2) {
-        this.operand1 = o1;
-        this.operand2 = new Num(o2);
-    }
-
-    public Multiply(Operand o1, Operand o2) {
-        this.operand1 = o1;
-        this.operand2 = o2;
+    public Multiply(Object... objects) {
+        if (objects.length < 2) {
+            throw new RuntimeException("Multiply operation requires at least two operands.");
+        }
+        for (Object object : objects) {
+            if (object instanceof Operand operand) {
+                operands.add(operand);
+                continue;
+            }
+            if (object instanceof Double operand) {
+                operands.add(new Num(operand));
+                continue;
+            }
+            if (object instanceof Integer operand) {
+                operands.add(new Num(operand));
+                continue;
+            }
+            throw new RuntimeException("Unsupported object type in Multiply operation.");
+        }
     }
 
     @Override
     public Double getResult() {
-        return operand1.getResult() * operand2.getResult();
+        Double result = 1.0;
+        for (Operand op : operands) {
+            result *= op.getResult();
+        }
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder br = new StringBuilder();
+        br.append("(");
+        for (int i = 0; i < operands.size(); i++) {
+            br.append(operands.get(i));
+            if (i < operands.size() - 1) {
+                br.append(" * ");
+            }
+        }
+        br.append(")");
+        return br.toString();
     }
 }

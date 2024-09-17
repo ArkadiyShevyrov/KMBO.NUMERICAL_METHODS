@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import ru.kmbo.numerical_methods.calculate.InterpolationCalculate;
 import ru.kmbo.numerical_methods.model.function.TabularFunction;
 import ru.kmbo.numerical_methods.model.operand.*;
-import ru.kmbo.numerical_methods.model.operand.Num;
+import ru.kmbo.numerical_methods.model.operand.Variable;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static ru.kmbo.numerical_methods.constant.Constant.PI;
 import static ru.kmbo.numerical_methods.constant.Constant.PRECISION;
@@ -14,22 +14,22 @@ public class Lab_1_3_Test {
 
 
     private TabularFunction function1;
-    private final Num num1 = new Num();
+    private final Variable var1 = new Variable();
     private Double xStar1;
     private TabularFunction function2;
-    private final Num num2 = new Num();
+    private final Variable var2 = new Variable();
     private Double xStar2;
     private TabularFunction function3;
-    private final Num num3 = new Num();
+    private final Variable var3 = new Variable();
     private Double xStar3;
     private TabularFunction function4;
-    private final Num num4 = new Num();
+    private final Variable var4 = new Variable();
     private Double xStar4;
     private TabularFunction function5;
-    private final Num num5 = new Num();
+    private final Variable var5 = new Variable();
     private Double xStar5;
     private TabularFunction function6;
-    private final Num num6 = new Num();
+    private final Variable var6 = new Variable();
     private Double xStar6;
 
 
@@ -38,39 +38,39 @@ public class Lab_1_3_Test {
 
         function1 = new TabularFunction(
                 new double[]{0.1 * PI, 0.2 * PI, 0.3 * PI, 0.4 * PI},
-                new Sin(num1),
-                num1
+                new Sin(var1),
+                var1
         );
         xStar1 = PI / 4;
 
         function2 = new TabularFunction(
                 new double[]{0, PI / 6, 2 * PI / 6, 3 * PI / 6},
-                new Cos(num2),
-                num2
+                new Cos(var2),
+                var2
         );
         xStar2 = PI / 4;
 
         function3 = new TabularFunction(
                 new double[]{-2, -1, 0, 1},
-                new Exp(num3),
-                num3
+                new Exp(var3),
+                var3
         );
         xStar3 = -0.5;
 
         function4 = new TabularFunction(
                 new double[]{0, 1.7, 3.4, 5.1},
-                new Sqrt(num4),
-                num4
+                new Pow(var4, 0.5),
+                var4
         );
         xStar4 = 3.0;
 
         function5 = new TabularFunction(
                 new double[]{0, PI / 6, 2 * PI / 6, 3 * PI / 6},
                 new Multiply(
-                        num5,
-                        new Sin(num5)
+                        var5,
+                        new Sin(var5)
                 ),
-                num5
+                var5
         );
         xStar5 = PI / 4;
 
@@ -78,12 +78,12 @@ public class Lab_1_3_Test {
                 new double[]{-1.2, -0.7, -0.2, 0.3},
                 new Multiply(
                         new Pow(
-                                num6,
+                                var6,
                                 2
                         ),
-                        new Exp(num6)
+                        new Exp(var6)
                 ),
-                num6
+                var6
         );
         xStar6 = -0.5;
     }

@@ -3,7 +3,6 @@ package ru.kmbo.numerical_methods.calculate;
 import lombok.experimental.UtilityClass;
 import ru.kmbo.numerical_methods.util.RoundUtils;
 
-import static ru.kmbo.numerical_methods.calculate.BasicCalculate.*;
 
 @UtilityClass
 public class TaylorCalculate {
@@ -41,8 +40,8 @@ public class TaylorCalculate {
         double result = 0;
         for (int n = 0; ; n++) {
             double term =
-                    (pow(-1, n) * pow(x, 2 * n + 1)) /
-                            factorial(2 * n + 1);
+                    (BasicCalculate.pow(-1, n) * BasicCalculate.pow(x, 2 * n + 1)) /
+                            BasicCalculate.factorial(2 * n + 1);
             result += term;
             if (Math.abs(term) < precision) {
                 break;
@@ -58,8 +57,8 @@ public class TaylorCalculate {
         double result = 0;
         for (int n = 0; ; n++) {
             double term =
-                    (pow(-1, n) * pow(x, 2 * n)) /
-                            factorial(2 * n);
+                    (BasicCalculate.pow(-1, n) * BasicCalculate.pow(x, 2 * n)) /
+                            BasicCalculate.factorial(2 * n);
             result += term;
             if (Math.abs(term) < precision) {
                 break;
@@ -75,8 +74,8 @@ public class TaylorCalculate {
         double result = 0;
         for (int n = 0; ; n++) {
             double term =
-                    pow(x, n) /
-                            factorial(n);
+                    BasicCalculate.pow(x, n) /
+                            BasicCalculate.factorial(n);
             result += term;
             if (Math.abs(term) < precision) {
                 break;
@@ -108,7 +107,7 @@ public class TaylorCalculate {
         if (x <= 1) {
             for (int n = 0; ; n++) {
                 double term =
-                        (pow(-1, n) * pow(x - 1, n + 1)) /
+                        (BasicCalculate.pow(-1, n) * BasicCalculate.pow(x - 1, n + 1)) /
                                 (n + 1);
                 result += term;
                 if (Math.abs(term) < precision) {

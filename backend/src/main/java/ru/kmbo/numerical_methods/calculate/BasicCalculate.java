@@ -6,7 +6,16 @@ import lombok.experimental.UtilityClass;
 public class BasicCalculate {
 
     public double pow(double base, double exp) {
-        return fastPow(base, (int) exp);
+        if (base == 0) {
+            return 0;
+        }
+        if (exp == 0) {
+            return 1;
+        }
+        if (exp == (int) exp) {
+            return fastPow(base, (int) exp);
+        }
+        return TaylorCalculate.exp(exp * TaylorCalculate.ln(base, 1e-15), 1e-15);
     }
 
     public double pow(double base, int exp) {
