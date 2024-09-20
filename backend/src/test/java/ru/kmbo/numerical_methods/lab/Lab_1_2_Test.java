@@ -1,11 +1,12 @@
-package ru.kmbo.numerical_methods.calculate;
+package ru.kmbo.numerical_methods.lab;
 
 import org.junit.jupiter.api.Test;
+import ru.kmbo.numerical_methods.calculate.DerivativeCalculate;
 import ru.kmbo.numerical_methods.model.function.TabularFunction;
 import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class DerivativeCalculateTest {
+public class Lab_1_2_Test {
 
     @Test
     void test11() {
