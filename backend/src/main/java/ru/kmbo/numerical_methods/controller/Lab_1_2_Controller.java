@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import ru.kmbo.numerical_methods.calculate.DerivativeCalculate;
 import ru.kmbo.numerical_methods.model.function.TabularFunction;
 
-
 @Slf4j
 @RestController
 @RequiredArgsConstructor
@@ -24,13 +23,13 @@ public class Lab_1_2_Controller {
             @Parameter(description = "Параметр функции", example = "1.0")
             @Pattern(regexp = "\\d+(\\.\\d+)?", message = "Некорректный формат числа")
             @RequestParam String xStar,
-            @Parameter(description = "функция")
+            @Parameter(description = "Таблично заданная функция")
             @RequestBody TabularFunction tabularFunction
     ) {
-        log.info("Получен запрос на вычисление первой производной заданной функции {} в точке {}",
+        log.info("Получен запрос на вычисление первой производной функции {} в точке {}",
                 tabularFunction, xStar);
         Double result = DerivativeCalculate.firstDerivative(tabularFunction, Double.parseDouble(xStar));
-        log.info("Результат вычисления первой производной заданной функции {} в точке {}: {}",
+        log.info("Результат вычисления первой производной функции {} в точке {}: {}",
                 tabularFunction, xStar, result);
         return ResponseEntity.ok(String.valueOf(result));
     }
@@ -40,13 +39,13 @@ public class Lab_1_2_Controller {
             @Parameter(description = "Параметр функции", example = "1.0")
             @Pattern(regexp = "\\d+(\\.\\d+)?", message = "Некорректный формат числа")
             @RequestParam String xStar,
-            @Parameter(description = "функция")
+            @Parameter(description = "Таблично заданная функция")
             @RequestBody TabularFunction tabularFunction
     ) {
-        log.info("Получен запрос на вычисление второй производной заданной функции {} в точке {}",
+        log.info("Получен запрос на вычисление второй производной функции {} в точке {}",
                 tabularFunction, xStar);
         Double result = DerivativeCalculate.secondDerivative(tabularFunction, Double.parseDouble(xStar));
-        log.info("Результат вычисления второй производной заданной функции {} в точке {}: {}",
+        log.info("Результат вычисления второй производной функции {} в точке {}: {}",
                 tabularFunction, xStar, result);
         return ResponseEntity.ok(String.valueOf(result));
     }
