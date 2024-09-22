@@ -15,9 +15,9 @@ import ru.kmbo.numerical_methods.service.CalculatingFunctionService;
 @RestController
 @RequiredArgsConstructor
 @Validated
-@RequestMapping("/calculate")
+@RequestMapping("/lab_1_1")
 @CrossOrigin(origins = "http://localhost:3000")
-public class CalculatingFunctionController {
+public class Lab_1_1_Controller {
 
     @NonNull
     private final CalculatingFunctionService calculatingFunctionService;
