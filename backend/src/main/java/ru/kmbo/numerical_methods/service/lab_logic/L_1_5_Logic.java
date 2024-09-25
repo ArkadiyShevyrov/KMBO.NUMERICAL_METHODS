@@ -7,10 +7,10 @@ import ru.kmbo.numerical_methods.model.basic.Vector;
 import ru.kmbo.numerical_methods.model.basic.*;
 import ru.kmbo.numerical_methods.model.function.Polynomial;
 import ru.kmbo.numerical_methods.model.function.TabularFunction;
-import ru.kmbo.numerical_methods.model.operand.Multiply;
-import ru.kmbo.numerical_methods.model.operand.Num;
+import ru.kmbo.numerical_methods.model.operand.implementation.Multiply;
+import ru.kmbo.numerical_methods.model.operand.implementation.Num;
 import ru.kmbo.numerical_methods.model.operand.Operand;
-import ru.kmbo.numerical_methods.model.operand.Pow;
+import ru.kmbo.numerical_methods.model.operand.implementation.Pow;
 import java.util.*;
 
 @UtilityClass

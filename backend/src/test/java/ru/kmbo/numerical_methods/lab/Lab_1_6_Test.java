@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import ru.kmbo.numerical_methods.calculate.integration.numeral.one_dimensional.NumericalIntegration;
 import ru.kmbo.numerical_methods.model.function.Function;
 import ru.kmbo.numerical_methods.model.operand.*;
+import ru.kmbo.numerical_methods.model.operand.implementation.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static ru.kmbo.numerical_methods.constant.Constant.PRECISION;
 

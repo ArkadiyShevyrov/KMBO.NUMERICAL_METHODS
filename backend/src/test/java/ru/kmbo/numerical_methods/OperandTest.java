@@ -3,6 +3,10 @@ package ru.kmbo.numerical_methods;
 import org.junit.jupiter.api.Test;
 import ru.kmbo.numerical_methods.calculate.derivative.operand.OperandOptimize;
 import ru.kmbo.numerical_methods.model.operand.*;
+import ru.kmbo.numerical_methods.model.operand.implementation.Add;
+import ru.kmbo.numerical_methods.model.operand.implementation.Num;
+import ru.kmbo.numerical_methods.model.operand.implementation.Sin;
+import ru.kmbo.numerical_methods.model.operand.implementation.Variable;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class OperandTest {

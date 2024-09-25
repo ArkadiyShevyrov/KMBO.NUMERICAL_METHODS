@@ -1,9 +1,10 @@
-package ru.kmbo.numerical_methods.model.operand;
+package ru.kmbo.numerical_methods.model.operand.implementation;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
+import ru.kmbo.numerical_methods.model.operand.Operand;
 
 public class Variable implements Operand {
     @Getter

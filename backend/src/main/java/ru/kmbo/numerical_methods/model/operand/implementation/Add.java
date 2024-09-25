@@ -1,8 +1,9 @@
-package ru.kmbo.numerical_methods.model.operand;
+package ru.kmbo.numerical_methods.model.operand.implementation;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
+import ru.kmbo.numerical_methods.model.operand.Operand;
 import java.util.ArrayList;
 import java.util.List;
 

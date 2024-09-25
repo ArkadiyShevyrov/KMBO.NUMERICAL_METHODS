@@ -2,6 +2,7 @@ package ru.kmbo.numerical_methods.util;
 
 import lombok.experimental.UtilityClass;
 import ru.kmbo.numerical_methods.model.operand.*;
+import ru.kmbo.numerical_methods.model.operand.implementation.*;
 import java.util.List;
 
 @UtilityClass

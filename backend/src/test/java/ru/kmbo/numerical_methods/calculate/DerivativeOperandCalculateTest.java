@@ -6,6 +6,10 @@ import org.junit.jupiter.api.Test;
 import ru.kmbo.numerical_methods.calculate.derivative.operand.DerivativeOperandCalculate;
 import ru.kmbo.numerical_methods.model.function.Function;
 import ru.kmbo.numerical_methods.model.operand.*;
+import ru.kmbo.numerical_methods.model.operand.implementation.Add;
+import ru.kmbo.numerical_methods.model.operand.implementation.Multiply;
+import ru.kmbo.numerical_methods.model.operand.implementation.Pow;
+import ru.kmbo.numerical_methods.model.operand.implementation.Variable;
 
 @Slf4j
 class DerivativeOperandCalculateTest {

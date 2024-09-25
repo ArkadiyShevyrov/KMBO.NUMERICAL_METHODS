@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import ru.kmbo.numerical_methods.model.operand.Operand;
-import ru.kmbo.numerical_methods.model.operand.Variable;
+import ru.kmbo.numerical_methods.model.operand.implementation.Variable;
 import java.util.Map;
 import java.util.TreeMap;
 

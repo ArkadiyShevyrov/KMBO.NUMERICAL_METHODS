@@ -2,6 +2,7 @@ package ru.kmbo.numerical_methods.model.operand;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import ru.kmbo.numerical_methods.model.operand.implementation.*;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
 @JsonSubTypes({
