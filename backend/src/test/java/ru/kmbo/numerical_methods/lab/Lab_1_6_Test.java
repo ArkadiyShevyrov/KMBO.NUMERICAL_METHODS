@@ -29,7 +29,7 @@ public class Lab_1_6_Test {
 
     @BeforeEach
     void setUp() {
-        Variable x1 = new Variable();
+        Variable x1 = new Variable("x");
         Operand operand1 = new Multiply(
                 x1,
                 new Pow(new Add(new Multiply(2., x1), 5.), -1)
@@ -39,7 +39,7 @@ public class Lab_1_6_Test {
         b1 = 1.;
         h1 = 0.5;
 
-        Variable x2 = new Variable();
+        Variable x2 = new Variable("x");
         Operand operand2 = new Multiply(
                 x2,
                 new Pow(new Add(new Multiply(3., x2), 4.), -2)
@@ -49,7 +49,7 @@ public class Lab_1_6_Test {
         b2 = 4.;
         h2 = 1.;
 
-        Variable x3 = new Variable();
+        Variable x3 = new Variable("x");
         Operand operand3 = new Multiply(
                 x3,
                 new Pow(new Add(new Multiply(3., x3), 4.), -3)
@@ -59,7 +59,7 @@ public class Lab_1_6_Test {
         b3 = 1.;
         h3 = 0.5;
 
-        Variable x4 = new Variable();
+        Variable x4 = new Variable("x");
         Operand operand4 = new Multiply(
                 new Add(new Multiply(3., x4), 4.),
                 new Pow(new Add(new Multiply(2., x4), 7.), -1)
@@ -69,7 +69,7 @@ public class Lab_1_6_Test {
         b4 = 2.;
         h4 = 1.;
 
-        Variable x5 = new Variable();
+        Variable x5 = new Variable("x");
         Operand operand5 = new Multiply(
                 1.,
                 new Pow(new Add(new Pow(x5, 2), 4.), -1)
@@ -79,7 +79,7 @@ public class Lab_1_6_Test {
         b5 = 2.;
         h5 = 1.;
 
-        Variable x6 = new Variable();
+        Variable x6 = new Variable("x");
         Operand operand6 = new Multiply(
                 x6,
                 new Pow(

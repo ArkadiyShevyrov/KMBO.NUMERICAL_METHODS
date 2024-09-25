@@ -1,22 +1,25 @@
 package ru.kmbo.numerical_methods.model.operand;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 
 @Getter
 public class Neg implements Operand {
-    private final Operand neg;
+    private final Operand operand;
 
-    public Neg(Operand neg) {
-        this.neg = neg;
+    @JsonCreator
+    public Neg(@JsonProperty("operand") Operand operand) {
+        this.operand = operand;
     }
 
     @Override
     public Double getResult() {
-        return -neg.getResult();
+        return -operand.getResult();
     }
 
     @Override
     public String toString() {
-        return "-" + neg.toString();
+        return "-" + operand.toString();
     }
 }

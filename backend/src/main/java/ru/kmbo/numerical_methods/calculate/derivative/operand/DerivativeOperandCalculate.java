@@ -29,7 +29,7 @@ public class DerivativeOperandCalculate {
     }
 
     private static Operand derivativeNeg(Neg neg) {
-        return new Neg(derivative(neg.getNeg()));
+        return new Neg(derivative(neg.getOperand()));
     }
 
     private static Operand derivativeCos(Cos cos) {

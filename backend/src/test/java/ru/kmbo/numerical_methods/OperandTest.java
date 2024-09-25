@@ -45,7 +45,7 @@ class OperandTest {
     @Test
     void test4() {
 
-        Variable x1 = new Variable();
+        Variable x1 = new Variable("x");
 
         Operand operand = new Add(
                 new Num(1.),

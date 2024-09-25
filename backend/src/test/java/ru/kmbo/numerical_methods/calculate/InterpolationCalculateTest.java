@@ -14,7 +14,7 @@ class InterpolationCalculateTest {
 
     private TabularFunction function;
     private final double[] xValues = {1.0, 2.0, 3.0};
-    private final Variable var = new Variable();
+    private final Variable var = new Variable("x");
     private final Operand operand = new Add(new Sin(var), new Sin(var));
 
     @BeforeEach

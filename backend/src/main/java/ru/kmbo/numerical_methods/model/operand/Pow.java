@@ -1,5 +1,7 @@
 package ru.kmbo.numerical_methods.model.operand;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import ru.kmbo.numerical_methods.calculate.BasicCalculate;
 
@@ -9,6 +11,15 @@ public class Pow implements Operand {
 
     private final Operand exp;
 
+    @JsonCreator
+    public Pow(
+            @JsonProperty("base") Operand base,
+            @JsonProperty("exp") Operand exp
+    ) {
+        this.base = base;
+        this.exp = exp;
+    }
+
     public Pow(Double base, Integer exp) {
         this.base = new Num(base);
         this.exp = new Num(exp);
@@ -17,11 +28,6 @@ public class Pow implements Operand {
     public Pow(Operand base, Integer exp) {
         this.base = base;
         this.exp = new Num(exp);
-    }
-
-    public Pow(Operand base, Operand exp) {
-        this.base = base;
-        this.exp = exp;
     }
 
     public Pow(Double base, Double exp) {

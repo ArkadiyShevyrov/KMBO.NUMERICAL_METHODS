@@ -26,7 +26,7 @@ public class OperandOptimize {
     }
 
     private static Operand optimizeNeg(Neg neg) {
-        return new Neg(optimize(neg.getNeg()));
+        return new Neg(optimize(neg.getOperand()));
     }
 
     private Operand optimizeAdd(Add add) {

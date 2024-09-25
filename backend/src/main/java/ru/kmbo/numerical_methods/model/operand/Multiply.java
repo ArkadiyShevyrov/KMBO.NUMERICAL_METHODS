@@ -1,5 +1,7 @@
 package ru.kmbo.numerical_methods.model.operand;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +10,8 @@ import java.util.List;
 public class Multiply implements Operand {
     private final List<Operand> operands = new ArrayList<>();
 
-    public Multiply(List<Operand> operands) {
+    @JsonCreator
+    public Multiply(@JsonProperty("operands") List<Operand> operands) {
         this.operands.addAll(operands);
     }
 
@@ -35,11 +38,9 @@ public class Multiply implements Operand {
 
     @Override
     public Double getResult() {
-        Double result = 1.0;
-        for (Operand op : operands) {
-            result *= op.getResult();
-        }
-        return result;
+        return operands.stream()
+                .mapToDouble(Operand::getResult)
+                .reduce(1.0, (a, b) -> a * b);
     }
 
     @Override

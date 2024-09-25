@@ -1,12 +1,20 @@
 package ru.kmbo.numerical_methods.model.operand;
 
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
 import lombok.Setter;
 
-@Setter
-@NoArgsConstructor
 public class Variable implements Operand {
+    @Getter
+    private final String name;
+    @Setter
     private Double var;
+
+    @JsonCreator
+    public Variable(@JsonProperty("name") String name) {
+        this.name = name;
+    }
 
     @Override
     public Double getResult() {
@@ -15,6 +23,6 @@ public class Variable implements Operand {
 
     @Override
     public String toString() {
-        return var == null ? "x" : var.toString();
+        return var == null ? name : var.toString();
     }
 }

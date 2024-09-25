@@ -14,22 +14,22 @@ public class Lab_1_3_Test {
 
 
     private TabularFunction function1;
-    private final Variable var1 = new Variable();
+    private final Variable var1 = new Variable("x");
     private Double xStar1;
     private TabularFunction function2;
-    private final Variable var2 = new Variable();
+    private final Variable var2 = new Variable("x");
     private Double xStar2;
     private TabularFunction function3;
-    private final Variable var3 = new Variable();
+    private final Variable var3 = new Variable("x");
     private Double xStar3;
     private TabularFunction function4;
-    private final Variable var4 = new Variable();
+    private final Variable var4 = new Variable("x");
     private Double xStar4;
     private TabularFunction function5;
-    private final Variable var5 = new Variable();
+    private final Variable var5 = new Variable("x");
     private Double xStar5;
     private TabularFunction function6;
-    private final Variable var6 = new Variable();
+    private final Variable var6 = new Variable("x");
     private Double xStar6;
 
 

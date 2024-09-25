@@ -13,7 +13,7 @@ class DerivativeOperandCalculateTest {
 
     @BeforeEach
     void setUp() {
-        Variable x = new Variable();
+        Variable x = new Variable("x");
         Operand operand1 = new Multiply(
                 x,
                 new Pow(
