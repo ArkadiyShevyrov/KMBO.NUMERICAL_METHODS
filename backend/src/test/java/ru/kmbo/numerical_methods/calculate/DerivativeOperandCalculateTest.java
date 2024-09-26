@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.kmbo.numerical_methods.calculate.derivative.operand.DerivativeOperandCalculate;
-import ru.kmbo.numerical_methods.model.function.Function;
+import ru.kmbo.numerical_methods.model.function.implementation.OperandFunction;
 import ru.kmbo.numerical_methods.model.operand.*;
 import ru.kmbo.numerical_methods.model.operand.implementation.Add;
 import ru.kmbo.numerical_methods.model.operand.implementation.Multiply;
@@ -13,7 +13,7 @@ import ru.kmbo.numerical_methods.model.operand.implementation.Variable;
 
 @Slf4j
 class DerivativeOperandCalculateTest {
-    private Function f;
+    private OperandFunction f;
 
     @BeforeEach
     void setUp() {
@@ -31,12 +31,12 @@ class DerivativeOperandCalculateTest {
                         -2
                 )
         );
-        f = new Function(operand1, x);
+        f = new OperandFunction(operand1, x);
     }
 
     @Test
     void test1() {
-        Function derivative = DerivativeOperandCalculate.derivative(f);
+        OperandFunction derivative = DerivativeOperandCalculate.derivative(f);
         log.info(derivative.apply(1.).toString());
     }
 

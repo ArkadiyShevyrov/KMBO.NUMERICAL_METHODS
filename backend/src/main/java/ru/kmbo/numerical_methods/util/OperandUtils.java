@@ -20,7 +20,7 @@ public class OperandUtils {
             case Pow pow -> setPow(variable, pow, value);
             case Sin sin -> setSin(variable, sin, value);
             case Variable var -> setVariable(variable, var, value);
-            case null, default -> throw new RuntimeException();
+            case null, default -> throw new RuntimeException(operand.getClass().getTypeName());
         }
     }
 

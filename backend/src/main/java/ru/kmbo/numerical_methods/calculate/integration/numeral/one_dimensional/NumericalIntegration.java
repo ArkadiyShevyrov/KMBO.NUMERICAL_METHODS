@@ -2,7 +2,7 @@ package ru.kmbo.numerical_methods.calculate.integration.numeral.one_dimensional;
 
 import lombok.experimental.UtilityClass;
 import ru.kmbo.numerical_methods.calculate.integration.numeral.one_dimensional.method.*;
-import ru.kmbo.numerical_methods.model.function.Function;
+import ru.kmbo.numerical_methods.model.function.implementation.OperandFunction;
 
 @UtilityClass
 public class NumericalIntegration {
@@ -13,7 +13,7 @@ public class NumericalIntegration {
     private final TrapezoidalMethod trapezoidalMethod = new TrapezoidalMethod();
 
 
-    public Double integrate(Function f, double a, double b, double h, TypeMethod typeMethod) {
+    public Double integrate(OperandFunction f, double a, double b, double h, TypeMethod typeMethod) {
         return switch (typeMethod) {
             case RECTANGLE_LEFT_METHOD -> rectangleLeftMethod.integrate(f, a, b, h);
             case RECTANGLE_MEDIAN_METHOD -> rectangleMedianMethod.integrate(f, a, b, h);
@@ -23,7 +23,7 @@ public class NumericalIntegration {
         };
     }
 
-    public Double tolerance(Function f, double a, double b, double h, TypeMethod typeMethod) {
+    public Double tolerance(OperandFunction f, double a, double b, double h, TypeMethod typeMethod) {
         return switch (typeMethod) {
             case RECTANGLE_LEFT_METHOD -> rectangleLeftMethod.tolerance(f, a, b, h);
             case RECTANGLE_MEDIAN_METHOD -> rectangleMedianMethod.tolerance(f, a, b, h);

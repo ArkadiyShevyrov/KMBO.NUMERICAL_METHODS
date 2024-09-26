@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.kmbo.numerical_methods.calculate.integration.numeral.one_dimensional.NumericalIntegration;
-import ru.kmbo.numerical_methods.model.function.Function;
+import ru.kmbo.numerical_methods.model.function.implementation.OperandFunction;
 import ru.kmbo.numerical_methods.model.operand.Operand;
 
 @Slf4j
@@ -17,21 +17,15 @@ import ru.kmbo.numerical_methods.model.operand.Operand;
 @CrossOrigin(origins = "http://localhost:3000")
 public class Lab_1_6_Controller {
 
-    @PutMapping("/integrate")
-    public ResponseEntity<String> firstDerivative(
+    @PostMapping("/integrate")
+    public ResponseEntity<String> integrate(
             @RequestParam NumericalIntegration.TypeMethod typeMethod,
             @RequestParam Double a,
             @RequestParam Double b,
             @RequestParam Double h,
-            @RequestBody Function f
+            @RequestBody OperandFunction f
     ) {
         Double result = NumericalIntegration.integrate(f, a, b, h, typeMethod);
         return ResponseEntity.ok(String.valueOf(result));
-    }
-
-    @PostMapping("/calculate")
-    public ResponseEntity<Double> calculate(@RequestBody Operand operand) {
-        Double result = operand.getResult();
-        return ResponseEntity.ok(result);
     }
 }

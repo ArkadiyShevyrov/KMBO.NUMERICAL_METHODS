@@ -1,7 +1,7 @@
 package ru.kmbo.numerical_methods.calculate;
 
 import lombok.experimental.UtilityClass;
-import ru.kmbo.numerical_methods.model.function.TabularFunction;
+import ru.kmbo.numerical_methods.model.function.implementation.TabularFunction;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

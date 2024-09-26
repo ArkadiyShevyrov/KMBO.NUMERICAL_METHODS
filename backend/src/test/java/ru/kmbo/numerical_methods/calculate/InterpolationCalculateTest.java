@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ru.kmbo.numerical_methods.model.function.TabularFunction;
+import ru.kmbo.numerical_methods.model.function.implementation.TabularFunction;
 import ru.kmbo.numerical_methods.model.operand.implementation.Variable;
 import ru.kmbo.numerical_methods.model.operand.Operand;
 import ru.kmbo.numerical_methods.model.operand.implementation.Add;

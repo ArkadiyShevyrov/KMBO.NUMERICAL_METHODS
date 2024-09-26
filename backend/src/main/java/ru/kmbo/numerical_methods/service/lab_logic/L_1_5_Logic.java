@@ -6,7 +6,7 @@ import ru.kmbo.numerical_methods.calculate.SystemLinearEquationsCalculate;
 import ru.kmbo.numerical_methods.model.basic.Vector;
 import ru.kmbo.numerical_methods.model.basic.*;
 import ru.kmbo.numerical_methods.model.function.Polynomial;
-import ru.kmbo.numerical_methods.model.function.TabularFunction;
+import ru.kmbo.numerical_methods.model.function.implementation.TabularFunction;
 import ru.kmbo.numerical_methods.model.operand.implementation.Multiply;
 import ru.kmbo.numerical_methods.model.operand.implementation.Num;
 import ru.kmbo.numerical_methods.model.operand.Operand;
@@ -57,7 +57,7 @@ public class L_1_5_Logic {
             int n = xList.size();
             int count = 1;
             for (Double x : xList) {
-                Double y = tabularFunction.getResult(x);
+                Double y = tabularFunction.apply(x);
                 xOperands.put(count++, new Multiply(new Num(y),new Pow(x, i)));
             }
             vector.set(i, bigSum(1, n, xOperands));

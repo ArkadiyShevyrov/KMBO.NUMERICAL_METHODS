@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.kmbo.numerical_methods.calculate.DerivativeCalculate;
-import ru.kmbo.numerical_methods.model.function.TabularFunction;
+import ru.kmbo.numerical_methods.model.function.implementation.TabularFunction;
 
 @Slf4j
 @RestController
@@ -18,7 +18,7 @@ import ru.kmbo.numerical_methods.model.function.TabularFunction;
 @CrossOrigin(origins = "http://localhost:3000")
 public class Lab_1_2_Controller {
 
-    @PutMapping("/first-derivative")
+    @PostMapping("/first-derivative")
     public ResponseEntity<String> firstDerivative(
             @Parameter(description = "Параметр функции", example = "1.0")
             @Pattern(regexp = "\\d+(\\.\\d+)?", message = "Некорректный формат числа")
@@ -34,7 +34,7 @@ public class Lab_1_2_Controller {
         return ResponseEntity.ok(String.valueOf(result));
     }
 
-    @PutMapping("/second-derivative")
+    @PostMapping("/second-derivative")
     public ResponseEntity<String> secondDerivative(
             @Parameter(description = "Параметр функции", example = "1.0")
             @Pattern(regexp = "\\d+(\\.\\d+)?", message = "Некорректный формат числа")

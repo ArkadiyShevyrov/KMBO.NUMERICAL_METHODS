@@ -3,13 +3,13 @@ package ru.kmbo.numerical_methods.calculate.integration.numeral.one_dimensional.
 import ru.kmbo.numerical_methods.calculate.BasicCalculate;
 import ru.kmbo.numerical_methods.calculate.DerivativeCalculate;
 import ru.kmbo.numerical_methods.calculate.integration.numeral.one_dimensional.NumericalIntegrationMethod;
-import ru.kmbo.numerical_methods.model.function.Function;
+import ru.kmbo.numerical_methods.model.function.implementation.OperandFunction;
 import java.util.HashMap;
 import java.util.Map;
 
 public class TrapezoidalMethod implements NumericalIntegrationMethod {
     @Override
-    public Double integrate(Function f, double a, double b, double h) {
+    public Double integrate(OperandFunction f, double a, double b, double h) {
         int N = (int) ((b - a) / h);
         Map<Integer, Double> xMap = new HashMap<>();
         for (int i = 0; i <= N; i++) {
@@ -22,13 +22,13 @@ public class TrapezoidalMethod implements NumericalIntegrationMethod {
     }
 
     @Override
-    public Double tolerance(Function f, double a, double b, double h) {
+    public Double tolerance(OperandFunction f, double a, double b, double h) {
         double bFirstDerivative = DerivativeCalculate.derivative(f, b, 1);
         double aFirstDerivative = DerivativeCalculate.derivative(f, a, 1);
         return Math.abs(((b - a) / 12) * BasicCalculate.pow(h, 2) * (bFirstDerivative - aFirstDerivative));
     }
 
-    private double bigSum(Function f, int iStart, int iEnd, Map<Integer, Double> xMap) {
+    private double bigSum(OperandFunction f, int iStart, int iEnd, Map<Integer, Double> xMap) {
         double sum = 0;
         for (int i = iStart; i <= iEnd; i++) {
             sum += f.apply(xMap.get(i));

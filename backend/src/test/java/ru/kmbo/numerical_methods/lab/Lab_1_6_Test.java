@@ -3,29 +3,29 @@ package ru.kmbo.numerical_methods.lab;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.kmbo.numerical_methods.calculate.integration.numeral.one_dimensional.NumericalIntegration;
-import ru.kmbo.numerical_methods.model.function.Function;
+import ru.kmbo.numerical_methods.model.function.implementation.OperandFunction;
 import ru.kmbo.numerical_methods.model.operand.*;
 import ru.kmbo.numerical_methods.model.operand.implementation.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static ru.kmbo.numerical_methods.constant.Constant.PRECISION;
 
 public class Lab_1_6_Test {
-    private Function f1;
+    private OperandFunction f1;
     private Double a1, b1, h1;
 
-    private Function f2;
+    private OperandFunction f2;
     private Double a2, b2, h2;
 
-    private Function f3;
+    private OperandFunction f3;
     private Double a3, b3, h3;
 
-    private Function f4;
+    private OperandFunction f4;
     private Double a4, b4, h4;
 
-    private Function f5;
+    private OperandFunction f5;
     private Double a5, b5, h5;
 
-    private Function f6;
+    private OperandFunction f6;
     private Double a6, b6, h6;
 
     @BeforeEach
@@ -35,7 +35,7 @@ public class Lab_1_6_Test {
                 x1,
                 new Pow(new Add(new Multiply(2., x1), 5.), -1)
         );
-        f1 = new Function(operand1, x1);
+        f1 = new OperandFunction(operand1, x1);
         a1 = -1.;
         b1 = 1.;
         h1 = 0.5;
@@ -45,7 +45,7 @@ public class Lab_1_6_Test {
                 x2,
                 new Pow(new Add(new Multiply(3., x2), 4.), -2)
         );
-        f2 = new Function(operand2, x2);
+        f2 = new OperandFunction(operand2, x2);
         a2 = 0.;
         b2 = 4.;
         h2 = 1.;
@@ -55,7 +55,7 @@ public class Lab_1_6_Test {
                 x3,
                 new Pow(new Add(new Multiply(3., x3), 4.), -3)
         );
-        f3 = new Function(operand3, x3);
+        f3 = new OperandFunction(operand3, x3);
         a3 = -1.;
         b3 = 1.;
         h3 = 0.5;
@@ -65,7 +65,7 @@ public class Lab_1_6_Test {
                 new Add(new Multiply(3., x4), 4.),
                 new Pow(new Add(new Multiply(2., x4), 7.), -1)
         );
-        f4 = new Function(operand4, x4);
+        f4 = new OperandFunction(operand4, x4);
         a4 = -2.;
         b4 = 2.;
         h4 = 1.;
@@ -75,7 +75,7 @@ public class Lab_1_6_Test {
                 1.,
                 new Pow(new Add(new Pow(x5, 2), 4.), -1)
         );
-        f5 = new Function(operand5, x5);
+        f5 = new OperandFunction(operand5, x5);
         a5 = -2.;
         b5 = 2.;
         h5 = 1.;
@@ -95,7 +95,7 @@ public class Lab_1_6_Test {
                         0.5
                 )
         );
-        f6 = new Function(operand6, x6);
+        f6 = new OperandFunction(operand6, x6);
         a6 = -2.;
         b6 = 2.;
         h6 = 1.;

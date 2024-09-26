@@ -1,7 +1,7 @@
 package ru.kmbo.numerical_methods.calculate.derivative.operand;
 
 import lombok.experimental.UtilityClass;
-import ru.kmbo.numerical_methods.model.function.Function;
+import ru.kmbo.numerical_methods.model.function.implementation.OperandFunction;
 import ru.kmbo.numerical_methods.model.operand.*;
 import ru.kmbo.numerical_methods.model.operand.implementation.*;
 import java.util.ArrayList;
@@ -10,8 +10,8 @@ import java.util.List;
 @UtilityClass
 public class DerivativeOperandCalculate {
 
-    public Function derivative(Function function) {
-        return new Function(OperandOptimize.optimize(derivative(function.getOperand())), function.getVariable());
+    public OperandFunction derivative(OperandFunction operandFunction) {
+        return new OperandFunction(OperandOptimize.optimize(derivative(operandFunction.getOperand())), operandFunction.getVariable());
     }
 
     public Operand derivative(Operand operand) {

@@ -1,7 +1,7 @@
 package ru.kmbo.numerical_methods.calculate;
 
 import lombok.experimental.UtilityClass;
-import ru.kmbo.numerical_methods.model.function.TabularFunction;
+import ru.kmbo.numerical_methods.model.function.implementation.TabularFunction;
 
 @UtilityClass
 public class InterpolationCalculate {
@@ -10,7 +10,7 @@ public class InterpolationCalculate {
         Double[] x = func.getNodes().keySet().toArray(new Double[0]);
         Double[] y = new Double[x.length];
         for (int i = 0; i < x.length; i++) {
-            y[i] = func.getResult(x[i]);
+            y[i] = func.apply(x[i]);
         }
         return lagrangeInterpolate(x, y, xStar);
     }
@@ -36,7 +36,7 @@ public class InterpolationCalculate {
         Double[] x = func.getNodes().keySet().toArray(new Double[0]);
         Double[] y = new Double[x.length];
         for (int i = 0; i < x.length; i++) {
-            y[i] = func.getResult(x[i]);
+            y[i] = func.apply(x[i]);
         }
         return newtonInterpolate(x, y, xStar);
     }

@@ -3,7 +3,7 @@ package ru.kmbo.numerical_methods.lab;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.kmbo.numerical_methods.calculate.InterpolationCalculate;
-import ru.kmbo.numerical_methods.model.function.TabularFunction;
+import ru.kmbo.numerical_methods.model.function.implementation.TabularFunction;
 import ru.kmbo.numerical_methods.model.operand.implementation.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static ru.kmbo.numerical_methods.constant.Constant.PI;

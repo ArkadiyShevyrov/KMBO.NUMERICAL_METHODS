@@ -3,8 +3,8 @@ package ru.kmbo.numerical_methods.calculate;
 import lombok.experimental.UtilityClass;
 //import ru.kmbo.numerical_methods.calculate.derivative.operand.DerivativeOperandCalculate;
 import ru.kmbo.numerical_methods.calculate.derivative.operand.DerivativeOperandCalculate;
-import ru.kmbo.numerical_methods.model.function.Function;
-import ru.kmbo.numerical_methods.model.function.TabularFunction;
+import ru.kmbo.numerical_methods.model.function.implementation.OperandFunction;
+import ru.kmbo.numerical_methods.model.function.implementation.TabularFunction;
 import java.util.*;
 
 @UtilityClass
@@ -58,7 +58,7 @@ public class DerivativeCalculate {
     }
 
 
-    public double findMaxFourthDerivative(Function f, double a, double b, double h) {
+    public double findMaxFourthDerivative(OperandFunction f, double a, double b, double h) {
         List<Double> derivatives = new ArrayList<>();
         int N = (int) ((b - a) / h);
         for (int i = 0; i <= N; i++) {
@@ -68,7 +68,7 @@ public class DerivativeCalculate {
         return Collections.max(derivatives);
     }
 
-    public double findMaxThirdDerivative(Function f, double a, double b, double h) {
+    public double findMaxThirdDerivative(OperandFunction f, double a, double b, double h) {
         List<Double> derivatives = new ArrayList<>();
         int N = (int) ((b - a) / h);
         for (int i = 0; i <= N; i++) {
@@ -78,7 +78,7 @@ public class DerivativeCalculate {
         return Collections.max(derivatives);
     }
 
-    public double findMaxSecondDerivative(Function f, double a, double b, double h) {
+    public double findMaxSecondDerivative(OperandFunction f, double a, double b, double h) {
         List<Double> derivatives = new ArrayList<>();
         int N = (int) ((b - a) / h);
         for (int i = 0; i <= N; i++) {
@@ -88,7 +88,7 @@ public class DerivativeCalculate {
         return Collections.max(derivatives);
     }
 
-    public double findMaxFirstDerivative(Function f, double a, double b, double h) {
+    public double findMaxFirstDerivative(OperandFunction f, double a, double b, double h) {
         List<Double> derivatives = new ArrayList<>();
         int N = (int) ((b - a) / h);
         for (int i = 0; i <= N; i++) {
@@ -98,28 +98,28 @@ public class DerivativeCalculate {
         return Collections.max(derivatives);
     }
 
-    public double fourthDerivative(Function f, double x, double h) {
+    public double fourthDerivative(OperandFunction f, double x, double h) {
         return (f.apply(x - 2 * h) - 4 * f.apply(x - h) + 6 * f.apply(x) - 4 * f.apply(x + h) + f.apply(x + 2 * h)) / (h * h * h * h);
     }
 
-    private double thirdDerivative(Function f, double x, double h) {
+    private double thirdDerivative(OperandFunction f, double x, double h) {
         return (f.apply(x - 2 * h) - 2 * f.apply(x - h) + 2 * f.apply(x + h) - f.apply(x + 2 * h)) / (2 * h * h * h);
     }
 
-    private double secondDerivative(Function f, double x, double h) {
+    private double secondDerivative(OperandFunction f, double x, double h) {
         return (f.apply(x + h) - 2 * f.apply(x) + f.apply(x - h)) / (h * h);
     }
 
-    public static double firstDerivative(Function func, double x, double h) {
+    public static double firstDerivative(OperandFunction func, double x, double h) {
         return (func.apply(x + h) - func.apply(x - h)) / (2 * h);
     }
 
-    public double derivative(Function function, double x, int rang) {
-        Function derivativeFunction = function;
-        derivativeFunction.getVariable().setVar(null);
+    public double derivative(OperandFunction operandFunction, double x, int rang) {
+        OperandFunction derivativeOperandFunction = operandFunction;
+        derivativeOperandFunction.getVariable().setVar(null);
         for (int i = 0; i < rang; i++) {
-            derivativeFunction = DerivativeOperandCalculate.derivative(derivativeFunction);
+            derivativeOperandFunction = DerivativeOperandCalculate.derivative(derivativeOperandFunction);
         }
-        return derivativeFunction.apply(x);
+        return derivativeOperandFunction.apply(x);
     }
 }

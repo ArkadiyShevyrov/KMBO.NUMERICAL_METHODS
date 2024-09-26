@@ -3,7 +3,7 @@ package ru.kmbo.numerical_methods.lab;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.kmbo.numerical_methods.calculate.CubicSplineInterpolatorCalculate;
-import ru.kmbo.numerical_methods.model.function.TabularFunction;
+import ru.kmbo.numerical_methods.model.function.implementation.TabularFunction;
 import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static ru.kmbo.numerical_methods.constant.Constant.PRECISION;
