@@ -310,6 +310,7 @@ const Task_1_6: React.FC = () => {
         <Container>
             <Row className="justify-content-center">
                 <Col md={6}>
+                    <br/>
                     <Container>
                         <h1>Численное интегрирование</h1>
                     </Container>

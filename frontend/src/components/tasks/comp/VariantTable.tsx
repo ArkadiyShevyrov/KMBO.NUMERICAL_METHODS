@@ -48,12 +48,6 @@ const VariantTable: React.FC<VariantTableProps> = ({ numericalArray, onSelectVar
                 ))}
                 </tbody>
             </Table>
-
-            {selectedVariant && (
-                <div className="mt-3">
-                    <h4>Выбранный вариант: {selectedVariant}</h4>
-                </div>
-            )}
         </div>
     );
 };

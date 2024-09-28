@@ -26,6 +26,10 @@ const NumericalIntegration: React.FC<NumericalIntegrationProps> = ({numericalInt
         useState<string | null>(null);
     const [error, setError] =
         useState<string | null>(null);
+    const [resultTolerance, setResultTolerance] =
+        useState<string | null>("0");
+    const [errorTolerance, setErrorTolerance] =
+        useState<string | null>(null);
 
     useEffect(() => {
         setOperandFunction(numericalIntegrationFunctionInterface.operandFunction)
@@ -59,6 +63,30 @@ const NumericalIntegration: React.FC<NumericalIntegrationProps> = ({numericalInt
             }
             setResult(null);
         }
+
+        try {
+            const response = await axios.post('http://localhost:8080/lab_1_6/integrate/tolerance',
+                OperandFunctionToJson(numericalIntegrationFunctionInterface.operandFunction), {
+                    params: {
+                        typeMethod: typeMethod,
+                        a: a,
+                        b: b,
+                        h: h
+                    },
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+            setResultTolerance(response.data);
+            setErrorTolerance(null);
+        } catch (err: any) {
+            if (err.response && err.response.data) {
+                setErrorTolerance(err.response.data);
+            } else {
+                setErrorTolerance(err.message);
+            }
+            setResultTolerance(null);
+        }
     };
 
     return (
@@ -81,8 +109,16 @@ const NumericalIntegration: React.FC<NumericalIntegrationProps> = ({numericalInt
                     <Form.Label>Функция f(x)</Form.Label>
                     <br/>
                     <Form.Text style={{fontSize: '1.5rem'}}>
-                        <MathRenderer
-                            mathContent={"y=" + OperandToLatex(operandFunction.operand)}/>
+                        <div style={{
+                            border: '1px solid #ced4da',
+                            borderRadius: '0.375rem',
+                            padding: '0.375rem 0.75rem',
+                            fontSize: '1.1rem',
+                            backgroundColor: '#fff'
+                        }}>
+                            <MathRenderer
+                                mathContent={"y=" + OperandToLatex(operandFunction.operand)}/>
+                        </div>
                     </Form.Text>
                 </Form.Group>
                 <Form.Group controlId="formA">
@@ -134,7 +170,8 @@ const NumericalIntegration: React.FC<NumericalIntegrationProps> = ({numericalInt
                 <Button variant="primary" type="submit">Вычислить</Button>
             </Form>
             {error && <Alert variant="danger" className="mt-3">{error}</Alert>}
-            {result != null && <CopyableResult result={result}/>}
+            {errorTolerance && <Alert variant="danger" className="mt-3">{errorTolerance}</Alert>}
+            {result != null && <CopyableResult result={result + " " + "+-" + resultTolerance}/>}
         </Container>
     );
 };
