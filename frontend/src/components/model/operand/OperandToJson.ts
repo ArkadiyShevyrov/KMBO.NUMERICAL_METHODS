@@ -6,7 +6,7 @@ import {Multiply} from "./Multiply";
 import {Pow} from "./Pow";
 import {Divide} from "./Divide";
 
-export const operandToJson = (operand: Operand): any => {
+export const OperandToJson = (operand: Operand): any => {
     switch (operand.type) {
         case "Variable":
             return {type: "Variable", name: (operand as Variable).name};
@@ -15,27 +15,27 @@ export const operandToJson = (operand: Operand): any => {
         case "Add":
             return {
                 type: "Add",
-                operands: (operand as Add).operands.map(operandToJson),
+                operands: (operand as Add).operands.map(OperandToJson),
             };
         case "Multiply":
             return {
                 type: "Multiply",
-                operands: (operand as Multiply).operands.map(operandToJson),
+                operands: (operand as Multiply).operands.map(OperandToJson),
             };
         case "Pow":
             return {
                 type: "Pow",
-                base: operandToJson((operand as Pow).base),
-                exp: operandToJson((operand as Pow).exp),
+                base: OperandToJson((operand as Pow).base),
+                exp: OperandToJson((operand as Pow).exp),
             };
         case "Divide":
             return {
                 type: "Multiply",
                 operands: [
-                    operandToJson((operand as Divide).dividend),
+                    OperandToJson((operand as Divide).dividend),
                     {
                         type: "Pow",
-                        base: operandToJson((operand as Divide).divisor),
+                        base: OperandToJson((operand as Divide).divisor),
                         exp: { type: "Num", num: -1 },
                     }
                 ],

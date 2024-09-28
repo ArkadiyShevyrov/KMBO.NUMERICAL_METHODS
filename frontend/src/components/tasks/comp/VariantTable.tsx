@@ -1,58 +1,20 @@
-import React, {useState} from 'react';
-import {Table} from 'react-bootstrap';
-import {MathRenderer} from '../../MathRenderer';
+import React, { useState } from 'react';
+import { Table } from 'react-bootstrap';
+import { MathRenderer } from '../../MathRenderer';
+import OperandMathRenderer, {OperandToLatex} from "../../model/operand/OperandMathRenderer";
 
-const VariantTable: React.FC = () => {
+interface VariantTableProps {
+    numericalArray: any[]; // Adjust type as needed
+    onSelectVariant: (variant: number) => void;
+}
+
+const VariantTable: React.FC<VariantTableProps> = ({ numericalArray, onSelectVariant }) => {
     const [selectedVariant, setSelectedVariant] = useState<number | null>(null);
 
     const handleRowClick = (variant: number) => {
         setSelectedVariant(variant);
+        onSelectVariant(variant); // Call the parent function to set the selected variant
     };
-
-    const rows = [
-        {
-            variant: 1,
-            content: <MathRenderer mathContent={"y=\\frac{x}{2x+5}"}/>,
-            a: -1,
-            b: 1,
-            h: -0.5,
-        },
-        {
-            variant: 2,
-            content: <MathRenderer mathContent={"y=\\frac{x}{(3x+4)^2}"}/>,
-            a: 0,
-            b: 4,
-            h: 1.0,
-        },
-        {
-            variant: 3,
-            content: <MathRenderer mathContent={"y=\\frac{x}{(3x+4)^3}"}/>,
-            a: -1,
-            b: 1,
-            h: 0.5,
-        },
-        {
-            variant: 4,
-            content: <MathRenderer mathContent={"y=\\frac{3x+4}{2x+7}"}/>,
-            a: -2,
-            b: 2,
-            h: 1.0,
-        },
-        {
-            variant: 5,
-            content: <MathRenderer mathContent={"y=\\frac{1}{x^2+4}"}/>,
-            a: -2,
-            b: 2,
-            h: 1.0,
-        },
-        {
-            variant: 6,
-            content: <MathRenderer mathContent={"y=x\\sqrt{49-x^2}"}/>,
-            a: -2,
-            b: 2,
-            h: 1.0,
-        }
-    ];
 
     return (
         <div>
@@ -68,17 +30,17 @@ const VariantTable: React.FC = () => {
                 </tr>
                 </thead>
                 <tbody>
-                {rows.map((row) => (
+                {numericalArray.map((row, index) => (
                     <tr
-                        key={row.variant}
-                        onClick={() => handleRowClick(row.variant)}
+                        key={index}
+                        onClick={() => handleRowClick(index+1)}
                         style={{
                             cursor: 'pointer',
                             backgroundColor: selectedVariant === row.variant ? '#a3e8b4' : '#1fc949',
                         }}
                     >
-                        <td>{row.variant}</td>
-                        <td>{row.content}</td>
+                        <td>{index+1}</td>
+                        <td><MathRenderer mathContent={"y="+OperandToLatex(row.operandFunction.operand)}/></td>
                         <td>{row.a}</td>
                         <td>{row.b}</td>
                         <td>{row.h}</td>

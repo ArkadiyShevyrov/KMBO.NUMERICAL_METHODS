@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {Col, Container, Row} from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
 import VariantTable from "./comp/VariantTable";
 import NumericalIntegration from "./lab_1_6/NumericalIntegration";
 import {
@@ -7,21 +7,22 @@ import {
     NumericalIntegrationInterface,
     TypeMethod
 } from "./lab_1_6/NumericalIntegrationInterface";
-import {OperandFunction} from "../model/function/OperandFunction";
+import { OperandFunction } from "../model/function/OperandFunction";
 
 const Task_1_6: React.FC = () => {
-    const [numericalIntegrationI, setNumericalIntegrationI] =
-        useState<NumericalIntegrationInterface>({
-            typeMethod: TypeMethod.RECTANGLE_LEFT_METHOD,
-            numericalIntegrationFunctionInterface: numericalIntegrationFunctionInterface
-        });
     const [numericalIntegrationFunctionInterface, setNumericalIntegrationFunctionInterface] =
         useState<NumericalIntegrationFunctionInterface>({
             a: 0,
             b: 0,
             h: 0,
-            operandFunction: {} as OperandFunction
-        })
+            operandFunction: {} as OperandFunction // Set a proper initial value
+        });
+
+    const [numericalIntegrationI, setNumericalIntegrationI] =
+        useState<NumericalIntegrationInterface>({
+            typeMethod: TypeMethod.RECTANGLE_LEFT_METHOD,
+            numericalIntegrationFunctionInterface
+        });
 
     const numericalArray: NumericalIntegrationFunctionInterface[] = [
         {
@@ -63,14 +64,18 @@ const Task_1_6: React.FC = () => {
                     name: "x"
                 }
             }
-        },
-        {
-            a: 0,
-            b: 4,
-            h: 1.0,
-            operandFunction: {} as OperandFunction
         }
-    ]
+    ];
+
+    const handleVariantSelect = (variant: number) => {
+        const selectedVariant = numericalArray[variant - 1]; // Adjust for 0-indexed array
+
+        setNumericalIntegrationFunctionInterface(selectedVariant);
+        setNumericalIntegrationI(prev => ({
+            ...prev,
+            numericalIntegrationFunctionInterface: selectedVariant
+        }));
+    };
 
     return (
         <Container>
@@ -80,10 +85,12 @@ const Task_1_6: React.FC = () => {
                         <h1>Численное интегрирование</h1>
                     </Container>
                     <Container>
-                        <VariantTable numericalArray={numericalArray}
-                                      setNumericalIntegrationFunctionInterface={setNumericalIntegrationFunctionInterface}/>
+                        <VariantTable
+                            numericalArray={numericalArray}
+                            onSelectVariant={handleVariantSelect}
+                        />
                     </Container>
-                    <NumericalIntegration numericalIntegrationInterface={numericalIntegrationI}/>
+                    <NumericalIntegration numericalIntegrationInterface={numericalIntegrationI} />
                 </Col>
             </Row>
         </Container>

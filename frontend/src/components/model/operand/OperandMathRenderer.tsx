@@ -2,7 +2,7 @@ import React from 'react';
 import {MathRenderer} from "../../MathRenderer";
 import {Operand} from "./Operand";
 
-const OperandToLatex = (operand: Operand): string => {
+export const OperandToLatex = (operand: Operand): string => {
     switch (operand.type) {
         case 'Variable':
             return operand.name;
