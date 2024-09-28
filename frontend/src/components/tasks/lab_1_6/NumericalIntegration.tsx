@@ -2,10 +2,10 @@ import React, {useEffect, useState} from 'react';
 import {Alert, Button, Container, Form} from 'react-bootstrap';
 import axios from 'axios';
 import {NumericalIntegrationFunctionInterface, TypeMethod} from "./NumericalIntegrationInterface";
-import CopyableResult from "../../CopyableResult";
 import {OperandFunction, OperandFunctionToJson} from "../../model/function/OperandFunction";
 import {OperandToLatex} from "../../model/operand/OperandMathRenderer";
 import {MathRenderer} from "../../MathRenderer";
+import CopyableResult from "../../CopyableResult";
 
 interface NumericalIntegrationProps {
     numericalIntegrationFunctionInterface: NumericalIntegrationFunctionInterface;
@@ -134,7 +134,7 @@ const NumericalIntegration: React.FC<NumericalIntegrationProps> = ({numericalInt
                 <Button variant="primary" type="submit">Вычислить</Button>
             </Form>
             {error && <Alert variant="danger" className="mt-3">{error}</Alert>}
-            {result && <CopyableResult result={result}/>}
+            {result != null && <CopyableResult result={result}/>}
         </Container>
     );
 };

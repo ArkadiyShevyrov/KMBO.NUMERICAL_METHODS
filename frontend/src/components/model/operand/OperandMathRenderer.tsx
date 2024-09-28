@@ -16,6 +16,10 @@ export const OperandToLatex = (operand: Operand): string => {
             return `(${OperandToLatex(operand.base)})^{${OperandToLatex(operand.exp)}}`;
         case "Divide":
             return `\\frac{${OperandToLatex(operand.dividend)}}{${OperandToLatex(operand.divisor)}}`
+        case "Sqrt":
+            return `\\sqrt{${OperandToLatex(operand.operand)}}`
+        case "Neg":
+            return `-${OperandToLatex(operand.operand)}`
         default:
             return '';
     }

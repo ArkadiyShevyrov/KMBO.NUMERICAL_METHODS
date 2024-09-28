@@ -5,6 +5,8 @@ import {Add} from "./Add";
 import {Multiply} from "./Multiply";
 import {Pow} from "./Pow";
 import {Divide} from "./Divide";
+import {Sqrt} from "./Sqrt";
+import {Neg} from "./Neg";
 
 export const OperandToJson = (operand: Operand): any => {
     switch (operand.type) {
@@ -39,6 +41,17 @@ export const OperandToJson = (operand: Operand): any => {
                         exp: { type: "Num", num: -1 },
                     }
                 ],
+            };
+        case "Sqrt":
+            return {
+                type: "Pow",
+                base: OperandToJson((operand as Sqrt).operand),
+                exp: { type: "Num", num: 0.5 },
+            };
+        case "Neg":
+            return {
+                type: "Neg",
+                operand: OperandToJson((operand as Neg).operand)
             };
         default:
             throw new Error(`Unknown operand type: ${(operand as Operand).type}`);

@@ -3,7 +3,6 @@ import {Col, Container, Row} from 'react-bootstrap';
 import VariantTable from "./comp/VariantTable";
 import NumericalIntegration from "./lab_1_6/NumericalIntegration";
 import {NumericalIntegrationFunctionInterface} from "./lab_1_6/NumericalIntegrationInterface";
-import {OperandFunction} from "../model/function/OperandFunction";
 
 const Task_1_6: React.FC = () => {
     const [numericalIntegrationFunctionInterface, setNumericalIntegrationFunctionInterface] =
@@ -13,8 +12,8 @@ const Task_1_6: React.FC = () => {
             h: 0,
             operandFunction: {
                 operand: {
-                  type: "Num",
-                  num: 0
+                    type: "Num",
+                    num: 0
                 },
                 variable: {
                     type: "Variable",
@@ -104,6 +103,195 @@ const Task_1_6: React.FC = () => {
                             num: 2
                         }
                     }
+                },
+                variable: {
+                    type: "Variable",
+                    name: "x"
+                }
+            }
+        },
+        {
+            a: -1,
+            b: 1,
+            h: 0.5,
+            operandFunction: {
+                operand: {
+                    type: "Divide",
+                    dividend: {
+                        type: "Variable",
+                        name: "x"
+                    },
+                    divisor: {
+                        type: "Pow",
+                        base: {
+                            type: "Add",
+                            operands: [
+                                {
+                                    type: "Multiply",
+                                    operands: [
+                                        {
+                                            type: "Num",
+                                            num: 3
+                                        },
+                                        {
+                                            type: "Variable",
+                                            name: "x"
+                                        }
+                                    ]
+                                },
+                                {
+                                    type: "Num",
+                                    num: 4
+                                }
+                            ]
+                        },
+                        exp: {
+                            type: "Num",
+                            num: 3
+                        }
+                    }
+                },
+                variable: {
+                    type: "Variable",
+                    name: "x"
+                }
+            }
+        },
+        {
+            a: -2,
+            b: 2,
+            h: 1.0,
+            operandFunction: {
+                operand: {
+                    type: "Divide",
+                    dividend: {
+                        type: "Add",
+                        operands: [
+                            {
+                                type: "Multiply",
+                                operands: [
+                                    {
+                                        type: "Num",
+                                        num: 3
+                                    },
+                                    {
+                                        type: "Variable",
+                                        name: "x"
+                                    }
+                                ]
+                            },
+                            {
+                                type: "Num",
+                                num: 4
+                            }
+                        ]
+                    },
+                    divisor: {
+                        type: "Add",
+                        operands: [
+                            {
+                                type: "Multiply",
+                                operands: [
+                                    {
+                                        type: "Num",
+                                        num: 2
+                                    },
+                                    {
+                                        type: "Variable",
+                                        name: "x"
+                                    },
+                                ]
+                            },
+                            {
+                                type: "Num",
+                                num: 7
+                            }
+                        ]
+                    }
+                },
+                variable: {
+                    type: "Variable",
+                    name: "x"
+                }
+            }
+        },
+        {
+            a: -2,
+            b: 2,
+            h: 1.0,
+            operandFunction: {
+                operand: {
+                    type: "Divide",
+                    dividend: {
+                        type: "Num",
+                        num: 1
+                    },
+                    divisor: {
+                        type: "Add",
+                        operands: [
+                            {
+                                type: "Pow",
+                                base: {
+                                    type: "Variable",
+                                    name: "x"
+                                },
+                                exp: {
+                                    type: "Num",
+                                    num: 2
+                                }
+                            },
+                            {
+                                type: "Num",
+                                num: 4
+                            }
+                        ]
+                    }
+                },
+                variable: {
+                    type: "Variable",
+                    name: "x"
+                }
+            }
+        },
+        {
+            a: -2,
+            b: 2,
+            h: 1.0,
+            operandFunction: {
+                operand: {
+                    type: "Multiply",
+                    operands: [
+                        {
+                            type: "Variable",
+                            name: "x"
+                        },
+                        {
+                            type: "Sqrt",
+                            operand: {
+                                type: "Add",
+                                operands: [
+                                    {
+                                        type: "Num",
+                                        num: 49
+                                    },
+                                    {
+                                        type: "Neg",
+                                        operand: {
+                                            type: "Pow",
+                                            base: {
+                                                type: "Variable",
+                                                name: "x"
+                                            },
+                                            exp: {
+                                                type: "Num",
+                                                num: 2
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
                 },
                 variable: {
                     type: "Variable",

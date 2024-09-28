@@ -4,6 +4,8 @@ import {Add} from "./Add";
 import {Multiply} from "./Multiply";
 import {Pow} from "./Pow";
 import {Divide} from "./Divide";
+import {Sqrt} from "./Sqrt";
+import {Neg} from "./Neg";
 
 export type Operand =
     | Variable
@@ -11,4 +13,6 @@ export type Operand =
     | Add
     | Multiply
     | Pow
-    | Divide;
+    | Divide
+    | Sqrt
+    | Neg;
