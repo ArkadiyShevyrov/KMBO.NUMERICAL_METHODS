@@ -21,9 +21,13 @@ export const OperandToLatex = (operand: Operand): string => {
     }
 };
 
-const OperandMathRenderer: React.FC<{ operand: Operand }> = ({operand}) => {
+const OperandMathRenderer: React.FC<{ operand: Operand }> = ({ operand }) => {
+    if (!operand || !operand.type) {
+        return <>Error: Invalid operand</>;
+    }
     const latex = OperandToLatex(operand);
-    return <MathRenderer mathContent={latex}/>;
+    return <MathRenderer mathContent={latex} />;
 };
+
 
 export default OperandMathRenderer;

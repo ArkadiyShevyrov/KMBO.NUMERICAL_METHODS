@@ -63,7 +63,7 @@ const NumericalIntegration: React.FC<NumericalIntegrationProps> = ({numericalInt
                     <br/>
                     <Form.Text style={{ fontSize: '1.5rem' }}>
                         <MathRenderer mathContent={"y="}/>
-                        {/*<OperandMathRenderer operand={numericalIntegrationInterface.numericalIntegrationFunctionInterface.operandFunction.operand}/>*/}
+                        <OperandMathRenderer operand={numericalIntegrationInterface.numericalIntegrationFunctionInterface.operandFunction.operand}/>
                     </Form.Text>
                 </Form.Group>
                 <Form.Group controlId="formA">
