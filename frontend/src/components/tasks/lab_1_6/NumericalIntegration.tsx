@@ -1,34 +1,49 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Alert, Button, Container, Form} from 'react-bootstrap';
 import axios from 'axios';
-import {NumericalIntegrationInterface, TypeMethod} from "./NumericalIntegrationInterface";
+import {NumericalIntegrationFunctionInterface, TypeMethod} from "./NumericalIntegrationInterface";
 import CopyableResult from "../../CopyableResult";
-import {OperandFunctionToJson} from "../../model/function/OperandFunction";
-import OperandMathRenderer from "../../model/operand/OperandMathRenderer";
+import {OperandFunction, OperandFunctionToJson} from "../../model/function/OperandFunction";
+import {OperandToLatex} from "../../model/operand/OperandMathRenderer";
 import {MathRenderer} from "../../MathRenderer";
 
 interface NumericalIntegrationProps {
-    numericalIntegrationInterface: NumericalIntegrationInterface;
+    numericalIntegrationFunctionInterface: NumericalIntegrationFunctionInterface;
 }
 
-const NumericalIntegration: React.FC<NumericalIntegrationProps> = ({numericalIntegrationInterface}) => {
-    const [typeMethod, setTypeMethod] = useState<string>(numericalIntegrationInterface.typeMethod);
-    const [a, setA] = useState<number>(numericalIntegrationInterface.numericalIntegrationFunctionInterface.a);
-    const [b, setB] = useState<number>(numericalIntegrationInterface.numericalIntegrationFunctionInterface.b);
-    const [h, setH] = useState<number>(numericalIntegrationInterface.numericalIntegrationFunctionInterface.h);
-    const [result, setResult] = useState<string | null>(null);
-    const [error, setError] = useState<string | null>(null);
+const NumericalIntegration: React.FC<NumericalIntegrationProps> = ({numericalIntegrationFunctionInterface}) => {
+    const [typeMethod, setTypeMethod] =
+        useState<TypeMethod>(TypeMethod.RECTANGLE_MEDIAN_METHOD);
+    const [operandFunction, setOperandFunction] =
+        useState<OperandFunction>(numericalIntegrationFunctionInterface.operandFunction);
+    const [a, setA] =
+        useState<number>(numericalIntegrationFunctionInterface.a);
+    const [b, setB] =
+        useState<number>(numericalIntegrationFunctionInterface.b);
+    const [h, setH] =
+        useState<number>(numericalIntegrationFunctionInterface.h);
+    const [result, setResult] =
+        useState<string | null>(null);
+    const [error, setError] =
+        useState<string | null>(null);
+
+    useEffect(() => {
+        setOperandFunction(numericalIntegrationFunctionInterface.operandFunction)
+        setA(numericalIntegrationFunctionInterface.a);
+        setB(numericalIntegrationFunctionInterface.b);
+        setH(numericalIntegrationFunctionInterface.h);
+    }, [numericalIntegrationFunctionInterface]);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
             const response = await axios.post('http://localhost:8080/lab_1_6/integrate',
-                OperandFunctionToJson(numericalIntegrationInterface.numericalIntegrationFunctionInterface.operandFunction), {
+                OperandFunctionToJson(numericalIntegrationFunctionInterface.operandFunction), {
                     params: {
-                        typeMethod: numericalIntegrationInterface.typeMethod,
-                        a: numericalIntegrationInterface.numericalIntegrationFunctionInterface.a,
-                        b: numericalIntegrationInterface.numericalIntegrationFunctionInterface.b,
-                        h: numericalIntegrationInterface.numericalIntegrationFunctionInterface.h
+                        typeMethod: typeMethod,
+                        a: a,
+                        b: b,
+                        h: h
                     },
                     headers: {
                         'Content-Type': 'application/json'
@@ -53,8 +68,8 @@ const NumericalIntegration: React.FC<NumericalIntegrationProps> = ({numericalInt
                     <Form.Label>Метод интегрирования</Form.Label>
                     <Form.Control
                         as="select"
-                        value={numericalIntegrationInterface.typeMethod}
-                        onChange={(e) => numericalIntegrationInterface.typeMethod = e.target.value as TypeMethod}>
+                        value={typeMethod}
+                        onChange={(e) => setTypeMethod(e.target.value as TypeMethod)}>
                         <option value={TypeMethod.RECTANGLE_LEFT_METHOD}>Прямоугольник (левый)</option>
                         <option value={TypeMethod.RECTANGLE_MEDIAN_METHOD}>Прямоугольник (средний)</option>
                         <option value={TypeMethod.RECTANGLE_RIGHT_METHOD}>Прямоугольник (правый)</option>
@@ -65,9 +80,9 @@ const NumericalIntegration: React.FC<NumericalIntegrationProps> = ({numericalInt
                 <Form.Group controlId="formFunc">
                     <Form.Label>Функция f(x)</Form.Label>
                     <br/>
-                    <Form.Text style={{ fontSize: '1.5rem' }}>
-                        <MathRenderer mathContent={"y="}/>
-                        <OperandMathRenderer operand={numericalIntegrationInterface.numericalIntegrationFunctionInterface.operandFunction.operand}/>
+                    <Form.Text style={{fontSize: '1.5rem'}}>
+                        <MathRenderer
+                            mathContent={"y=" + OperandToLatex(operandFunction.operand)}/>
                     </Form.Text>
                 </Form.Group>
                 <Form.Group controlId="formA">
