@@ -3,6 +3,7 @@ import {Nav, Navbar} from 'react-bootstrap';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Task_1_1 from "./components/tasks/Task_1_1";
 import Task_1_6 from "./components/tasks/Task_1_6";
+import Task_1_5 from "./components/tasks/Task_1_5";
 
 const App: React.FC = () => {
     return (
@@ -32,6 +33,7 @@ const App: React.FC = () => {
             </Navbar>
             <Routes>
                 <Route path="/task_1_1" element={<Task_1_1/>}/>
+                <Route path="/task_1_5" element={<Task_1_5/>}/>
                 <Route path="/task_1_6" element={<Task_1_6/>}/>
             </Routes>
         </Router>
