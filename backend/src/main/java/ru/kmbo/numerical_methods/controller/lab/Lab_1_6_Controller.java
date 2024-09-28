@@ -1,4 +1,4 @@
-package ru.kmbo.numerical_methods.controller;
+package ru.kmbo.numerical_methods.controller.lab;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -7,7 +7,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.kmbo.numerical_methods.calculate.integration.numeral.one_dimensional.NumericalIntegration;
 import ru.kmbo.numerical_methods.model.function.implementation.OperandFunction;
-import ru.kmbo.numerical_methods.model.operand.Operand;
 
 @Slf4j
 @RestController

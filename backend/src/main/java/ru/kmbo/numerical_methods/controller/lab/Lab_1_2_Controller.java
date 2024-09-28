@@ -1,4 +1,4 @@
-package ru.kmbo.numerical_methods.controller;
+package ru.kmbo.numerical_methods.controller.lab;
 
 import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.validation.constraints.Pattern;
