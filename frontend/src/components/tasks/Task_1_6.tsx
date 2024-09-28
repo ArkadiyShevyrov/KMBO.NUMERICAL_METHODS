@@ -64,6 +64,53 @@ const Task_1_6: React.FC = () => {
                     name: "x"
                 }
             }
+        },
+        {
+            a: 0,
+            b: 4,
+            h: 1.0,
+            operandFunction: {
+                operand: {
+                    type: "Divide",
+                    dividend: {
+                        type: "Variable",
+                        name: "x"
+                    },
+                    divisor: {
+                        type: "Pow",
+                        base: {
+                            type: "Add",
+                            operands: [
+                                {
+                                    type: "Multiply",
+                                    operands: [
+                                        {
+                                            type: "Num",
+                                            num: 3
+                                        },
+                                        {
+                                            type: "Variable",
+                                            name: "x"
+                                        }
+                                    ]
+                                },
+                                {
+                                    type: "Num",
+                                    num: 4
+                                }
+                            ]
+                        },
+                        exp: {
+                            type: "Num",
+                            num: 2
+                        }
+                    }
+                },
+                variable: {
+                    type: "Variable",
+                    name: "x"
+                }
+            }
         }
     ];
 

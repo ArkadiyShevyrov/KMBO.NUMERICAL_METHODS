@@ -12,6 +12,10 @@ interface NumericalIntegrationProps {
 }
 
 const NumericalIntegration: React.FC<NumericalIntegrationProps> = ({numericalIntegrationInterface}) => {
+    const [typeMethod, setTypeMethod] = useState<string>(numericalIntegrationInterface.typeMethod);
+    const [a, setA] = useState<number>(numericalIntegrationInterface.numericalIntegrationFunctionInterface.a);
+    const [b, setB] = useState<number>(numericalIntegrationInterface.numericalIntegrationFunctionInterface.b);
+    const [h, setH] = useState<number>(numericalIntegrationInterface.numericalIntegrationFunctionInterface.h);
     const [result, setResult] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
 
@@ -70,7 +74,13 @@ const NumericalIntegration: React.FC<NumericalIntegrationProps> = ({numericalInt
                     <Form.Label>Предел a</Form.Label>
                     <Form.Control
                         type="number"
-                        value={numericalIntegrationInterface.numericalIntegrationFunctionInterface.a}
+                        value={a}
+                        onChange={(e) => {
+                            const value = parseFloat(e.target.value);
+                            if (!isNaN(value)) {
+                                setA(value);
+                            }
+                        }}
                         placeholder="Введите a"
                         required
                     />
@@ -79,7 +89,13 @@ const NumericalIntegration: React.FC<NumericalIntegrationProps> = ({numericalInt
                     <Form.Label>Предел b</Form.Label>
                     <Form.Control
                         type="number"
-                        value={numericalIntegrationInterface.numericalIntegrationFunctionInterface.b}
+                        value={b}
+                        onChange={(e) => {
+                            const value = parseFloat(e.target.value);
+                            if (!isNaN(value)) {
+                                setB(value);
+                            }
+                        }}
                         placeholder="Введите b"
                         required
                     />
@@ -88,7 +104,13 @@ const NumericalIntegration: React.FC<NumericalIntegrationProps> = ({numericalInt
                     <Form.Label>Шаг h</Form.Label>
                     <Form.Control
                         type="number"
-                        value={numericalIntegrationInterface.numericalIntegrationFunctionInterface.h}
+                        value={h}
+                        onChange={(e) => {
+                            const value = parseFloat(e.target.value);
+                            if (!isNaN(value)) {
+                                setH(value);
+                            }
+                        }}
                         placeholder="Введите h"
                         step="0.1"
                         required
