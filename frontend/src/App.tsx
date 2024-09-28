@@ -1,39 +1,38 @@
 import React from 'react';
-import {Container, Nav, Navbar} from 'react-bootstrap';
+import {Nav, Navbar} from 'react-bootstrap';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import {MathRenderer} from "./components/MathRenderer";
-import Task_1 from "./components/tasks/Task_1";
+import Task_1_1 from "./components/tasks/Task_1_1";
+import Task_1_6 from "./components/tasks/Task_1_6";
 
 const App: React.FC = () => {
     return (
         <Router>
             <Navbar bg="light">
-                <Container>
-                    <Navbar.Brand href="/">Задания: </Navbar.Brand>
-                    <Nav className="me-auto">
-                        <Nav.Link href="/task_1">
-                            <MathRenderer mathContent={"Задача №1"}/>
-                        </Nav.Link>
-                        <Nav.Link href="/task_2">
-                            <MathRenderer mathContent={"Задача №2"}/>
-                        </Nav.Link>
-                        <Nav.Link href="/task_3">
-                            <MathRenderer mathContent={"Задача №3"}/>
-                        </Nav.Link>
-                        <Nav.Link href="/task_4">
-                            <MathRenderer mathContent={"Задача №4"}/>
-                        </Nav.Link>
-                        <Nav.Link href="/task_5">
-                            <MathRenderer mathContent={"Задача №5"}/>
-                        </Nav.Link>
-                        <Nav.Link href="/task_6">
-                            <MathRenderer mathContent={"Задача №6"}/>
-                        </Nav.Link>
-                    </Nav>
-                </Container>
+                <Navbar.Brand href="/">Задания: </Navbar.Brand>
+                <Nav className="me-auto">
+                    <Nav.Link href="/task_1_1">
+                        Задача №1.1
+                    </Nav.Link>
+                    <Nav.Link href="/task_1_2">
+                        Задача №1.2
+                    </Nav.Link>
+                    <Nav.Link href="/task_1_3">
+                        Задача №1.3
+                    </Nav.Link>
+                    <Nav.Link href="/task_1_4">
+                        Задача №1.4
+                    </Nav.Link>
+                    <Nav.Link href="/task_1_5">
+                        Задача №1.5
+                    </Nav.Link>
+                    <Nav.Link href="/task_1_6">
+                        Задача №1.6
+                    </Nav.Link>
+                </Nav>
             </Navbar>
             <Routes>
-                <Route path="/task_1" element={<Task_1/>}/>
+                <Route path="/task_1_1" element={<Task_1_1/>}/>
+                <Route path="/task_1_6" element={<Task_1_6/>}/>
             </Routes>
         </Router>
     );

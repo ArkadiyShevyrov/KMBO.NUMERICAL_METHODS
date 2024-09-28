@@ -1,4 +1,3 @@
-import {Container, ListGroup, ListGroupItem, Navbar, Tab, Tabs} from "react-bootstrap";
 import {MathRenderer} from "../MathRenderer";
 import React from "react";
 import CalculateSin from "./comp/CalculateSin";
@@ -8,7 +7,7 @@ import CalculateLg from "./comp/CalculateLg";
 import CalculateCos from "./comp/CalculateCos";
 import CalculateLn from "./comp/CalculateLn";
 
-const Task_1 = () => {
+const Task_1_1 = () => {
     const tabsData = [
         {
             title: <MathRenderer mathContent={"sin(x)"}/>,
@@ -40,4 +39,4 @@ const Task_1 = () => {
     )
 }
 
-export default Task_1;
+export default Task_1_1;

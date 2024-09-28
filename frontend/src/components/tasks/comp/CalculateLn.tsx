@@ -13,13 +13,17 @@ const CalculateSin: React.FC = () => {
     const handleCalculate = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const response = await axios.get('http://localhost:8080/calculate/ln', {
+            const response = await axios.get('http://localhost:8080/lab_1_1/ln', {
                 params: {x: String(x), predication: String(precision)},
             });
             setResult(response.data);
             setError(null);
-        } catch (err) {
-            setError('Ошибка при вычислении: ' + err);
+        } catch (err: any) {
+            if (err.response && err.response.data) {
+                setError(err.response.data);
+            } else {
+                setError(err.message);
+            }
             setResult(null);
         }
     };
