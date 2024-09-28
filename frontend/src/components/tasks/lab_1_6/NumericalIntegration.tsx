@@ -41,51 +41,57 @@ const NumericalIntegration: React.FC<NumericalIntegrationProps> = ({numericalInt
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:8080/lab_1_6/integrate',
-                OperandFunctionToJson(numericalIntegrationFunctionInterface.operandFunction), {
-                    params: {
-                        typeMethod: typeMethod,
-                        a: a,
-                        b: b,
-                        h: h
-                    },
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                });
-            setResult(response.data);
-            setError(null);
-        } catch (err: any) {
-            if (err.response && err.response.data) {
-                setError(err.response.data);
-            } else {
-                setError(err.message);
-            }
-            setResult(null);
-        }
+            const [response, toleranceResponse] = await Promise.all([
+                axios.post('http://localhost:8080/lab_1_6/integrate',
+                    OperandFunctionToJson(numericalIntegrationFunctionInterface.operandFunction), {
+                        params: {
+                            typeMethod: typeMethod,
+                            a: a,
+                            b: b,
+                            h: h
+                        },
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    }),
+                axios.post('http://localhost:8080/lab_1_6/integrate/tolerance',
+                    OperandFunctionToJson(numericalIntegrationFunctionInterface.operandFunction), {
+                        params: {
+                            typeMethod: typeMethod,
+                            a: a,
+                            b: b,
+                            h: h
+                        },
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    })
+            ]);
 
-        try {
-            const response = await axios.post('http://localhost:8080/lab_1_6/integrate/tolerance',
-                OperandFunctionToJson(numericalIntegrationFunctionInterface.operandFunction), {
-                    params: {
-                        typeMethod: typeMethod,
-                        a: a,
-                        b: b,
-                        h: h
-                    },
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                });
-            setResultTolerance(response.data);
+            // Успешно обработаем оба результата
+            setResult(response.data);
+            setResultTolerance(toleranceResponse.data);
+            setError(null);
             setErrorTolerance(null);
+
         } catch (err: any) {
             if (err.response && err.response.data) {
-                setErrorTolerance(err.response.data);
+                if (err.config.url.includes('/tolerance')) {
+                    setErrorTolerance(err.response.data);
+                    setResultTolerance(null);
+                } else {
+                    setError(err.response.data);
+                    setResult(null);
+                }
             } else {
-                setErrorTolerance(err.message);
+                if (err.config.url.includes('/tolerance')) {
+                    setErrorTolerance(err.message);
+                    setResultTolerance(null);
+                } else {
+                    setError(err.message);
+                    setResult(null);
+                }
             }
-            setResultTolerance(null);
         }
     };
 
