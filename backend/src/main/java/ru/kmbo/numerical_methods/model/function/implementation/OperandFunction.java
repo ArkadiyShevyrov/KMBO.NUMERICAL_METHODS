@@ -20,4 +20,12 @@ public class OperandFunction implements Function {
         OperandUtils.setOperand(variable, operand, null);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "operand=" + operand +
+                ", variable=" + variable +
+                '}';
+    }
 }

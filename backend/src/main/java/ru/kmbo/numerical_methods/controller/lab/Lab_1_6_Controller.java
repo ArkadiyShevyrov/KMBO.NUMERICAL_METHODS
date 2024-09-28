@@ -7,6 +7,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.kmbo.numerical_methods.calculate.integration.numeral.one_dimensional.NumericalIntegration;
 import ru.kmbo.numerical_methods.model.function.implementation.OperandFunction;
+import ru.kmbo.numerical_methods.util.RoundUtils;
 
 @Slf4j
 @RestController
@@ -24,7 +25,21 @@ public class Lab_1_6_Controller {
             @RequestParam Double h,
             @RequestBody OperandFunction f
     ) {
+        log.info("Integrate function: function:{}", f.toString());
         Double result = NumericalIntegration.integrate(f, a, b, h, typeMethod);
+        return ResponseEntity.ok(String.valueOf(result));
+    }
+
+    @PostMapping("/integrate/tolerance")
+    public ResponseEntity<String> integrateTolerance(
+            @RequestParam NumericalIntegration.TypeMethod typeMethod,
+            @RequestParam Double a,
+            @RequestParam Double b,
+            @RequestParam Double h,
+            @RequestBody OperandFunction f
+    ) {
+        log.info("Integrate function tolerance: function:{}", f.toString());
+        Double result = RoundUtils.roundToPrecision(NumericalIntegration.tolerance(f, a, b, h, typeMethod), 1e-13);
         return ResponseEntity.ok(String.valueOf(result));
     }
 }
