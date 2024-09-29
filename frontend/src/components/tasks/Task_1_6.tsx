@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Col, Container, Row} from 'react-bootstrap';
-import VariantTable from "./comp/VariantTable";
+import VariantTable from "./lab_1_6/VariantTable";
 import NumericalIntegration from "./lab_1_6/NumericalIntegration";
 import {NumericalIntegrationFunctionInterface} from "./lab_1_6/NumericalIntegrationInterface";
 
