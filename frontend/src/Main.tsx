@@ -67,8 +67,8 @@ export const Main: React.FC = () => {
             </Row>
             {sections.map((section, index) => (
                 <Row key={index} className="justify-content-center mb-4">
-                    <Col xs="auto">
-                        <Card className="my-4 text-left">
+                    <Col xs={12} md={10}>
+                        <Card className="h-100">
                             <Card.Body>
                                 <Card.Title>{section.title}</Card.Title>
                                 <Card.Text>

@@ -6,6 +6,7 @@ import CalculateExp from "./comp/CalculateExp";
 import CalculateLg from "./comp/CalculateLg";
 import CalculateCos from "./comp/CalculateCos";
 import CalculateLn from "./comp/CalculateLn";
+import CalculateLog from "./comp/CalculateLog";
 
 const Task_1_1 = () => {
     const tabsData = [
@@ -31,7 +32,7 @@ const Task_1_1 = () => {
         },
         {
             title: <MathRenderer mathContent={"log_a(x)"}/>,
-            body: "",
+            body: <CalculateLog/>,
         },
     ]
     return (

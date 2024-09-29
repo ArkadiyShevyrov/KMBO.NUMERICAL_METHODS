@@ -4,7 +4,7 @@ import axios from 'axios';
 import CopyableResult from '../../CopyableResult';
 import {MathRenderer} from "../../MathRenderer";
 
-const CalculateSin: React.FC = () => {
+const CalculateCos: React.FC = () => {
     const [x, setX] = useState<string>('');
     const [precision, setPrecision] = useState<string>('1e-10');
     const [result, setResult] = useState<string | null>(null);
@@ -64,4 +64,4 @@ const CalculateSin: React.FC = () => {
     );
 };
 
-export default CalculateSin;
+export default CalculateCos;
