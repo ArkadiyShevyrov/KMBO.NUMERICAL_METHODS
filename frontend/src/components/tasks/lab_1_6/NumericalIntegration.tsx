@@ -173,6 +173,7 @@ const NumericalIntegration: React.FC<NumericalIntegrationProps> = ({numericalInt
                         required
                     />
                 </Form.Group>
+                <br/>
                 <Button variant="primary" type="submit">Вычислить</Button>
             </Form>
             {error && <Alert variant="danger" className="mt-3">{error}</Alert>}

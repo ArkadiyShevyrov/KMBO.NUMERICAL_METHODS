@@ -1,14 +1,15 @@
 import React from 'react';
-import { Container, Nav, Navbar, NavDropdown, Offcanvas } from 'react-bootstrap';
-import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
+import {Container, Nav, Navbar, NavDropdown} from 'react-bootstrap';
+import {BrowserRouter as Router, Link, Route, Routes} from 'react-router-dom';
 import Task_1_1 from "./components/tasks/Task_1_1";
 import Task_1_5 from "./components/tasks/Task_1_5";
 import Task_1_6 from "./components/tasks/Task_1_6";
+import {Main} from "./Main";
 
 const App: React.FC = () => {
     return (
         <Router>
-            <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
+            <Navbar bg="dark" variant="dark" expand="sm" sticky="top">
                 <Container fluid>
                     <Navbar.Brand as={Link} to="/">Задания</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -30,10 +31,10 @@ const App: React.FC = () => {
 
             <Container className="mt-4">
                 <Routes>
-                    <Route path="/" element={<div>Главная страница</div>} />
-                    <Route path="/task_1_1" element={<Task_1_1 />} />
-                    <Route path="/task_1_5" element={<Task_1_5 />} />
-                    <Route path="/task_1_6" element={<Task_1_6 />} />
+                    <Route path="/" element={<Main/>}/>
+                    <Route path="/task_1_1" element={<Task_1_1/>}/>
+                    <Route path="/task_1_5" element={<Task_1_5/>}/>
+                    <Route path="/task_1_6" element={<Task_1_6/>}/>
                 </Routes>
             </Container>
         </Router>
