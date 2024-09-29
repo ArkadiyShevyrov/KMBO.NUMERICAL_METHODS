@@ -67,7 +67,7 @@ const CalculateLog: React.FC = () => {
                         </Button>
                     </Form>
                     {error && <Alert variant="danger">{error}</Alert>}
-                    {result && <CopyableResult result={result}/>}
+                    {result != null && <CopyableResult result={result}/>}
                 </Col>
             </Row>
         </Container>
