@@ -2,9 +2,9 @@ import React, {useEffect, useState} from 'react';
 import {Alert, Button, Container, Form} from 'react-bootstrap';
 import axios from 'axios';
 import {NumericalIntegrationFunctionInterface, TypeMethod} from "./NumericalIntegrationInterface";
-import {OperandFunction, OperandFunctionToJson} from "../../model/function/OperandFunction";
-import OperandMathRenderer from "../../model/operand/OperandMathRenderer";
-import CopyableResult from "../../CopyableResult";
+import {OperandFunction, OperandFunctionToJson} from "../../../model/function/OperandFunction";
+import OperandMathRenderer from "../../../model/operand/OperandMathRenderer";
+import CopyableResult from "../../../CopyableResult";
 
 interface NumericalIntegrationProps {
     numericalIntegrationFunctionInterface: NumericalIntegrationFunctionInterface;

@@ -1,12 +1,12 @@
-import {MathRenderer} from "../MathRenderer";
+import {MathRenderer} from "../../MathRenderer";
 import React from "react";
-import CalculateSin from "./lab_1_1/CalculateSin";
-import CustomTabs from "../custom/CustomTabs";
-import CalculateExp from "./lab_1_1/CalculateExp";
-import CalculateLg from "./lab_1_1/CalculateLg";
-import CalculateCos from "./lab_1_1/CalculateCos";
-import CalculateLn from "./lab_1_1/CalculateLn";
-import CalculateLog from "./lab_1_1/CalculateLog";
+import CalculateSin from "./component/CalculateSin";
+import CustomTabs from "../../custom/CustomTabs";
+import CalculateExp from "./component/CalculateExp";
+import CalculateLg from "./component/CalculateLg";
+import CalculateCos from "./component/CalculateCos";
+import CalculateLn from "./component/CalculateLn";
+import CalculateLog from "./component/CalculateLog";
 
 const Task_1_1 = () => {
     const tabsData = [

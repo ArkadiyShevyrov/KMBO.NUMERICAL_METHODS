@@ -1,9 +1,9 @@
 import React from 'react';
 import {Container, Nav, Navbar, NavDropdown} from 'react-bootstrap';
 import {BrowserRouter as Router, Link, Route, Routes} from 'react-router-dom';
-import Task_1_1 from "./components/tasks/Task_1_1";
+import Task_1_1 from "./components/tasks/lab_1_1/Task_1_1";
 import Task_X_Y from "./components/tasks/Task_X_Y";
-import Task_1_6 from "./components/tasks/Task_1_6";
+import Task_1_6 from "./components/tasks/lab_1_6/Task_1_6";
 import {Main} from "./Main";
 
 const tasks = [

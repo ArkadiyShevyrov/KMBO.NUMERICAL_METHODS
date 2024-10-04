@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
 import {Alert, Button, Col, Container, Form, Row} from 'react-bootstrap';
 import axios from 'axios';
-import CopyableResult from '../../CopyableResult';
-import {MathRenderer} from "../../MathRenderer";
+import CopyableResult from '../../../CopyableResult';
+import {MathRenderer} from "../../../MathRenderer";
 
-const CalculateExp: React.FC = () => {
+const CalculateLog: React.FC = () => {
     const [x, setX] = useState<string>('');
+    const [base, setBase] = useState<string>('');
     const [precision, setPrecision] = useState<string>('1e-10');
     const [result, setResult] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
@@ -13,8 +14,8 @@ const CalculateExp: React.FC = () => {
     const handleCalculate = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const response = await axios.get('http://localhost:8080/lab_1_1/exp', {
-                params: {x: String(x), predication: String(precision)},
+            const response = await axios.get('http://localhost:8080/lab_1_1/log_a', {
+                params: {x: String(x), base: String(base), predication: String(precision)},
             });
             setResult(response.data);
             setError(null);
@@ -32,7 +33,7 @@ const CalculateExp: React.FC = () => {
         <Container>
             <Row className="justify-content-center">
                 <Col md={6}>
-                    <h2>Вычисление <MathRenderer mathContent={"e^x"}/></h2>
+                    <h2>Вычисление <MathRenderer mathContent={"log_a(x)"}/></h2>
                     <Form onSubmit={handleCalculate}>
                         <Form.Group controlId="formX">
                             <Form.Label>Введите значение x</Form.Label>
@@ -41,6 +42,15 @@ const CalculateExp: React.FC = () => {
                                 value={x}
                                 onChange={(e) => setX(e.target.value)}
                                 placeholder="Например, 1.570796"
+                            />
+                        </Form.Group>
+                        <Form.Group controlId="formBase">
+                            <Form.Label>Введите значение a</Form.Label>
+                            <Form.Control
+                                type="text"
+                                value={base}
+                                onChange={(e) => setBase(e.target.value)}
+                                placeholder="Например, 2"
                             />
                         </Form.Group>
                         <Form.Group controlId="formPrecision">
@@ -64,4 +74,4 @@ const CalculateExp: React.FC = () => {
     );
 };
 
-export default CalculateExp;
+export default CalculateLog;

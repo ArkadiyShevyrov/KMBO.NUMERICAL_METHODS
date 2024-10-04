@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Table } from 'react-bootstrap';
-import { MathRenderer } from '../../MathRenderer';
-import OperandMathRenderer, {OperandToLatex} from "../../model/operand/OperandMathRenderer";
+import { MathRenderer } from '../../../MathRenderer';
+import OperandMathRenderer, {OperandToLatex} from "../../../model/operand/OperandMathRenderer";
 
 interface VariantTableProps {
     numericalArray: any[]; // Adjust type as needed

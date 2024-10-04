@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import {Col, Container, Row} from 'react-bootstrap';
-import VariantTable from "./lab_1_6/VariantTable";
-import NumericalIntegration from "./lab_1_6/NumericalIntegration";
-import {NumericalIntegrationFunctionInterface} from "./lab_1_6/NumericalIntegrationInterface";
+import VariantTable from "./components/VariantTable";
+import NumericalIntegration from "./components/NumericalIntegration";
+import {NumericalIntegrationFunctionInterface} from "./components/NumericalIntegrationInterface";
 
 const Task_1_6: React.FC = () => {
     const [numericalIntegrationFunctionInterface, setNumericalIntegrationFunctionInterface] =

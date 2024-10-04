@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import {Alert, Button, Col, Container, Form, Row} from 'react-bootstrap';
 import axios from 'axios';
-import CopyableResult from '../../CopyableResult';
-import {MathRenderer} from "../../MathRenderer";
+import CopyableResult from '../../../CopyableResult';
+import {MathRenderer} from "../../../MathRenderer";
 
-const CalculateCos: React.FC = () => {
+const CalculateLn: React.FC = () => {
     const [x, setX] = useState<string>('');
     const [precision, setPrecision] = useState<string>('1e-10');
     const [result, setResult] = useState<string | null>(null);
@@ -13,7 +13,7 @@ const CalculateCos: React.FC = () => {
     const handleCalculate = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const response = await axios.get('http://localhost:8080/lab_1_1/cos', {
+            const response = await axios.get('http://localhost:8080/lab_1_1/ln', {
                 params: {x: String(x), predication: String(precision)},
             });
             setResult(response.data);
@@ -32,7 +32,7 @@ const CalculateCos: React.FC = () => {
         <Container>
             <Row className="justify-content-center">
                 <Col md={6}>
-                    <h2>Вычисление <MathRenderer mathContent={"cos(x)"}/></h2>
+                    <h2>Вычисление <MathRenderer mathContent={"ln(x)"}/></h2>
                     <Form onSubmit={handleCalculate}>
                         <Form.Group controlId="formX">
                             <Form.Label>Введите значение x</Form.Label>
@@ -64,4 +64,4 @@ const CalculateCos: React.FC = () => {
     );
 };
 
-export default CalculateCos;
+export default CalculateLn;

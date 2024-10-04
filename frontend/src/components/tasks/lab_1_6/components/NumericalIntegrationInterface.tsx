@@ -1,4 +1,4 @@
-import {OperandFunction} from "../../model/function/OperandFunction";
+import {OperandFunction} from "../../../model/function/OperandFunction";
 
 export enum TypeMethod {
     RECTANGLE_LEFT_METHOD = "RECTANGLE_LEFT_METHOD",
