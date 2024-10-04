@@ -3,8 +3,7 @@ import {Alert, Button, Container, Form} from 'react-bootstrap';
 import axios from 'axios';
 import {NumericalIntegrationFunctionInterface, TypeMethod} from "./NumericalIntegrationInterface";
 import {OperandFunction, OperandFunctionToJson} from "../../model/function/OperandFunction";
-import {OperandToLatex} from "../../model/operand/OperandMathRenderer";
-import {MathRenderer} from "../../MathRenderer";
+import OperandMathRenderer from "../../model/operand/OperandMathRenderer";
 import CopyableResult from "../../CopyableResult";
 
 interface NumericalIntegrationProps {
@@ -122,8 +121,7 @@ const NumericalIntegration: React.FC<NumericalIntegrationProps> = ({numericalInt
                             fontSize: '1.1rem',
                             backgroundColor: '#fff'
                         }}>
-                            <MathRenderer
-                                mathContent={"y=" + OperandToLatex(operandFunction.operand)}/>
+                            <OperandMathRenderer operand={operandFunction.operand}/>
                         </div>
                     </Form.Text>
                 </Form.Group>

@@ -18,7 +18,7 @@ const VariantTable: React.FC<VariantTableProps> = ({ numericalArray, onSelectVar
 
     return (
         <div>
-            <h3>Выберите вариант для интегрирования</h3>
+            <h4>Выберите вариант для интегрирования</h4>
             <Table striped bordered hover>
                 <thead>
                 <tr>
@@ -36,7 +36,6 @@ const VariantTable: React.FC<VariantTableProps> = ({ numericalArray, onSelectVar
                         onClick={() => handleRowClick(index+1)}
                         style={{
                             cursor: 'pointer',
-                            backgroundColor: selectedVariant === row.variant ? '#a3e8b4' : '#1fc949',
                         }}
                     >
                         <td>{index+1}</td>
