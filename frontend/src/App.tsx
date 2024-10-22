@@ -5,10 +5,11 @@ import Task_1_1 from "./components/tasks/lab_1_1/Task_1_1";
 import Task_X_Y from "./components/tasks/Task_X_Y";
 import Task_1_6 from "./components/tasks/lab_1_6/Task_1_6";
 import {Main} from "./Main";
+import Task_1_2 from "./components/tasks/lab_1_2/Task_1_2";
 
 const tasks = [
     {path: "/task_1_1", element: <Task_1_1/>},
-    {path: "/task_1_2", element: <Task_X_Y/>},
+    {path: "/task_1_2", element: <Task_1_2/>},
     {path: "/task_1_3", element: <Task_X_Y/>},
     {path: "/task_1_4", element: <Task_X_Y/>},
     {path: "/task_1_5", element: <Task_X_Y/>},
