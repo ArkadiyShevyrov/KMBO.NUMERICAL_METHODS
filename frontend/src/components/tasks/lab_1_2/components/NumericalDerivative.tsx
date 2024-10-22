@@ -35,8 +35,18 @@ const NumericalDerivative: React.FC<NumericalDerivativeProps> = ({numericalDeriv
         e.preventDefault();
         console.log(tabularFunction)
         try {
+            let typeDerivativeName = '';
+            switch (typeDerivative) {
+                case Type.FIRST_DERIVATIVE:
+                    typeDerivativeName = 'first-derivative';
+                    break;
+                case Type.SECOND_DERIVATIVE:
+                    typeDerivativeName = 'second-derivative';
+                    break;
+            }
+
             const [response] = await Promise.all([
-                    axios.post('http://localhost:8080/lab_1_2/first-derivative',
+                    axios.post('http://localhost:8080/lab_1_2/' + typeDerivativeName,
                         {
                             nodes: Object.fromEntries(tabularFunction.nodes)
                         },
@@ -144,6 +154,7 @@ const NumericalDerivative: React.FC<NumericalDerivativeProps> = ({numericalDeriv
                         }}
                         placeholder="Введите x"
                         required
+                        step={0.1}
                     />
                 </Form.Group>
                 <Button variant="primary" type="submit">Вычислить</Button>
