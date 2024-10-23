@@ -1,12 +1,21 @@
 import React from 'react';
 import Plot from 'react-plotly.js';
 import * as Plotly from "plotly.js";
-import {LayoutAxis} from "plotly.js";
 
 const GraphComponent: React.FC = () => {
-    const xValues = Array.from({ length: 100 }, (_, i) => i / 10 - 10); // Генерируем значения x от -5 до 5
+    // Параметры масштаба
+    const xMin = -100; // Минимальное значение по оси x
+    const xMax = 100;  // Максимальное значение по оси x
+    const numPoints = 1000; // Количество точек
+
+    // Генерируем значения x в зависимости от масштаба
+    const xValues = Array.from({ length: numPoints }, (_, i) => {
+        return xMin + (xMax - xMin) * (i / (numPoints - 1));
+    });
+
     const sineValues = xValues.map(x => Math.sin(x));
     const cosineValues = xValues.map(x => Math.cos(x));
+    const parabolaValues = xValues.map(x => x ** 2);
 
     const data: Plotly.Data[] = [
         {
@@ -24,23 +33,33 @@ const GraphComponent: React.FC = () => {
             mode: 'lines',
             name: 'Cosine',
             line: { color: 'red' },
-        }
+        },
+        {
+            x: xValues,
+            y: parabolaValues,
+            type: 'scatter',
+            mode: 'lines',
+            name: 'Parabola',
+            line: { color: 'green' },
+        },
     ];
 
     const layout: Partial<Plotly.Layout> = {
         title: 'Mathematical Functions',
         xaxis: {
             title: 'X-axis',
-            nticks: 10,
+            range: [xMin, xMax],
+            nticks: 12,
         },
         yaxis: {
             title: 'Y-axis',
-            scaleanchor: 'x', // Привязываем масштаб оси y к оси x
-            nticks: 10,
+            range: [-1, 1],
+            scaleanchor: 'x',
+            nticks: 12,
         },
         showlegend: true,
-        width: 500, // Устанавливаем ширину графика
-        height: 500, // Устанавливаем высоту графика
+        width: 500,
+        height: 500,
     };
 
     return (

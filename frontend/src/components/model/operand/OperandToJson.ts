@@ -7,6 +7,9 @@ import {Pow} from "./Pow";
 import {Divide} from "./Divide";
 import {Sqrt} from "./Sqrt";
 import {Neg} from "./Neg";
+import {Sin} from "./Sin";
+import {Cos} from "./Cos";
+import {Exp} from "./Exp";
 
 export const OperandToJson = (operand: Operand): any => {
     switch (operand.type) {
@@ -53,6 +56,21 @@ export const OperandToJson = (operand: Operand): any => {
                 type: "Neg",
                 operand: OperandToJson((operand as Neg).operand)
             };
+        case "Sin":
+            return {
+                type: "Sin",
+                operand: OperandToJson((operand as Sin).operand)
+            }
+        case "Cos":
+            return {
+                type: "Cos",
+                operand: OperandToJson((operand as Cos).operand)
+            }
+        case "Exp":
+            return {
+                type: "Sin",
+                operand: OperandToJson((operand as Exp).operand)
+            }
         default:
             throw new Error(`Unknown operand type: ${(operand as Operand).type}`);
     }

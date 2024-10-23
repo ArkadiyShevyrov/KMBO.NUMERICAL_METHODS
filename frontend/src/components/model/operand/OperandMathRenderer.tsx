@@ -45,6 +45,12 @@ export const OperandToLatex = (operand: Operand): string => {
                 ? OperandToLatex(operand.operand)
                 : `(${OperandToLatex(operand.operand)})`;
             return `-${negOperandLatex}`;
+        case "Sin":
+            return `\\sin(${OperandToLatex(operand.operand)})`
+        case "Cos":
+            return `\\cos(${OperandToLatex(operand.operand)})`
+        case "Exp":
+            return `e^${OperandToLatex(operand.operand)}`
         default:
             return '';
     }

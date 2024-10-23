@@ -6,6 +6,9 @@ import {Pow} from "./Pow";
 import {Divide} from "./Divide";
 import {Sqrt} from "./Sqrt";
 import {Neg} from "./Neg";
+import {Sin} from "./Sin";
+import {Cos} from "./Cos";
+import {Exp} from "./Exp";
 
 export type Operand =
     | Variable
@@ -15,4 +18,7 @@ export type Operand =
     | Pow
     | Divide
     | Sqrt
-    | Neg;
+    | Neg
+    | Sin
+    | Cos
+    | Exp;
