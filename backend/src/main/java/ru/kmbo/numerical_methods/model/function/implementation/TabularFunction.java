@@ -4,10 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import ru.kmbo.numerical_methods.model.function.Function;
-import ru.kmbo.numerical_methods.model.operand.Operand;
-import ru.kmbo.numerical_methods.model.operand.implementation.Variable;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 @Getter
 public class TabularFunction implements Function {
@@ -18,16 +15,28 @@ public class TabularFunction implements Function {
         this.nodes.putAll(nodes);
     }
 
-    public TabularFunction(double[] xValues, Operand operand, Variable variable) {
-        for (double x : xValues) {
-            variable.setVar(x);
-            nodes.put(x, operand.getResult());
+    public TabularFunction(double[] X, OperandFunction operandFunction) {
+        for (double x : X) {
+            nodes.put(x, operandFunction.apply(x));
         }
     }
 
     @Override
     public Double apply(Double x) {
         return nodes.get(x);
+    }
+
+    public List<Double> getX() {
+        return nodes.keySet().stream().toList();
+    }
+
+    public List<Double> getY() {
+        Set<Double> X = nodes.keySet();
+        List<Double> Y = new ArrayList<>(X.size());
+        for (Double x : X) {
+            Y.add(apply(x));
+        }
+        return Y;
     }
 
     @Override

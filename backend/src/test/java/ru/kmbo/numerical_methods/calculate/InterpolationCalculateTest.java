@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import ru.kmbo.numerical_methods.model.function.implementation.OperandFunction;
 import ru.kmbo.numerical_methods.model.function.implementation.TabularFunction;
 import ru.kmbo.numerical_methods.model.operand.implementation.Variable;
 import ru.kmbo.numerical_methods.model.operand.Operand;
@@ -19,7 +20,7 @@ class InterpolationCalculateTest {
 
     @BeforeEach
     void setUp() {
-        function = new TabularFunction(xValues, operand, var);
+        function = new TabularFunction(xValues, new OperandFunction(operand, var));
     }
 
     @Test

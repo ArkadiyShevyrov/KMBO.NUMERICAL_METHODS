@@ -3,6 +3,7 @@ package ru.kmbo.numerical_methods.lab;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.kmbo.numerical_methods.calculate.InterpolationCalculate;
+import ru.kmbo.numerical_methods.model.function.implementation.OperandFunction;
 import ru.kmbo.numerical_methods.model.function.implementation.TabularFunction;
 import ru.kmbo.numerical_methods.model.operand.implementation.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -37,52 +38,64 @@ public class Lab_1_3_Test {
 
         function1 = new TabularFunction(
                 new double[]{0.1 * PI, 0.2 * PI, 0.3 * PI, 0.4 * PI},
-                new Sin(var1),
-                var1
+                new OperandFunction(
+                        new Sin(var1),
+                        var1
+                )
         );
         xStar1 = PI / 4;
 
         function2 = new TabularFunction(
                 new double[]{0, PI / 6, 2 * PI / 6, 3 * PI / 6},
-                new Cos(var2),
-                var2
+                new OperandFunction(
+                        new Cos(var2),
+                        var2
+                )
         );
         xStar2 = PI / 4;
 
         function3 = new TabularFunction(
                 new double[]{-2, -1, 0, 1},
-                new Exp(var3),
-                var3
+                new OperandFunction(
+                        new Exp(var3),
+                        var3
+                )
         );
         xStar3 = -0.5;
 
         function4 = new TabularFunction(
                 new double[]{0, 1.7, 3.4, 5.1},
-                new Pow(var4, 0.5),
-                var4
+                new OperandFunction(
+                        new Pow(var4, 0.5),
+                        var4
+                )
         );
         xStar4 = 3.0;
 
         function5 = new TabularFunction(
                 new double[]{0, PI / 6, 2 * PI / 6, 3 * PI / 6},
-                new Multiply(
-                        var5,
-                        new Sin(var5)
-                ),
-                var5
+                new OperandFunction(
+                        new Multiply(
+                                var5,
+                                new Sin(var5)
+                        ),
+                        var5
+                )
         );
         xStar5 = PI / 4;
 
         function6 = new TabularFunction(
                 new double[]{-1.2, -0.7, -0.2, 0.3},
-                new Multiply(
-                        new Pow(
-                                var6,
-                                2
+                new OperandFunction(
+                        new Multiply(
+                                new Pow(
+                                        var6,
+                                        2
+                                ),
+                                new Exp(var6)
                         ),
-                        new Exp(var6)
-                ),
-                var6
+                        var6
+                )
         );
         xStar6 = -0.5;
     }

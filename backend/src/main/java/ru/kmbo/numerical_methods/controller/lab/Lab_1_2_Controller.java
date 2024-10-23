@@ -21,7 +21,7 @@ public class Lab_1_2_Controller {
     @PostMapping("/first-derivative")
     public ResponseEntity<String> firstDerivative(
             @Parameter(description = "Параметр функции", example = "1.0")
-            @Pattern(regexp = "\\d+(\\.\\d+)?", message = "Некорректный формат числа")
+            @Pattern(regexp = "-?\\d+(\\.\\d+)?", message = "Некорректный формат числа")
             @RequestParam String xStar,
             @Parameter(description = "Таблично заданная функция")
             @RequestBody TabularFunction tabularFunction
