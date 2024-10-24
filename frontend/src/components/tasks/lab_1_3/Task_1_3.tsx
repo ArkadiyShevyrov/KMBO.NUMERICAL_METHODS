@@ -5,11 +5,10 @@ import TaskVariantTable from "./components/TaskVariantTable";
 import {MathRenderer} from "../../MathRenderer";
 import TaskBack from "./components/TaskBack";
 import GraphComponent from "./components/GraphComponent";
+import {ConstType} from "../../model/operand/Const";
 
 
 const Task_1_3: React.FC = () => {
-    const PI = 3.14159265359
-
     const [taskInterface, setTaskInterface] =
         useState<TaskInterface>(
             {
@@ -43,8 +42,70 @@ const Task_1_3: React.FC = () => {
                     name: "x"
                 }
             },
-            X: [0.1 * PI, 0.2 * PI, 0.3 * PI, 0.4 * PI],
-            xStar: PI / 4
+            X: [
+                {
+                    type: "Multiply",
+                    operands: [
+                        {
+                            type: "Num",
+                            num: 0.1
+                        },
+                        {
+                            type: "Const",
+                            const: ConstType.PI
+                        },
+                    ]
+                },
+                {
+                    type: "Multiply",
+                    operands: [
+                        {
+                            type: "Num",
+                            num: 0.2
+                        },
+                        {
+                            type: "Const",
+                            const: ConstType.PI
+                        },
+                    ]
+                },
+                {
+                    type: "Multiply",
+                    operands: [
+                        {
+                            type: "Num",
+                            num: 0.3
+                        },
+                        {
+                            type: "Const",
+                            const: ConstType.PI
+                        },
+                    ]
+                },
+                {
+                    type: "Multiply",
+                    operands: [
+                        {
+                            type: "Num",
+                            num: 0.4
+                        },
+                        {
+                            type: "Const",
+                            const: ConstType.PI
+                        },
+                    ]
+                }],
+            xStar: {
+                type: "Divide",
+                dividend: {
+                    type: "Const",
+                    const: ConstType.PI
+                },
+                divisor: {
+                    type: "Num",
+                    num: 4
+                }
+            }
         },
         {
             operandFunction: {
@@ -60,8 +121,72 @@ const Task_1_3: React.FC = () => {
                     name: "x"
                 }
             },
-            X: [0, PI / 6, 2 * PI / 6, 3 * PI / 6],
-            xStar: PI / 4
+            X: [
+                {
+                    type: "Num",
+                    num: 0
+                },
+                {
+                    type: "Divide",
+                    dividend: {
+                        type: "Const",
+                        const: ConstType.PI
+                    },
+                    divisor: {
+                        type: "Num",
+                        num: 6
+                    }
+                }, {
+                    type: "Divide",
+                    dividend: {
+                        type: "Multiply",
+                        operands: [
+                            {
+                                type: "Num",
+                                num: 2
+                            },
+                            {
+                                type: "Const",
+                                const: ConstType.PI
+                            }
+                        ]
+                    },
+                    divisor: {
+                        type: "Num",
+                        num: 6
+                    }
+                }, {
+                    type: "Divide",
+                    dividend: {
+                        type: "Multiply",
+                        operands: [
+                            {
+                                type: "Num",
+                                num: 3
+                            },
+                            {
+                                type: "Const",
+                                const: ConstType.PI
+                            }
+                        ]
+                    },
+                    divisor: {
+                        type: "Num",
+                        num: 6
+                    }
+                },
+            ],
+            xStar: {
+                type: "Divide",
+                dividend: {
+                    type: "Const",
+                    const: ConstType.PI
+                },
+                divisor: {
+                    type: "Num",
+                    num: 4
+                }
+            }
         },
         {
             operandFunction: {
@@ -120,8 +245,72 @@ const Task_1_3: React.FC = () => {
                     name: "x"
                 }
             },
-            X: [0, PI / 6, 2 * PI / 6, 3 * PI / 6],
-            xStar: PI / 4
+            X: [
+                {
+                    type: "Num",
+                    num: 0
+                },
+                {
+                    type: "Divide",
+                    dividend: {
+                        type: "Const",
+                        const: ConstType.PI
+                    },
+                    divisor: {
+                        type: "Num",
+                        num: 6
+                    }
+                }, {
+                    type: "Divide",
+                    dividend: {
+                        type: "Multiply",
+                        operands: [
+                            {
+                                type: "Num",
+                                num: 2
+                            },
+                            {
+                                type: "Const",
+                                const: ConstType.PI
+                            }
+                        ]
+                    },
+                    divisor: {
+                        type: "Num",
+                        num: 6
+                    }
+                }, {
+                    type: "Divide",
+                    dividend: {
+                        type: "Multiply",
+                        operands: [
+                            {
+                                type: "Num",
+                                num: 3
+                            },
+                            {
+                                type: "Const",
+                                const: ConstType.PI
+                            }
+                        ]
+                    },
+                    divisor: {
+                        type: "Num",
+                        num: 6
+                    }
+                },
+            ],
+            xStar: {
+                type: "Divide",
+                dividend: {
+                    type: "Const",
+                    const: ConstType.PI
+                },
+                divisor: {
+                    type: "Num",
+                    num: 4
+                }
+            }
         },
         {
             operandFunction: {

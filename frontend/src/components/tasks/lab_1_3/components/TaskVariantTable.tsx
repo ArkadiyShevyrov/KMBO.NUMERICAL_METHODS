@@ -25,7 +25,22 @@ const TaskVariantTable: React.FC<VariantTableProps> = ({variantArray, onSelectVa
                 <tr>
                     <th>N</th>
                     <th><MathRenderer mathContent={"f(x)"}/></th>
-                    <th><MathRenderer mathContent={"x^*"}/></th>
+                    <th
+                        style={{
+                            borderLeft: '4px inset black',
+                            borderRight: '2px inset black'
+                        }}
+                    >
+                        i
+                    </th>
+                    {variantArray[0].X.map((key, index) => (
+                        <th key={index}>{index + 1}</th>
+                    ))}
+                    <th
+                        style={{
+                            borderLeft: '4px inset black'
+                        }}
+                    ><MathRenderer mathContent={"x^*"}/></th>
                 </tr>
 
                 </thead>
@@ -40,7 +55,37 @@ const TaskVariantTable: React.FC<VariantTableProps> = ({variantArray, onSelectVa
                     >
                         <td>{index + 1}</td>
                         <td><OperandMathRenderer operand={row.operandFunction.operand}/></td>
-                        <td>{row.xStar}</td>
+                        <td
+                            style={{
+                                borderLeft: '4px inset black',
+                                borderRight: '2px inset black'
+                            }}
+                        >
+                            <MathRenderer mathContent={"x_i"}/>
+                        </td>
+                        {/*@ts-ignore*/}
+                        {Array.from(row.X).map(value => (
+                            <td>
+
+                                {typeof value === "number" ? (
+                                    <span>{value}</span>
+                                ) : (
+                                    <OperandMathRenderer operand={value}/>
+                                )}
+                            </td>
+                        ))}
+                        <td
+                            style={{
+                                borderLeft: '4px inset black'
+                            }}
+                        >{
+                            typeof row.xStar === "number" ? (
+                                <span>{row.xStar}</span>
+                            ) : (
+                                <OperandMathRenderer operand={row.xStar}/>
+                            )
+                        }
+                        </td>
                     </tr>
                 ))}
                 </tbody>

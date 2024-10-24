@@ -9,6 +9,7 @@ import {Neg} from "./Neg";
 import {Sin} from "./Sin";
 import {Cos} from "./Cos";
 import {Exp} from "./Exp";
+import {Const} from "./Const";
 
 export type Operand =
     | Variable
@@ -21,4 +22,5 @@ export type Operand =
     | Neg
     | Sin
     | Cos
-    | Exp;
+    | Exp
+    | Const;

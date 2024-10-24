@@ -1,6 +1,7 @@
 import React from 'react';
 import {MathRenderer} from "../../MathRenderer";
 import {Operand} from "./Operand";
+import {ConstType} from "./Const";
 
 export const OperandToLatex = (operand: Operand): string => {
     switch (operand.type) {
@@ -21,7 +22,7 @@ export const OperandToLatex = (operand: Operand): string => {
         case 'Multiply':
             return operand.operands.map(OperandToLatex).map((latex, index) => {
                 const nextOperand = operand.operands[index];
-                if (nextOperand.type === 'Variable') {
+                if (nextOperand.type === 'Variable' || nextOperand.type === 'Const' ) {
                     return latex;
                 } else if (index === 0) {
                     return latex;
@@ -51,6 +52,12 @@ export const OperandToLatex = (operand: Operand): string => {
             return `\\cos(${OperandToLatex(operand.operand)})`
         case "Exp":
             return `e^${OperandToLatex(operand.operand)}`
+        case "Const":
+            let c = '';
+            switch (operand.const) {
+                case ConstType.PI: c = `\\pi`;
+            }
+            return c;
         default:
             return '';
     }
