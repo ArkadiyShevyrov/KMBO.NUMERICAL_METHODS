@@ -370,25 +370,24 @@ const Task_1_3: React.FC = () => {
                 </Col>
             </Row>
 
-            <GraphComponent/>
-            <br/>
-            <br/>
-            <br/>
-            Ньютон
-            <br/>
-            <MathRenderer mathContent={
-                "P_n(x)=\\sum_{k=0}^{n}(f(x_0, ..., x_k) \\cdot \\prod_{i=0}^{k-1} (x-x_i))"
-            }/>
-            <br/>
-            <MathRenderer mathContent={
-                "f(x_0,...,x_k)=\\sum_{i=0}^{k} (\\frac{f(x_i)}{\\prod_{j=0, j\\ne i}^{k} (x_i-x_j)})"
-            }/>
-            <br/>
-            Лаграндж
-            <br/>
-            <MathRenderer mathContent={
-                "L(x)=\\sum_{i=0}^n (f(x_i) \\cdot \\prod_{j=0, j\\ne i}^{n} (\\frac{x-x_j}{x_i-x_j}))"
-            }/>
+            {/*<br/>*/}
+            {/*<br/>*/}
+            {/*<br/>*/}
+            {/*Ньютон*/}
+            {/*<br/>*/}
+            {/*<MathRenderer mathContent={*/}
+            {/*    "P_n(x)=\\sum_{k=0}^{n}(f(x_0, ..., x_k) \\cdot \\prod_{i=0}^{k-1} (x-x_i))"*/}
+            {/*}/>*/}
+            {/*<br/>*/}
+            {/*<MathRenderer mathContent={*/}
+            {/*    "f(x_0,...,x_k)=\\sum_{i=0}^{k} (\\frac{f(x_i)}{\\prod_{j=0, j\\ne i}^{k} (x_i-x_j)})"*/}
+            {/*}/>*/}
+            {/*<br/>*/}
+            {/*Лаграндж*/}
+            {/*<br/>*/}
+            {/*<MathRenderer mathContent={*/}
+            {/*    "L(x)=\\sum_{i=0}^n (f(x_i) \\cdot \\prod_{j=0, j\\ne i}^{n} (\\frac{x-x_j}{x_i-x_j}))"*/}
+            {/*}/>*/}
         </Container>
     );
 };

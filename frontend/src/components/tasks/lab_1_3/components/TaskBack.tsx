@@ -7,6 +7,7 @@ import {OperandFunction} from "../../../model/function/OperandFunction";
 import {Operand} from "../../../model/operand/Operand";
 import {OperandCalculate} from "../../../model/operand/OperandCalculate";
 import OperandMathRenderer from "../../../model/operand/OperandMathRenderer";
+import GraphComponent from "./GraphComponent";
 
 enum Type {
     LAGRANGE_INTERPOLATION = "lagrange-interpolation",
@@ -30,7 +31,7 @@ const TaskBack: React.FC<TaskBackProps> = ({taskInterface}) => {
     const [xStar, setXStar] =
         useState<number>(OperandCalculate(taskInterface.xStar));
     const [result, setResult] =
-        useState<string | null>(null);
+        useState<number | null>(null);
     const [error, setError] =
         useState<string | null>(null);
     const [Y, setY] =
@@ -96,6 +97,37 @@ const TaskBack: React.FC<TaskBackProps> = ({taskInterface}) => {
                 setResult(null);
             }
         }
+
+        try {
+            // Создаем массив запросов для каждого значения из X
+            const requests = X.map(async (x) => {
+                // Отправляем POST-запрос для каждого xValue
+                const response = await axios.post(`http://localhost:8080/lab_1_3/${type}`,
+                    {
+                        nodes: Object.fromEntries(createNodes([x], operandFunction))
+                    },
+                    {
+                        params: { x }, // Передаем x в параметры запроса
+                        headers: { 'Content-Type': 'application/json' }
+                    }
+                );
+                return response.data; // Возвращаем результат
+            });
+
+            // Ждем выполнения всех запросов
+            const results = await Promise.all(requests);
+
+            // Заполняем массив Y результатами
+            setY(results);
+            setError(null);
+        } catch (err: any) {
+            if (err.response && err.response.data) {
+                setError(err.response.data);
+            } else {
+                setError(err.message);
+            }
+            setY([]);
+        }
     };
     return (
         <Container>
@@ -136,7 +168,8 @@ const TaskBack: React.FC<TaskBackProps> = ({taskInterface}) => {
                 <Button variant="primary" type="submit">Вычислить</Button>
             </Form>
             {error && <Alert variant="danger" className="mt-3">{error}</Alert>}
-            {result != null && <CopyableResult result={result}/>}
+            {result != null && <CopyableResult result={result.toString()}/>}
+            {result && <GraphComponent operand={operandFunction.operand} X={X} Y={Y} x={xStar} y={result}/>}
         </Container>
     );
 };

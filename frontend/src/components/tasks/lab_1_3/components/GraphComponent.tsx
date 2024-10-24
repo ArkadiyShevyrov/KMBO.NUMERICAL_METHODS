@@ -1,46 +1,46 @@
 import React from 'react';
 import Plot from 'react-plotly.js';
 import * as Plotly from "plotly.js";
+import {Operand} from "../../../model/operand/Operand";
+import {OperandCalculate} from "../../../model/operand/OperandCalculate";
 
-const GraphComponent: React.FC = () => {
+interface GraphComponentProps {
+    operand: Operand;
+    X: number[]
+    Y: number[]
+    x: number
+    y: number
+}
+
+const GraphComponent: React.FC<GraphComponentProps> = ({operand, X, Y, x, y}) => {
     // Параметры масштаба
-    const xMin = -100; // Минимальное значение по оси x
-    const xMax = 100;  // Максимальное значение по оси x
+    const xMin = X[0]-1; // Минимальное значение по оси x
+    const xMax = X[X.length-1]+1;  // Максимальное значение по оси x
     const numPoints = 1000; // Количество точек
 
     // Генерируем значения x в зависимости от масштаба
-    const xValues = Array.from({ length: numPoints }, (_, i) => {
+    const xValues = Array.from({length: numPoints}, (_, i) => {
         return xMin + (xMax - xMin) * (i / (numPoints - 1));
     });
 
-    const sineValues = xValues.map(x => Math.sin(x));
-    const cosineValues = xValues.map(x => Math.cos(x));
-    const parabolaValues = xValues.map(x => x ** 2);
+    const operandValues = xValues.map(x => OperandCalculate(operand, x));
 
     const data: Plotly.Data[] = [
         {
             x: xValues,
-            y: sineValues,
+            y: operandValues,
             type: 'scatter',
             mode: 'lines',
             name: 'Sine',
-            line: { color: 'blue' },
+            line: {color: 'blue'},
         },
         {
-            x: xValues,
-            y: cosineValues,
+            x: X,
+            y: Y,
             type: 'scatter',
             mode: 'lines',
-            name: 'Cosine',
-            line: { color: 'red' },
-        },
-        {
-            x: xValues,
-            y: parabolaValues,
-            type: 'scatter',
-            mode: 'lines',
-            name: 'Parabola',
-            line: { color: 'green' },
+            name: 'operand',
+            line: {color: 'red'},
         },
     ];
 
@@ -70,7 +70,7 @@ const GraphComponent: React.FC = () => {
             config={{
                 displaylogo: false,
             }}
-            style={{ width: '100%', height: '400px' }}
+            style={{width: '100%', height: '400px'}}
         />
     );
 };
