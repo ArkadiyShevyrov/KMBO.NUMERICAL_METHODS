@@ -67,8 +67,7 @@ const TaskBack: React.FC<TaskBackProps> = ({taskInterface}) => {
         return nodes;
     };
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
+    async function extracted() {
         try {
             const [response] = await Promise.all([
                     axios.post('http://localhost:8080/lab_1_3/' + type,
@@ -107,8 +106,8 @@ const TaskBack: React.FC<TaskBackProps> = ({taskInterface}) => {
                         nodes: Object.fromEntries(createNodes([x], operandFunction))
                     },
                     {
-                        params: { x }, // Передаем x в параметры запроса
-                        headers: { 'Content-Type': 'application/json' }
+                        params: {x}, // Передаем x в параметры запроса
+                        headers: {'Content-Type': 'application/json'}
                     }
                 );
                 return response.data; // Возвращаем результат
@@ -128,6 +127,14 @@ const TaskBack: React.FC<TaskBackProps> = ({taskInterface}) => {
             }
             setY([]);
         }
+    }
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+
+
+        await extracted();
     };
     return (
         <Container>
@@ -158,6 +165,7 @@ const TaskBack: React.FC<TaskBackProps> = ({taskInterface}) => {
                             const value = parseFloat(e.target.value);
                             if (!isNaN(value)) {
                                 setXStar(value);
+                                extracted()
                             }
                         }}
                         placeholder="Введите x"
@@ -169,7 +177,7 @@ const TaskBack: React.FC<TaskBackProps> = ({taskInterface}) => {
             </Form>
             {error && <Alert variant="danger" className="mt-3">{error}</Alert>}
             {result != null && <CopyableResult result={result.toString()}/>}
-            {result && <GraphComponent operand={operandFunction.operand} X={X} Y={Y} x={xStar} y={result}/>}
+            {result != null && <GraphComponent operand={operandFunction.operand} X={X} Y={Y} x={xStar} y={result}/>}
         </Container>
     );
 };

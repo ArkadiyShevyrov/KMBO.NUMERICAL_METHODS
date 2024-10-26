@@ -14,8 +14,8 @@ interface GraphComponentProps {
 
 const GraphComponent: React.FC<GraphComponentProps> = ({operand, X, Y, x, y}) => {
     // Параметры масштаба
-    const xMin = X[0]-1; // Минимальное значение по оси x
-    const xMax = X[X.length-1]+1;  // Максимальное значение по оси x
+    const xMin = X[0] - 1;
+    const xMax = X[X.length - 1] + 1;
     const numPoints = 1000; // Количество точек
 
     // Генерируем значения x в зависимости от масштаба
@@ -39,8 +39,16 @@ const GraphComponent: React.FC<GraphComponentProps> = ({operand, X, Y, x, y}) =>
             y: Y,
             type: 'scatter',
             mode: 'lines',
-            name: 'operand',
+            name: 'Operand',
             line: {color: 'red'},
+        },
+        {
+            x: [x],
+            y: [y],
+            type: 'scatter',
+            mode: 'markers',
+            name: `Point`,
+            marker: {color: 'green', size: 10},
         },
     ];
 
