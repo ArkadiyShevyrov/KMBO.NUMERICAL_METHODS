@@ -2,20 +2,23 @@ package ru.kmbo.numerical_methods.model.basic;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 @NoArgsConstructor
 @AllArgsConstructor
 public class Vector {
-    private List<Double> data = new ArrayList<>();
+    private Map<Integer, Double> data = new HashMap<>();
 
     public Double get(int i) {
+        if (data.get(i) == null) {
+            return 0.0;
+        }
         return data.get(i);
     }
 
     public void set(int i, Double value) {
-        data.add(i, value);
+        data.put(i, value);
     }
 
     public Integer size() {
@@ -28,7 +31,19 @@ public class Vector {
         }
 
         Double temp = data.get(row1);
-        data.set(row1, data.get(row2));
-        data.set(row2, temp);
+        data.put(row1, data.get(row2));
+        data.put(row2, temp);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder b = new StringBuilder();
+        b.append("[\n");
+        for (Map.Entry<Integer, Double> iE : data.entrySet()) {
+            b.append("[").append(iE.getKey()).append(":").append(iE.getValue()).append("]");
+            b.append("\n");
+        }
+        b.append("]");
+        return b.toString();
     }
 }

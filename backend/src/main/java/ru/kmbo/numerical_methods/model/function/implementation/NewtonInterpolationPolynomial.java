@@ -49,9 +49,9 @@ public class NewtonInterpolationPolynomial implements Function {
 
     @Override
     public String toString() {
-        return "NewtonInterpolationPolynomial{" +
-                "X=" + X +
-                ", separateDifferences=" + separateDifferences +
+        return "NewtonInterpolationPolynomial{\n" +
+                "X=" + X + ",\n " +
+                "separateDifferences=" + separateDifferences + "\n " +
                 '}';
     }
 }

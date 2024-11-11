@@ -2,13 +2,12 @@ package ru.kmbo.numerical_methods.controller.lab;
 
 import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.validation.constraints.Pattern;
-import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import ru.kmbo.numerical_methods.service.CalculatingFunctionService;
+import ru.kmbo.numerical_methods.calculate.TaylorCalculate;
 
 
 @Slf4j
@@ -18,9 +17,6 @@ import ru.kmbo.numerical_methods.service.CalculatingFunctionService;
 @RequestMapping("/lab_1_1")
 @CrossOrigin(origins = "http://localhost:3000")
 public class Lab_1_1_Controller {
-
-    @NonNull
-    private final CalculatingFunctionService calculatingFunctionService;
 
     @GetMapping("/sin")
     public ResponseEntity<String> calculateSin(
@@ -32,7 +28,7 @@ public class Lab_1_1_Controller {
             @RequestParam String predication
     ) {
         log.info("Получен запрос на вычисление sin({})", x);
-        double result = calculatingFunctionService.calculateSin(Double.parseDouble(x),
+        double result = TaylorCalculate.sin(Double.parseDouble(x),
                 Double.parseDouble(predication));
         log.info("Результат вычисления sin({}): {}", x, result);
         return ResponseEntity.ok(String.valueOf(result));
@@ -48,7 +44,7 @@ public class Lab_1_1_Controller {
             @RequestParam String predication
     ) {
         log.info("Получен запрос на вычисление e^({})", x);
-        double result = calculatingFunctionService.calculateExp(Double.parseDouble(x),
+        double result = TaylorCalculate.exp(Double.parseDouble(x),
                 Double.parseDouble(predication));
         log.info("Результат вычисления e^({}): {}", x, result);
         return ResponseEntity.ok(String.valueOf(result));
@@ -64,7 +60,7 @@ public class Lab_1_1_Controller {
             @RequestParam String predication
     ) {
         log.info("Получен запрос на вычисление lg({})", x);
-        double result = calculatingFunctionService.calculateLg(Double.parseDouble(x),
+        double result = TaylorCalculate.lg(Double.parseDouble(x),
                 Double.parseDouble(predication));
         log.info("Результат вычисления lg({}): {}", x, result);
         return ResponseEntity.ok(String.valueOf(result));
@@ -80,7 +76,7 @@ public class Lab_1_1_Controller {
             @RequestParam String predication
     ) {
         log.info("Получен запрос на вычисление cos({})", x);
-        double result = calculatingFunctionService.calculateCos(Double.parseDouble(x),
+        double result = TaylorCalculate.cos(Double.parseDouble(x),
                 Double.parseDouble(predication));
         log.info("Результат вычисления cos({}): {}", x, result);
         return ResponseEntity.ok(String.valueOf(result));
@@ -96,7 +92,7 @@ public class Lab_1_1_Controller {
             @RequestParam String predication
     ) {
         log.info("Получен запрос на вычисление ln({})", x);
-        double result = calculatingFunctionService.calculateLn(Double.parseDouble(x),
+        double result = TaylorCalculate.ln(Double.parseDouble(x),
                 Double.parseDouble(predication));
         log.info("Результат вычисления ln({}): {}", x, result);
         return ResponseEntity.ok(String.valueOf(result));
@@ -115,7 +111,7 @@ public class Lab_1_1_Controller {
             @RequestParam String predication
     ) {
         log.info("Получен запрос на вычисление log_{}({})", base, x);
-        double result = calculatingFunctionService.calculateLogBaseA(Double.parseDouble(base), Double.parseDouble(x),
+        double result = TaylorCalculate.log(Double.parseDouble(base), Double.parseDouble(x),
                 Double.parseDouble(predication));
         log.info("Результат вычисления log_{}({}): {}", base, x, result);
         return ResponseEntity.ok(String.valueOf(result));

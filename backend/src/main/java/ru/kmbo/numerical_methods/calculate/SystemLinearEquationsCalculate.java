@@ -4,14 +4,12 @@ import lombok.experimental.UtilityClass;
 import ru.kmbo.numerical_methods.model.basic.Matrix;
 import ru.kmbo.numerical_methods.model.basic.SystemLinearEquations;
 import ru.kmbo.numerical_methods.model.basic.Vector;
-import java.util.ArrayList;
-import java.util.List;
 
 
 @UtilityClass
 public class SystemLinearEquationsCalculate {
 
-    public List<Double> calculate(SystemLinearEquations systemLinearEquations) {
+    public Vector calculate(SystemLinearEquations systemLinearEquations) {
         Matrix A = systemLinearEquations.getA();
         Vector b = systemLinearEquations.getB();
         int n = b.size();
@@ -36,10 +34,7 @@ public class SystemLinearEquationsCalculate {
             }
         }
 
-        List<Double> x = new ArrayList<>();
-        for (int i = 0; i < n; i++) {
-            x.add(0.0);
-        }
+        Vector x = new Vector();
         for (int i = n - 1; i >= 0; i--) {
             double sum = 0.0;
             for (int j = i + 1; j < n; j++) {

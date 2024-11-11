@@ -1,8 +1,10 @@
 package ru.kmbo.numerical_methods.calculate;
 
 import lombok.experimental.UtilityClass;
+import ru.kmbo.numerical_methods.model.basic.Matrix;
+import ru.kmbo.numerical_methods.model.basic.SystemLinearEquations;
+import ru.kmbo.numerical_methods.model.basic.Vector;
 import ru.kmbo.numerical_methods.model.function.implementation.TabularFunction;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,90 +14,83 @@ public class CubicSplineInterpolatorCalculate {
 
     public Double evaluateSpline(TabularFunction tabularFunction, double xStar) {
         int n = tabularFunction.getNodes().size() - 1;
-        List<Double> x = new ArrayList<>(tabularFunction.getNodes().keySet());
-        List<Double> y = new ArrayList<>(tabularFunction.getNodes().values());
+        List<Double> X = tabularFunction.getX();
+        List<Double> Y = tabularFunction.getY();
 
-        Map<Integer, Double> h = getH(n, x);
+        Map<Integer, Double> h = getH(n, X);
 
-        Map<Integer, Double> c = getC(n, h, y);
+        Vector c = getC(n, h, Y);
 
 
-        Map<Integer, Double> a = getA(n, y);
-        Map<Integer, Double> b = getB(n, y, h, c);
+        Map<Integer, Double> a = getA(n, Y);
+        Map<Integer, Double> b = getB(n, Y, h, c);
         Map<Integer, Double> d = getD(n, c, h);
 
-        int i = 0;
-        while (i < n && xStar > x.get(i + 1)) {
-            i++;
+        int i;
+        for (i = 1; i <= n; i++) {
+            if (X.get(i - 1) <= xStar && xStar <= X.get(i)) {
+                break;
+            }
         }
-        return a.get(i) + b.get(i) * (xStar - x.get(i)) + c.get(i) + d.get(i);
+        return a.get(i) +
+                b.get(i) * (xStar - X.get(i)) +
+                c.get(i) / 2 * (xStar - X.get(i)) * (xStar - X.get(i)) +
+                d.get(i) / 6 * (xStar - X.get(i)) * (xStar - X.get(i)) * (xStar - X.get(i));
     }
 
-    private static Map<Integer, Double> getC(int n, Map<Integer, Double> h, List<Double> y) {
-        Map<Integer, Double> c = new HashMap<>();
-        double[][] matrixA = new double[n + 1][n + 1];
-        double[] vectorB = new double[n + 1];
-
-        for (int i = 1; i < n; i++) {
-            if (i == 1) {
-                matrixA[i][i] = 2 * (h.get(i) + h.get(i + 1));
-                matrixA[i][i + 1] = h.get(i + 1);
-                continue;
-            }
-            if (i == n - 1) {
-                matrixA[i][i - 1] = h.get(i);
-                matrixA[i][i] = 2 * (h.get(i) + h.get(i + 1));
-                continue;
-            }
-            matrixA[i][i - 1] = h.get(i);
-            matrixA[i][i] = 2 * (h.get(i) + h.get(i + 1));
-            matrixA[i][i + 1] = h.get(i + 1);
+    private static Vector getC(int n, Map<Integer, Double> h, List<Double> y) {
+        Matrix A = new Matrix();
+        A.set(0, 0, 1.);
+        for (int i = 1; i <= n - 1; i++) {
+            A.set(i, i - 1, h.get(i));
+            A.set(i, i, 2 * (h.get(i) + h.get(i + 1)));
+            A.set(i, i + 1, h.get(i + 1));
         }
-        matrixA[0][0]=1;
-        matrixA[n][n]=1;
-
-        for (int i = 1; i < n; i++) {
-            vectorB[i] = 3 * ((y.get(i + 1) - y.get(i)) / h.get(i + 1) - (y.get(i) - y.get(i - 1)) / h.get(i));
+        A.set(n, n, 1.);
+        Vector B = new Vector();
+        B.set(0, 0.);
+        for (int i = 1; i <= n - 1; i++) {
+            B.set(i, 6 *
+                    ((
+                            (y.get(i + 1) - y.get(i)) / h.get(i + 1)
+                    ) - (
+                            (y.get(i) - y.get(i - 1)) / h.get(i)
+                    ))
+            );
         }
-        vectorB[0]=0;
-        vectorB[n]=0;
-
-        double[] solve = GaussianElimination.solve(matrixA, vectorB);
-        for (int i = 0; i < solve.length; i++) {
-            c.put(i, solve[i]);
-        }
-
-        return c;
+        B.set(n, 0.);
+        SystemLinearEquations systemLinearEquations = new SystemLinearEquations(A, B);
+        return SystemLinearEquationsCalculate.calculate(systemLinearEquations);
     }
 
-    private static Map<Integer, Double> getH(int n, List<Double> x) {
+    private static Map<Integer, Double> getH(int n, List<Double> X) {
         Map<Integer, Double> h = new HashMap<>();
         for (int i = 1; i <= n; i++) {
-            h.put(i, x.get(i) - x.get(i - 1));
+            h.put(i, X.get(i) - X.get(i - 1));
         }
         return h;
     }
 
-    private Map<Integer, Double> getA(int n, List<Double> y) {
+    private Map<Integer, Double> getA(int n, List<Double> Y) {
         Map<Integer, Double> a = new HashMap<>();
         for (int i = 1; i <= n; i++) {
-            a.put(i, y.get(i));
+            a.put(i, Y.get(i));
         }
         return a;
     }
 
-    private Map<Integer, Double> getB(int n, List<Double> y, Map<Integer, Double> h, Map<Integer, Double> c) {
+    private Map<Integer, Double> getB(int n, List<Double> y, Map<Integer, Double> h, Vector c) {
         Map<Integer, Double> b = new HashMap<>();
         for (int i = 1; i <= n; i++) {
-            b.put(i, ((y.get(i) - y.get(i - 1)) / h.get(i)) - (((2 * c.get(i - 1) + c.get(i)) / 3) * h.get(i)));
+            b.put(i, ((y.get(i) - y.get(i - 1)) / h.get(i)) + (c.get(i) * (h.get(i) / 3)) + (c.get(i - 1) * (h.get(i) / 6)));
         }
         return b;
     }
 
-    private Map<Integer, Double> getD(int n, Map<Integer, Double> c, Map<Integer, Double> h) {
+    private Map<Integer, Double> getD(int n, Vector c, Map<Integer, Double> h) {
         Map<Integer, Double> d = new HashMap<>();
         for (int i = 1; i <= n; i++) {
-            d.put(i, (c.get(i) - c.get(i - 1)) / (3 * h.get(i)));
+            d.put(i, (c.get(i) - c.get(i - 1)) / h.get(i));
         }
         return d;
     }

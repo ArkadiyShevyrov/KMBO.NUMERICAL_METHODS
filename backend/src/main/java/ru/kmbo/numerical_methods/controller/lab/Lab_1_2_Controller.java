@@ -18,8 +18,8 @@ import ru.kmbo.numerical_methods.model.function.implementation.TabularFunction;
 @CrossOrigin(origins = "http://localhost:3000")
 public class Lab_1_2_Controller {
 
-    @PostMapping("/first-derivative")
-    public ResponseEntity<String> firstDerivative(
+    @PostMapping("/first-derivative-left")
+    public ResponseEntity<String> firstDerivativeLeft(
             @Parameter(description = "Параметр функции", example = "1.0")
             @Pattern(regexp = "-?\\d+(\\.\\d+)?", message = "Некорректный формат числа")
             @RequestParam String xStar,
@@ -28,7 +28,39 @@ public class Lab_1_2_Controller {
     ) {
         log.info("Получен запрос на вычисление первой производной функции {} в точке {}",
                 tabularFunction, xStar);
-        Double result = DerivativeCalculate.firstDerivative(tabularFunction, Double.parseDouble(xStar));
+        Double result = DerivativeCalculate.firstDerivativeLeft(tabularFunction, Double.parseDouble(xStar));
+        log.info("Результат вычисления первой производной функции {} в точке {}: {}",
+                tabularFunction, xStar, result);
+        return ResponseEntity.ok(String.valueOf(result));
+    }
+
+    @PostMapping("/first-derivative-right")
+    public ResponseEntity<String> firstDerivativeRight(
+            @Parameter(description = "Параметр функции", example = "1.0")
+            @Pattern(regexp = "-?\\d+(\\.\\d+)?", message = "Некорректный формат числа")
+            @RequestParam String xStar,
+            @Parameter(description = "Таблично заданная функция")
+            @RequestBody TabularFunction tabularFunction
+    ) {
+        log.info("Получен запрос на вычисление первой производной функции {} в точке {}",
+                tabularFunction, xStar);
+        Double result = DerivativeCalculate.firstDerivativeRight(tabularFunction, Double.parseDouble(xStar));
+        log.info("Результат вычисления первой производной функции {} в точке {}: {}",
+                tabularFunction, xStar, result);
+        return ResponseEntity.ok(String.valueOf(result));
+    }
+
+    @PostMapping("/first-derivative-middle")
+    public ResponseEntity<String> firstDerivativeMiddle(
+            @Parameter(description = "Параметр функции", example = "1.0")
+            @Pattern(regexp = "-?\\d+(\\.\\d+)?", message = "Некорректный формат числа")
+            @RequestParam String xStar,
+            @Parameter(description = "Таблично заданная функция")
+            @RequestBody TabularFunction tabularFunction
+    ) {
+        log.info("Получен запрос на вычисление первой производной функции {} в точке {}",
+                tabularFunction, xStar);
+        Double result = DerivativeCalculate.firstDerivativeMiddle(tabularFunction, Double.parseDouble(xStar));
         log.info("Результат вычисления первой производной функции {} в точке {}: {}",
                 tabularFunction, xStar, result);
         return ResponseEntity.ok(String.valueOf(result));

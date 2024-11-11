@@ -2,16 +2,18 @@ package ru.kmbo.numerical_methods.lab;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ru.kmbo.numerical_methods.model.basic.FunctionalOption;
-import ru.kmbo.numerical_methods.model.basic.Point;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import ru.kmbo.numerical_methods.calculate.PolynomialCalculate;
+import ru.kmbo.numerical_methods.model.function.Polynomial;
 import ru.kmbo.numerical_methods.model.function.implementation.TabularFunction;
-import ru.kmbo.numerical_methods.service.lab_logic.L_1_5_Logic;
-import java.util.List;
 import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static ru.kmbo.numerical_methods.constant.Constant.PRECISION;
 
 public class Lab_1_5_Test {
 
+    private static final Logger log = LoggerFactory.getLogger(Lab_1_5_Test.class);
     private TabularFunction function1;
     private TabularFunction function2;
     private TabularFunction function3;
@@ -78,18 +80,59 @@ public class Lab_1_5_Test {
 
     @Test
     void testLagrangeInterpolate1() {
-        TabularFunction function0 = new TabularFunction(Map.of(
-                0.0, 0.0,
-                1.0, 1.,
-                2.0, 2.,
-                3.0, 3.0,
-                4.0, 4.
-        ));
-        FunctionalOption functionalOption = new FunctionalOption(0, 5, 0.5);
-        List<Point> pointFunction = L_1_5_Logic.getPointFunction(function0, functionalOption, 3);
-        System.out.println();
-//        double actualValue = (double) pointFunction;
-//        assertEquals(0.7262375669642858, actualValue, PRECISION);
+        Double actualValue = PolynomialCalculate.getPointFunction(function1, 1., 4);
+        assertEquals(0.5, actualValue, 1e-2);
     }
+
+    @Test
+    void testLagrangeInterpolate2() {
+        Double actualValue = PolynomialCalculate.getPointFunction(function2, 1., 4);
+        assertEquals(0.86603, actualValue, 1e-2);
+    }
+
+    @Test
+    void testLagrangeInterpolate3() {
+        Double actualValue = PolynomialCalculate.getPointFunction(function3, 0.9, 3);
+        assertEquals(0.36892, actualValue, 1e-2);
+    }
+
+    @Test
+    void testLagrangeInterpolate4() {
+        Double actualValue = PolynomialCalculate.getPointFunction(function4, 2.8, 5);
+        assertEquals(0.50953, actualValue, 1e-2);
+    }
+
+    @Test
+    void testLagrangeInterpolate5() {
+        Double actualValue = PolynomialCalculate.getPointFunction(function5, 0.9, 5);
+        assertEquals(-0.10536, actualValue, 1e-2);
+    }
+
+    @Test
+    void testLagrangeInterpolate6() {
+        Double actualValue = PolynomialCalculate.getPointFunction(function6, -1.0, 4);
+        assertEquals(0.36788, actualValue, 1e-2);
+    }
+
+
+//    @Test
+//    void testLagrangeInterpolate31() {
+//        Double actualValue1 = PolynomialCalculate.sum(function3, 0.9, 1);
+//        Double actualValue2 = PolynomialCalculate.sum(function3, 0.9, 2);
+//        Double actualValue3 = PolynomialCalculate.sum(function3, 0.9, 3);
+//        Polynomial polynomial1 = PolynomialCalculate.polynomial(function3, 0.9, 1);
+//        Polynomial polynomial2 = PolynomialCalculate.polynomial(function3, 0.9, 2);
+//        Polynomial polynomial3 = PolynomialCalculate.polynomial(function3, 0.9, 3);
+//        assertEquals(8.679022395367621, actualValue1, 1e-2);
+//        assertEquals(2.355748702034285, actualValue2, 1e-2);
+//        assertEquals(0.3557288768253966, actualValue3, 1e-2);
+//        log.info(actualValue1.toString());
+//        log.info(actualValue2.toString());
+//        log.info(actualValue3.toString());
+//        log.info(String.valueOf(polynomial1));
+//        log.info(String.valueOf(polynomial2));
+//        log.info(String.valueOf(polynomial3));
+//
+//    }
 
 }

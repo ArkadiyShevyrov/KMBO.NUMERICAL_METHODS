@@ -21,7 +21,11 @@ public class Lab_1_3_Controller {
             @RequestParam Double x,
             @RequestBody TabularFunction function
     ) {
+        log.info("Получен запрос на вычисление интерполяционного полинома Лагранжа функции{} в точке {}",
+                function, x);
         Double result = InterpolationCalculate.lagrangeInterpolate(function, x);
+        log.info("Результат вычисления интерполяционного полинома Лагранжа функции {} в точке {}: {}",
+                function, x, result);
         return ResponseEntity.ok(String.valueOf(result));
     }
 
@@ -30,7 +34,11 @@ public class Lab_1_3_Controller {
             @RequestParam Double x,
             @RequestBody TabularFunction function
     ) {
+        log.info("Получен запрос на вычисление интерполяционного полинома Ньютона функции{} в точке {}",
+                function, x);
         Double result = InterpolationCalculate.newtonInterpolate(function, x);
+        log.info("Результат вычисления интерполяционного полинома Ньютона функции {} в точке {}: {}",
+                function, x, result);
         return ResponseEntity.ok(String.valueOf(result));
     }
 }

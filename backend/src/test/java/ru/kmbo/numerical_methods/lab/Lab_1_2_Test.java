@@ -18,8 +18,13 @@ public class Lab_1_2_Test {
                 3.0, 1.0
         ));
 
-        Double result = DerivativeCalculate.firstDerivative(tabularFunction, 1.0);
-        assertEquals(0.433015, result, 1e-6);
+        Double left = DerivativeCalculate.firstDerivativeLeft(tabularFunction, 1.0);
+        Double right = DerivativeCalculate.firstDerivativeRight(tabularFunction, 1.0);
+        Double middle = DerivativeCalculate.firstDerivativeMiddle(tabularFunction, 1.0);
+
+        assertEquals(0.5, left, 1e-6);
+        assertEquals(0.36603, right, 1e-6);
+        assertEquals(0.433015, middle, 1e-6);
     }
 
     @Test
@@ -46,7 +51,7 @@ public class Lab_1_2_Test {
                 3.0, 1.0986
         ));
 
-        Double result = DerivativeCalculate.firstDerivative(tabularFunction, 2.0);
+        Double result = DerivativeCalculate.firstDerivativeRight(tabularFunction, 2.0);
         assertEquals(0.51082, result, 1e-6);
     }
 
@@ -74,7 +79,7 @@ public class Lab_1_2_Test {
                 0.4, 1.4918
         ));
 
-        Double result = DerivativeCalculate.firstDerivative(tabularFunction, 0.2);
+        Double result = DerivativeCalculate.firstDerivativeRight(tabularFunction, 0.2);
         assertEquals(1.2235, result, 1e-6);
     }
 
@@ -102,7 +107,7 @@ public class Lab_1_2_Test {
                 4.0, 2.0
         ));
 
-        Double result = DerivativeCalculate.firstDerivative(tabularFunction, 2.0);
+        Double result = DerivativeCalculate.firstDerivativeRight(tabularFunction, 2.0);
         assertEquals(0.36605, result, 1e-6);
     }
 
@@ -129,7 +134,7 @@ public class Lab_1_2_Test {
                 0.4, 0.41152,
                 0.6, 0.6435
         ));
-        Double result = DerivativeCalculate.firstDerivative(tabularFunction, 0.2);
+        Double result = DerivativeCalculate.firstDerivativeRight(tabularFunction, 0.2);
         assertEquals(1.0288, result, 1e-6);
     }
 
@@ -156,7 +161,7 @@ public class Lab_1_2_Test {
                 0.6, 0.9273
         ));
 
-        Double result = DerivativeCalculate.firstDerivative(tabularFunction, 0.2);
+        Double result = DerivativeCalculate.firstDerivativeRight(tabularFunction, 0.2);
         assertEquals(-1.02875, result, 1e-6);
     }
 

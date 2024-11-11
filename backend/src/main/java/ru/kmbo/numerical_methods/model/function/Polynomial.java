@@ -2,10 +2,17 @@ package ru.kmbo.numerical_methods.model.function;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import java.util.List;
+import ru.kmbo.numerical_methods.model.basic.Vector;
 
 @Getter
 @AllArgsConstructor
 public class Polynomial {
-    private List<Double> coefficients;
+    private Vector coefficients;
+
+    @Override
+    public String toString() {
+        return "Polynomial{\n" +
+                "coefficients=" + coefficients + "\n"+
+                '}';
+    }
 }

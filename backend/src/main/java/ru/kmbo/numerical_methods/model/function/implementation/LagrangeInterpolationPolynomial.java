@@ -29,9 +29,9 @@ public class LagrangeInterpolationPolynomial implements Function {
 
     @Override
     public String toString() {
-        return "LagrangeInterpolationPolynomial{" +
-                "X=" + X +
-                ", Y=" + Y +
+        return "LagrangeInterpolationPolynomial{\n" +
+                "X=" + X + ",\n " +
+                "Y=" + Y + "\n " +
                 '}';
     }
 }

@@ -1,8 +1,11 @@
 package ru.kmbo.numerical_methods.lab;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.kmbo.numerical_methods.calculate.InterpolationCalculate;
+import ru.kmbo.numerical_methods.calculate.PolynomialCalculate;
+import ru.kmbo.numerical_methods.model.function.Polynomial;
 import ru.kmbo.numerical_methods.model.function.implementation.OperandFunction;
 import ru.kmbo.numerical_methods.model.function.implementation.TabularFunction;
 import ru.kmbo.numerical_methods.model.operand.implementation.*;
@@ -10,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static ru.kmbo.numerical_methods.constant.Constant.PI;
 import static ru.kmbo.numerical_methods.constant.Constant.PRECISION;
 
+@Slf4j
 public class Lab_1_3_Test {
 
 
@@ -171,4 +175,16 @@ public class Lab_1_3_Test {
         double actualValue = InterpolationCalculate.newtonInterpolate(function6, xStar6);
         assertEquals(0.14362591697180802, actualValue, PRECISION);
     }
+
+
+//    @Test
+//    void testLagrangeInterpolate31() {
+//        double actualValue = PolynomialCalculate.getPointFunction(function3, xStar3, 3);
+//        Double sum = PolynomialCalculate.b(function3, xStar3, 3);
+//        Polynomial polynomial1 = PolynomialCalculate.polynomial(function3, xStar3, 3);
+//        log.info(String.valueOf(actualValue));
+//        log.info(String.valueOf(sum));
+//        log.info(String.valueOf(polynomial1));
+//    }
+
 }
