@@ -28,11 +28,12 @@ const TaskBack: React.FC<TaskBackProps> = ({taskInterface}) => {
 
     useEffect(() => {
         setTabularFunction(taskInterface.tabularFunctionInterface)
-        let numbers = Array.from(tabularFunction.nodes.keys());
+        let numbers = Array.from(tabularFunction.nodes.keys()).sort((a, b) => a - b);
         let start = numbers[0];
         let end = numbers[numbers.length-1];
+        console.log(start + " ! " + end)
 
-        const step = 0.5;
+        const step = 0.1;
         const newX = Array.from(
             {length: Math.floor((end - start) / step) + 1},
             (_, i) => start + i * step
@@ -206,7 +207,7 @@ const TaskBack: React.FC<TaskBackProps> = ({taskInterface}) => {
                 <Button variant="primary" type="submit">Вычислить</Button>
             </Form>
             {error && <Alert variant="danger" className="mt-3">{error}</Alert>}
-            {result != null && <CopyableResult result={X.toString()}/>}
+            {result != null && <CopyableResult result={result.toString()}/>}
             {result != null && <GraphComponent X={X} Y={Y} x={xStar} y={result} tabularFunction={tabularFunction}/>}
         </Container>
     );
