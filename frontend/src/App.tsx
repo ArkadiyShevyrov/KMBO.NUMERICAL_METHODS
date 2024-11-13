@@ -6,14 +6,16 @@ import Task_X_Y from "./components/tasks/Task_X_Y";
 import Task_1_1 from "./components/tasks/lab_1_1/Task_1_1";
 import Task_1_2 from "./components/tasks/lab_1_2/Task_1_2";
 import Task_1_3 from "./components/tasks/lab_1_3/Task_1_3";
+import Task_1_4 from "./components/tasks/lab_1_4/Task_1_4";
+import Task_1_5 from "./components/tasks/lab_1_5/Task_1_5";
 import Task_1_6 from "./components/tasks/lab_1_6/Task_1_6";
 
 const tasks = [
     {path: "/task_1_1", element: <Task_1_1/>},
     {path: "/task_1_2", element: <Task_1_2/>},
     {path: "/task_1_3", element: <Task_1_3/>},
-    {path: "/task_1_4", element: <Task_X_Y/>},
-    {path: "/task_1_5", element: <Task_X_Y/>},
+    {path: "/task_1_4", element: <Task_1_4/>},
+    {path: "/task_1_5", element: <Task_1_5/>},
     {path: "/task_1_6", element: <Task_1_6/>},
     {path: "/task_2_1", element: <Task_X_Y/>},
     {path: "/task_2_2", element: <Task_X_Y/>},
