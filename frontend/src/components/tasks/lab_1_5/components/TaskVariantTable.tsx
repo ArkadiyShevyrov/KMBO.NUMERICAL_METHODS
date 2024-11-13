@@ -32,11 +32,6 @@ const TaskVariantTable: React.FC<VariantTableProps> = ({variantArray, onSelectVa
                     {Array.from(variantArray[0].tabularFunctionInterface.nodes.keys()).map((key, index) => (
                         <th key={index}>{index + 1}</th>
                     ))}
-                    <th
-                        style={{
-                            borderLeft: '4px inset black'
-                        }}
-                    ><MathRenderer mathContent={"x^*"}/></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -66,14 +61,6 @@ const TaskVariantTable: React.FC<VariantTableProps> = ({variantArray, onSelectVa
                                 {value}
                             </td>
                         ))}
-                        <td
-                            style={{
-                                borderLeft: '4px inset black'
-                            }}
-                        >{
-                            row.xStar
-                        }
-                        </td>
                     </tr>
                 ))}
                 </tbody>

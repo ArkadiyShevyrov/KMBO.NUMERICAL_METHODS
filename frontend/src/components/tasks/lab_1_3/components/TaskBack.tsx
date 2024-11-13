@@ -48,6 +48,7 @@ const TaskBack: React.FC<TaskBackProps> = ({taskInterface}) => {
             }
         }
         setXStar(OperandCalculate(taskInterface.xStar));
+        setResult(null)
     }, [taskInterface]);
 
     const createNodes = (X: number[] | Operand[], operandFunction: OperandFunction): Map<number, number> => {
