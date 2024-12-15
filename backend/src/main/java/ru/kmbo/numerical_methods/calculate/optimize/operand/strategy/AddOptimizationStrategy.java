@@ -3,11 +3,9 @@ package ru.kmbo.numerical_methods.calculate.optimize.operand.strategy;
 import ru.kmbo.numerical_methods.calculate.optimize.operand.OperandOptimizer;
 import ru.kmbo.numerical_methods.model.operand.Operand;
 import ru.kmbo.numerical_methods.model.operand.implementation.Add;
-import ru.kmbo.numerical_methods.model.operand.implementation.Num;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class AddOptimizationStrategy extends OperandOptimizationStrategy {
 
@@ -22,40 +20,31 @@ public class AddOptimizationStrategy extends OperandOptimizationStrategy {
     }
 
     private Operand optimize(Add add) {
-        List<Operand> optimizeOperands = new ArrayList<>();
+        List<Operand> optimizeOperands1 = new ArrayList<>();
         for (Operand operand : add.getOperands()) {
-            Operand optimize = optimizer.optimize(operand);
-            if (optimize instanceof Add optimizeAdd) {
-                optimizeOperands.addAll(optimizeAdd.getOperands());
+            optimizeOperands1.add(optimizer.optimize(operand));
+        }
+
+        List<Operand> optimizeOperands2 = new ArrayList<>();
+        for (Operand optimizeOperand : optimizeOperands1) {
+            if (optimizeOperand instanceof Add optimizeAdd) {
+                optimizeOperands2.addAll(optimizeAdd.getOperands());
             } else {
-                optimizeOperands.add(optimize);
+                optimizeOperands2.add(optimizeOperand);
             }
         }
 
-        List<Num> nums = new ArrayList<>();
-        List<Operand> resultOperands = new ArrayList<>();
-        for (Operand operand : optimizeOperands) {
-            if (operand instanceof Num num) {
-                nums.add(num);
-                continue;
-            }
-            resultOperands.add(operand);
-        }
-
-        Num resNum = new Num(0);
-        for (Num num : nums) {
-            resNum = new Num(resNum.getNum() + num.getNum());
-        }
-        if (resNum.getNum() != 0) {
-            resultOperands.add(resNum);
-        }
-
-        if (resultOperands.size() == 1) {
-            return resultOperands.getFirst();
-        }
-
-        return new Add(resultOperands.stream()
+        optimizeOperands2 = optimizeOperands2.stream()
                 .sorted(Comparator.comparing(Operand::toString))
-                .collect(Collectors.toList()));
+                .toList();
+
+
+        if (optimizeOperands2.size() == 1) {
+            return optimizeOperands2.getFirst();
+        }
+
+        return new Add(optimizeOperands2.stream()
+                .sorted(Comparator.comparing(Operand::toString))
+                .toList());
     }
 }

@@ -61,6 +61,6 @@ class OperandTest {
                 x1
         );
         Operand optimize = new DefaultOperandOptimizer().optimize(operand);
-        assertEquals("3+2*x", operand.toString());
+        assertEquals("3+2*x", optimize.toString());
     }
 }
