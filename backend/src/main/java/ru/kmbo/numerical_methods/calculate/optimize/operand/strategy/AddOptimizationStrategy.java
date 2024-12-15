@@ -9,7 +9,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
 public class AddOptimizationStrategy extends OperandOptimizationStrategy {
 
     public AddOptimizationStrategy(OperandOptimizer optimizer) {
@@ -33,14 +32,22 @@ public class AddOptimizationStrategy extends OperandOptimizationStrategy {
             }
         }
 
+        List<Num> nums = new ArrayList<>();
         List<Operand> resultOperands = new ArrayList<>();
         for (Operand operand : optimizeOperands) {
             if (operand instanceof Num num) {
-                if (num.getNum() == 0) {
-                    continue;
-                }
+                nums.add(num);
+                continue;
             }
             resultOperands.add(operand);
+        }
+
+        Num resNum = new Num(0);
+        for (Num num : nums) {
+            resNum = new Num(resNum.getNum() + num.getNum());
+        }
+        if (resNum.getNum() != 0) {
+            resultOperands.add(resNum);
         }
 
         if (resultOperands.size() == 1) {

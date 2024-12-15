@@ -6,6 +6,9 @@ import lombok.experimental.UtilityClass;
 public class BasicCalculate {
 
     public double pow(double base, double exp) {
+        if (base == 0.) {
+            return 0;
+        }
         if (exp == 0) {
             return 1;
         }

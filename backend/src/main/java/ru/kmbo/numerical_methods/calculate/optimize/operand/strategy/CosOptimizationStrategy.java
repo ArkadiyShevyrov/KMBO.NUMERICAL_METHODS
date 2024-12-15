@@ -17,6 +17,6 @@ public class CosOptimizationStrategy extends OperandOptimizationStrategy {
     }
 
     private Operand optimize(Cos cos) {
-        return cos;
+        return new Cos(optimizer.optimize(cos.getOperand()));
     }
 }

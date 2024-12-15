@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import ru.kmbo.numerical_methods.model.operand.Operand;
+import java.util.Objects;
 
 @Getter
 public class Num implements Operand {
@@ -26,5 +27,18 @@ public class Num implements Operand {
     @Override
     public String toString() {
         return num.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Num num1 = (Num) o;
+        return Objects.equals(num, num1.num);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(num);
     }
 }

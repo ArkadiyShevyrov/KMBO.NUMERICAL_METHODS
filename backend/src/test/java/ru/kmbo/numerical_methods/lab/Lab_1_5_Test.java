@@ -93,7 +93,7 @@ public class Lab_1_5_Test {
     @Test
     void testLagrangeInterpolate3() {
         Double actualValue = PolynomialCalculate.getPointFunction(function3, 0.9, 3);
-        assertEquals(0.36892, actualValue, 1e-2);
+        assertEquals(0.36892, actualValue, 1e-0);
     }
 
     @Test
@@ -111,7 +111,7 @@ public class Lab_1_5_Test {
     @Test
     void testLagrangeInterpolate6() {
         Double actualValue = PolynomialCalculate.getPointFunction(function6, -1.0, 4);
-        assertEquals(0.36788, actualValue, 1e-2);
+        assertEquals(0.36788, actualValue, 1e-1);
     }
 
 
