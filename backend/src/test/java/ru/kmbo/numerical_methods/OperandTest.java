@@ -3,10 +3,7 @@ package ru.kmbo.numerical_methods;
 import org.junit.jupiter.api.Test;
 import ru.kmbo.numerical_methods.calculate.optimize.operand.DefaultOperandOptimizer;
 import ru.kmbo.numerical_methods.model.operand.Operand;
-import ru.kmbo.numerical_methods.model.operand.implementation.Add;
-import ru.kmbo.numerical_methods.model.operand.implementation.Num;
-import ru.kmbo.numerical_methods.model.operand.implementation.Sin;
-import ru.kmbo.numerical_methods.model.operand.implementation.Variable;
+import ru.kmbo.numerical_methods.model.operand.implementation.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class OperandTest {
@@ -58,9 +55,41 @@ class OperandTest {
                 new Num(1.),
                 new Num(0.),
                 new Num(1.),
+                x1,
+                x1,
                 x1
         );
         Operand optimize = new DefaultOperandOptimizer().optimize(operand);
-        assertEquals("3+2*x", optimize.toString());
+        assertEquals("3.0 + 2.0 * x", optimize.toString());
     }
+
+    @Test
+    void testComplexExpressionWithNestedAddAndMultiply() {
+
+        Variable x1 = new Variable("x");
+
+        Operand operand = new Add(
+                new Multiply(
+                        new Num(2.),
+                        new Add(
+                                new Num(0.),
+                                new Num(3.),
+                                new Multiply(
+                                        new Num(1.),
+                                        x1
+                                )
+                        )
+                ),
+                new Neg(new Multiply(
+                        new Num(0.),
+                        new Variable("y")
+                )),
+                new Num(5.)
+        );
+
+        Operand optimize = new DefaultOperandOptimizer().optimize(operand);
+        assertEquals("5.0 + 2.0 * (3.0 + x)", optimize.toString());
+    }
+
+
 }

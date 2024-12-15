@@ -47,14 +47,12 @@ public class Add implements Operand {
     @Override
     public String toString() {
         StringBuilder br = new StringBuilder();
-        br.append("(");
         for (int i = 0; i < operands.size(); i++) {
             br.append(operands.get(i));
             if (i < operands.size() - 1) {
                 br.append(" + ");
             }
         }
-        br.append(")");
         return br.toString();
     }
 }
