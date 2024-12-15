@@ -1,6 +1,7 @@
 package ru.kmbo.numerical_methods.calculate.derivative.operand;
 
 import lombok.experimental.UtilityClass;
+import ru.kmbo.numerical_methods.calculate.optimize.operand.DefaultOperandOptimizer;
 import ru.kmbo.numerical_methods.model.function.implementation.OperandFunction;
 import ru.kmbo.numerical_methods.model.operand.*;
 import ru.kmbo.numerical_methods.model.operand.implementation.*;
@@ -9,9 +10,10 @@ import java.util.List;
 
 @UtilityClass
 public class DerivativeOperandCalculate {
+    private final DefaultOperandOptimizer defaultOperandOptimizer = new DefaultOperandOptimizer();
 
     public OperandFunction derivative(OperandFunction operandFunction) {
-        return new OperandFunction(OperandOptimize.optimize(derivative(operandFunction.getOperand())), operandFunction.getVariable());
+        return new OperandFunction(defaultOperandOptimizer.optimize(derivative(operandFunction.getOperand())), operandFunction.getVariable());
     }
 
     public Operand derivative(Operand operand) {
