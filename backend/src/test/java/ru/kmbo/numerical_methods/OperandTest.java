@@ -1,8 +1,8 @@
 package ru.kmbo.numerical_methods;
 
 import org.junit.jupiter.api.Test;
-import ru.kmbo.numerical_methods.calculate.derivative.operand.OperandOptimize;
-import ru.kmbo.numerical_methods.model.operand.*;
+import ru.kmbo.numerical_methods.calculate.optimize.operand.DefaultOperandOptimizer;
+import ru.kmbo.numerical_methods.model.operand.Operand;
 import ru.kmbo.numerical_methods.model.operand.implementation.Add;
 import ru.kmbo.numerical_methods.model.operand.implementation.Num;
 import ru.kmbo.numerical_methods.model.operand.implementation.Sin;
@@ -60,7 +60,7 @@ class OperandTest {
                 new Num(1.),
                 x1
         );
-        Operand optimize = OperandOptimize.optimize(operand);
+        Operand optimize = new DefaultOperandOptimizer().optimize(operand);
         assertEquals("3+2*x", operand.toString());
     }
 }

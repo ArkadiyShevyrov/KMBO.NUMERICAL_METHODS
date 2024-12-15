@@ -18,8 +18,8 @@ public class PowOptimizationStrategy extends OperandOptimizationStrategy {
     }
 
     private Operand optimize(Pow pow) {
-        Operand optimizeBase = optimize(pow.getBase());
-        Operand optimizeExp = optimize(pow.getExp());
+        Operand optimizeBase = optimizer.optimize(pow.getBase());
+        Operand optimizeExp = optimizer.optimize(pow.getExp());
         if (optimizeExp instanceof Num num) {
             if (num.getNum() == 0) {
                 return new Num(1.);

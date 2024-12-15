@@ -1,8 +1,7 @@
 package ru.kmbo.numerical_methods.calculate;
 
 import lombok.experimental.UtilityClass;
-//import ru.kmbo.numerical_methods.calculate.derivative.operand.DerivativeOperandCalculate;
-import ru.kmbo.numerical_methods.calculate.derivative.operand.DerivativeOperandCalculate;
+import ru.kmbo.numerical_methods.calculate.derivative.operand_function.OperandFunctionDerivative;
 import ru.kmbo.numerical_methods.model.function.implementation.OperandFunction;
 import ru.kmbo.numerical_methods.model.function.implementation.TabularFunction;
 import java.util.*;
@@ -155,7 +154,7 @@ public class DerivativeCalculate {
         OperandFunction derivativeOperandFunction = operandFunction;
         derivativeOperandFunction.getVariable().setVar(null);
         for (int i = 0; i < rang; i++) {
-            derivativeOperandFunction = DerivativeOperandCalculate.derivative(derivativeOperandFunction);
+            derivativeOperandFunction = OperandFunctionDerivative.differentiate(derivativeOperandFunction);
         }
         return derivativeOperandFunction.apply(x);
     }

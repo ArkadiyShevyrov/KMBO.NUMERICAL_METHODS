@@ -17,6 +17,6 @@ public class NegOptimizationStrategy extends OperandOptimizationStrategy {
     }
 
     private Operand optimize(Neg neg) {
-        return new Neg(optimize(neg.getOperand()));
+        return new Neg(optimizer.optimize(neg.getOperand()));
     }
 }

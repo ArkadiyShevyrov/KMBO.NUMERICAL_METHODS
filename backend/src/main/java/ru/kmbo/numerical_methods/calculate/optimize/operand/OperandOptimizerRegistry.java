@@ -1,12 +1,8 @@
 package ru.kmbo.numerical_methods.calculate.optimize.operand;
 
-import ru.kmbo.numerical_methods.calculate.optimize.operand.strategy.AddOptimizationStrategy;
-import ru.kmbo.numerical_methods.calculate.optimize.operand.strategy.MultiplyOptimizationStrategy;
-import ru.kmbo.numerical_methods.calculate.optimize.operand.strategy.OperandOptimizationStrategy;
-import ru.kmbo.numerical_methods.calculate.optimize.operand.strategy.UnsupportedOperandStrategy;
+import ru.kmbo.numerical_methods.calculate.optimize.operand.strategy.*;
 import ru.kmbo.numerical_methods.model.operand.Operand;
-import ru.kmbo.numerical_methods.model.operand.implementation.Add;
-import ru.kmbo.numerical_methods.model.operand.implementation.Multiply;
+import ru.kmbo.numerical_methods.model.operand.implementation.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,7 +11,13 @@ public class OperandOptimizerRegistry {
 
     public OperandOptimizerRegistry(OperandOptimizer optimizer) {
         register(Add.class, new AddOptimizationStrategy(optimizer));
+        register(Cos.class, new CosOptimizationStrategy(optimizer));
         register(Multiply.class, new MultiplyOptimizationStrategy(optimizer));
+        register(Neg.class, new NegOptimizationStrategy(optimizer));
+        register(Num.class, new NumOptimizationStrategy(optimizer));
+        register(Pow.class, new PowOptimizationStrategy(optimizer));
+        register(Sin.class, new SinOptimizationStrategy(optimizer));
+        register(Variable.class, new VariableOptimizationStrategy(optimizer));
     }
 
     public void register(Class<? extends Operand> operandType, OperandOptimizationStrategy strategy) {
