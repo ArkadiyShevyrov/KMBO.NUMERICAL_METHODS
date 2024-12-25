@@ -15,15 +15,15 @@ public class SinDerivativeStrategy extends OperandDerivativeStrategy {
     }
 
     @Override
-    public Operand differentiate(Operand operand, Variable deffierintiationVariable) {
+    public Operand differentiate(Operand operand, Variable diffVariable) {
         Sin sin = (Sin) operand;
-        return differentiate(sin, deffierintiationVariable);
+        return differentiate(sin, diffVariable);
     }
 
-    private Operand differentiate(Sin sin, Variable deffierintiationVariable) {
+    private Operand differentiate(Sin sin, Variable diffVariable) {
         return new Multiply(
                 new Cos(sin.getOperand()),
-                derivative.differentiate(sin.getOperand(), deffierintiationVariable)
+                derivative.differentiate(sin.getOperand(), diffVariable)
         );
     }
 }

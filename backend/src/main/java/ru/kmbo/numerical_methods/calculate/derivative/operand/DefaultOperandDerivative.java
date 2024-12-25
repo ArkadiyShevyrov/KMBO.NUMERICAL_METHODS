@@ -7,8 +7,7 @@ public class DefaultOperandDerivative implements OperandDerivative {
     private final OperandDerivativeRegistry registry = new OperandDerivativeRegistry(this);
 
     @Override
-    public Operand differentiate(Operand operand, Variable deffierintiationVariable) {
-        if (operand == null) return null;
-        return registry.getStrategy(operand.getClass()).differentiate(operand, deffierintiationVariable);
+    public Operand differentiate(Operand operand, Variable diffVariable) {
+        return registry.getStrategy(operand.getClass()).differentiate(operand, diffVariable);
     }
 }

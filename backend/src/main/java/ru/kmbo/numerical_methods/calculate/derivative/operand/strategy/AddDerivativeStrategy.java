@@ -15,15 +15,15 @@ public class AddDerivativeStrategy extends OperandDerivativeStrategy {
     }
 
     @Override
-    public Operand differentiate(Operand operand, Variable deffierintiationVariable) {
+    public Operand differentiate(Operand operand, Variable diffVariable) {
         Add add = (Add) operand;
-        return differentiate(add, deffierintiationVariable);
+        return differentiate(add, diffVariable);
     }
 
-    private Operand differentiate(Add add, Variable deffierintiationVariable) {
+    private Operand differentiate(Add add, Variable diffVariable) {
         List<Operand> derivativeOperands = new ArrayList<>();
         for (Operand operand : add.getOperands()) {
-            derivativeOperands.add(derivative.differentiate(operand, deffierintiationVariable));
+            derivativeOperands.add(derivative.differentiate(operand, diffVariable));
         }
         return new Add(derivativeOperands);
     }

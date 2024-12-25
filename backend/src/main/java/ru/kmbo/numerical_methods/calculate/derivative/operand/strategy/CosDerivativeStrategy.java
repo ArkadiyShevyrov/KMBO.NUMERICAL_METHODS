@@ -12,15 +12,15 @@ public class CosDerivativeStrategy extends OperandDerivativeStrategy {
     }
 
     @Override
-    public Operand differentiate(Operand operand, Variable deffierintiationVariable) {
+    public Operand differentiate(Operand operand, Variable diffVariable) {
         Cos cos = (Cos) operand;
-        return differentiate(cos, deffierintiationVariable);
+        return differentiate(cos, diffVariable);
     }
 
-    private Operand differentiate(Cos cos, Variable deffierintiationVariable) {
+    private Operand differentiate(Cos cos, Variable diffVariable) {
         return new Multiply(
                 new Neg(new Sin(cos.getOperand())),
-                derivative.differentiate(cos.getOperand(), deffierintiationVariable)
+                derivative.differentiate(cos.getOperand(), diffVariable)
         );
     }
 }

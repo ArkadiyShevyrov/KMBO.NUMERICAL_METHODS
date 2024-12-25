@@ -13,12 +13,12 @@ public class NegDerivativeStrategy extends OperandDerivativeStrategy {
     }
 
     @Override
-    public Operand differentiate(Operand operand, Variable deffierintiationVariable) {
+    public Operand differentiate(Operand operand, Variable diffVariable) {
         Neg neg = (Neg) operand;
-        return differentiate(neg, deffierintiationVariable);
+        return differentiate(neg, diffVariable);
     }
 
-    private Operand differentiate(Neg neg, Variable deffierintiationVariable) {
-        return new Neg(derivative.differentiate(neg.getOperand(), deffierintiationVariable));
+    private Operand differentiate(Neg neg, Variable diffVariable) {
+        return new Neg(derivative.differentiate(neg.getOperand(), diffVariable));
     }
 }

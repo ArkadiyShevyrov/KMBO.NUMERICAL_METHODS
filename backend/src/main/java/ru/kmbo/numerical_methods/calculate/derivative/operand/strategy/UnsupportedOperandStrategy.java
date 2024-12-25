@@ -10,7 +10,7 @@ public class UnsupportedOperandStrategy extends OperandDerivativeStrategy {
     }
 
     @Override
-    public Operand differentiate(Operand operand, Variable deffierintiationVariable) {
+    public Operand differentiate(Operand operand, Variable diffVariable) {
         throw new UnsupportedOperationException("No strategy found for type: " + operand.getClass().getName());
     }
 }

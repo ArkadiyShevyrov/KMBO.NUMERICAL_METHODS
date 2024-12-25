@@ -12,12 +12,12 @@ public class PowDerivativeStrategy extends OperandDerivativeStrategy {
     }
 
     @Override
-    public Operand differentiate(Operand operand, Variable deffierintiationVariable) {
+    public Operand differentiate(Operand operand, Variable diffVariable) {
         Pow pow = (Pow) operand;
-        return differentiate(pow, deffierintiationVariable);
+        return differentiate(pow, diffVariable);
     }
 
-    private Operand differentiate(Pow pow, Variable deffierintiationVariable) {
+    private Operand differentiate(Pow pow, Variable diffVariable) {
         return new Add(
                 new Multiply(
                         pow.getExp(),
@@ -28,14 +28,14 @@ public class PowDerivativeStrategy extends OperandDerivativeStrategy {
                                         new Neg(new Num(-1))
                                 )
                         ),
-                        derivative.differentiate(pow.getBase(), deffierintiationVariable)
+                        derivative.differentiate(pow.getBase(), diffVariable)
                 ),
                 new Multiply(
                         new Pow(
                                 pow.getBase(),
                                 pow.getExp()
                         ),
-                        derivative.differentiate(pow.getExp(), deffierintiationVariable),
+                        derivative.differentiate(pow.getExp(), diffVariable),
                         new Ln(pow.getBase())
                 )
         );
