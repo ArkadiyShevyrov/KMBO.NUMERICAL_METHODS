@@ -14,11 +14,10 @@ public class VariableDerivativeStrategy extends OperandDerivativeStrategy {
 
     @Override
     public Operand differentiate(Operand operand) {
-        Variable variable = (Variable) operand;
-        return differentiate(variable);
+        return differentiate();
     }
 
-    private Operand differentiate(Variable variable) {
+    private Operand differentiate() {
         return new Num(1.);
     }
 }

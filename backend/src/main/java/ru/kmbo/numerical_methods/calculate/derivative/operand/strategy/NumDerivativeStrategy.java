@@ -13,11 +13,10 @@ public class NumDerivativeStrategy extends OperandDerivativeStrategy {
 
     @Override
     public Operand differentiate(Operand operand) {
-        Num num = (Num) operand;
-        return differentiate(num);
+        return differentiate();
     }
 
-    private Operand differentiate(Num num) {
+    private Operand differentiate() {
         return new Num(0.);
     }
 }

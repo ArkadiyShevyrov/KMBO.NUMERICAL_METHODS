@@ -3,8 +3,7 @@ package ru.kmbo.numerical_methods.calculate.derivative.operand.strategy;
 import ru.kmbo.numerical_methods.calculate.derivative.operand.OperandDerivative;
 import ru.kmbo.numerical_methods.calculate.derivative.operand.OperandDerivativeStrategy;
 import ru.kmbo.numerical_methods.model.operand.Operand;
-import ru.kmbo.numerical_methods.model.operand.implementation.Multiply;
-import ru.kmbo.numerical_methods.model.operand.implementation.Pow;
+import ru.kmbo.numerical_methods.model.operand.implementation.*;
 
 public class PowDerivativeStrategy extends OperandDerivativeStrategy {
 
@@ -19,11 +18,26 @@ public class PowDerivativeStrategy extends OperandDerivativeStrategy {
     }
 
     private Operand differentiate(Pow pow) {
-        return new Multiply(
-                pow.getExp(),
-                new Pow(pow.getBase(),
-                        (int) (pow.getExp().getResult() - 1)),
-                derivative.differentiate(pow.getBase())
+        return new Add(
+                new Multiply(
+                        pow.getExp(),
+                        new Pow(
+                                pow.getBase(),
+                                new Add(
+                                        pow.getExp(),
+                                        new Neg(new Num(-1))
+                                )
+                        ),
+                        derivative.differentiate(pow.getBase())
+                ),
+                new Multiply(
+                        new Pow(
+                                pow.getBase(),
+                                pow.getExp()
+                        ),
+                        derivative.differentiate(pow.getExp()),
+                        new Ln(pow.getBase())
+                )
         );
     }
 }

@@ -15,6 +15,7 @@ import ru.kmbo.numerical_methods.model.operand.implementation.*;
         @JsonSubTypes.Type(value = Pow.class, name = "Pow"),
         @JsonSubTypes.Type(value = Sin.class, name = "Sin"),
         @JsonSubTypes.Type(value = Variable.class, name = "Variable"),
+        @JsonSubTypes.Type(value = Ln.class, name = "Ln"),
 })
 public interface Operand {
 
