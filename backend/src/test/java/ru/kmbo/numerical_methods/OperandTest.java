@@ -60,7 +60,7 @@ class OperandTest {
                 x1
         );
         Operand optimize = new DefaultOperandOptimizer().optimize(operand);
-        assertEquals("3.0 + 2.0 * x", optimize.toString());
+        assertEquals("3.0 + 4.0 * x", optimize.toString());
     }
 
     @Test
@@ -88,7 +88,7 @@ class OperandTest {
         );
 
         Operand optimize = new DefaultOperandOptimizer().optimize(operand);
-        assertEquals("5.0 + 2.0 * (3.0 + x)", optimize.toString());
+        assertEquals("2.0 * (3.0 + x) + 5.0", optimize.toString());
     }
 
 

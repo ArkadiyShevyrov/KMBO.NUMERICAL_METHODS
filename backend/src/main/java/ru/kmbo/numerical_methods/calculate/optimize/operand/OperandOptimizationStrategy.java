@@ -1,7 +1,6 @@
-package ru.kmbo.numerical_methods.calculate.optimize.operand.strategy;
+package ru.kmbo.numerical_methods.calculate.optimize.operand;
 
 import lombok.AllArgsConstructor;
-import ru.kmbo.numerical_methods.calculate.optimize.operand.OperandOptimizer;
 import ru.kmbo.numerical_methods.model.operand.Operand;
 
 @AllArgsConstructor

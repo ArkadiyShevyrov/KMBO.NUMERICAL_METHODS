@@ -1,5 +1,6 @@
 package ru.kmbo.numerical_methods.calculate.optimize.operand.strategy;
 
+import ru.kmbo.numerical_methods.calculate.optimize.operand.OperandOptimizationStrategy;
 import ru.kmbo.numerical_methods.model.operand.Operand;
 
 public class UnsupportedOperandStrategy extends OperandOptimizationStrategy {
