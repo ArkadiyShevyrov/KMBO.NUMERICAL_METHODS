@@ -17,9 +17,6 @@ public class Add implements Operand {
     }
 
     public Add(Object... objects) {
-        if (objects.length < 2) {
-            throw new RuntimeException("Add operation requires at least two operands.");
-        }
         for (Object object : objects) {
             if (object instanceof Operand operand) {
                 operands.add(operand);

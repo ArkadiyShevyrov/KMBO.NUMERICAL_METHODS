@@ -17,9 +17,6 @@ public class Multiply implements Operand {
     }
 
     public Multiply(Object... objects) {
-        if (objects.length < 2) {
-            throw new RuntimeException("Multiply operation requires at least two operands.");
-        }
         for (Object object : objects) {
             if (object instanceof Operand operand) {
                 operands.add(operand);

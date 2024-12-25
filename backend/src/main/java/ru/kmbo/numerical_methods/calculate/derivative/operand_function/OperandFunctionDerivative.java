@@ -15,7 +15,11 @@ public class OperandFunctionDerivative {
     public OperandFunction differentiate(OperandFunction operandFunction) {
         return new OperandFunction(
                 defaultOperandOptimizer.optimize(
-                        defaultOperandDerivative.differentiate(operandFunction.getOperand())),
-                operandFunction.getVariable());
+                        defaultOperandDerivative.differentiate(
+                                operandFunction.getOperand(), operandFunction.getVariable()
+                        )
+                ),
+                operandFunction.getVariable()
+        );
     }
 }

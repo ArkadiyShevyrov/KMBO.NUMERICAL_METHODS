@@ -4,6 +4,7 @@ import ru.kmbo.numerical_methods.calculate.derivative.operand.OperandDerivative;
 import ru.kmbo.numerical_methods.calculate.derivative.operand.OperandDerivativeStrategy;
 import ru.kmbo.numerical_methods.model.operand.Operand;
 import ru.kmbo.numerical_methods.model.operand.implementation.Num;
+import ru.kmbo.numerical_methods.model.operand.implementation.Variable;
 
 public class NumDerivativeStrategy extends OperandDerivativeStrategy {
 
@@ -12,7 +13,7 @@ public class NumDerivativeStrategy extends OperandDerivativeStrategy {
     }
 
     @Override
-    public Operand differentiate(Operand operand) {
+    public Operand differentiate(Operand operand, Variable deffierintiationVariable) {
         return differentiate();
     }
 

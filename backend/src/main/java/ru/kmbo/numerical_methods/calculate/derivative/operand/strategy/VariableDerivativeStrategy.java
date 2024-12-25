@@ -13,11 +13,13 @@ public class VariableDerivativeStrategy extends OperandDerivativeStrategy {
     }
 
     @Override
-    public Operand differentiate(Operand operand) {
-        return differentiate();
+    public Operand differentiate(Operand operand, Variable deffierintiationVariable) {
+        Variable variable = (Variable) operand;
+        return differentiate(variable, deffierintiationVariable);
     }
 
-    private Operand differentiate() {
-        return new Num(1.);
+    private Operand differentiate(Variable variable, Variable deffierintiationVariable) {
+        return variable.getName().equals(deffierintiationVariable.getName()) ?
+                new Num(1.) : new Num(0.);
     }
 }

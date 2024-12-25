@@ -1,13 +1,14 @@
 package ru.kmbo.numerical_methods.calculate.derivative.operand;
 
 import ru.kmbo.numerical_methods.model.operand.Operand;
+import ru.kmbo.numerical_methods.model.operand.implementation.Variable;
 
 public class DefaultOperandDerivative implements OperandDerivative {
     private final OperandDerivativeRegistry registry = new OperandDerivativeRegistry(this);
 
     @Override
-    public Operand differentiate(Operand operand) {
+    public Operand differentiate(Operand operand, Variable deffierintiationVariable) {
         if (operand == null) return null;
-        return registry.getStrategy(operand.getClass()).differentiate(operand);
+        return registry.getStrategy(operand.getClass()).differentiate(operand, deffierintiationVariable);
     }
 }

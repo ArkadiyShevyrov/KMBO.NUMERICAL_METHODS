@@ -3,10 +3,7 @@ package ru.kmbo.numerical_methods.calculate.derivative.operand.strategy;
 import ru.kmbo.numerical_methods.calculate.derivative.operand.OperandDerivative;
 import ru.kmbo.numerical_methods.calculate.derivative.operand.OperandDerivativeStrategy;
 import ru.kmbo.numerical_methods.model.operand.Operand;
-import ru.kmbo.numerical_methods.model.operand.implementation.Cos;
-import ru.kmbo.numerical_methods.model.operand.implementation.Multiply;
-import ru.kmbo.numerical_methods.model.operand.implementation.Neg;
-import ru.kmbo.numerical_methods.model.operand.implementation.Sin;
+import ru.kmbo.numerical_methods.model.operand.implementation.*;
 
 public class CosDerivativeStrategy extends OperandDerivativeStrategy {
 
@@ -15,17 +12,15 @@ public class CosDerivativeStrategy extends OperandDerivativeStrategy {
     }
 
     @Override
-    public Operand differentiate(Operand operand) {
+    public Operand differentiate(Operand operand, Variable deffierintiationVariable) {
         Cos cos = (Cos) operand;
-        return differentiate(cos);
+        return differentiate(cos, deffierintiationVariable);
     }
 
-    private Operand differentiate(Cos cos) {
-        return new Neg(
-                new Multiply(
-                        new Sin(cos.getOperand()),
-                        derivative.differentiate(cos.getOperand())
-                )
+    private Operand differentiate(Cos cos, Variable deffierintiationVariable) {
+        return new Multiply(
+                new Neg(new Sin(cos.getOperand())),
+                derivative.differentiate(cos.getOperand(), deffierintiationVariable)
         );
     }
 }
