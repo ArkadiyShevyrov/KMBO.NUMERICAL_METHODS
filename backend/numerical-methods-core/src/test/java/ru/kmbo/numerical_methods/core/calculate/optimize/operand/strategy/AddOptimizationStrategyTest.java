@@ -1,15 +1,13 @@
-package ru.kmbo.numerical_methods.labs.calculate.optimize.operand.strategy;
+package ru.kmbo.numerical_methods.core.calculate.optimize.operand.strategy;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import ru.kmbo.numerical_methods.core.calculate.optimize.operand.DefaultOperandOptimizer;
 import ru.kmbo.numerical_methods.core.calculate.optimize.operand.OperandOptimizer;
-import ru.kmbo.numerical_methods.core.calculate.optimize.operand.strategy.AddOptimizationStrategy;
 import ru.kmbo.numerical_methods.core.model.operand.Operand;
 import ru.kmbo.numerical_methods.core.model.operand.implementation.Add;
 import ru.kmbo.numerical_methods.core.model.operand.implementation.Num;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class AddOptimizationStrategyTest {
 

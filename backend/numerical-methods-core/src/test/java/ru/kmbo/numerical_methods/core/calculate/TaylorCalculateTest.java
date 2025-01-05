@@ -1,10 +1,9 @@
-package ru.kmbo.numerical_methods.labs.calculate;
+package ru.kmbo.numerical_methods.core.calculate;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import ru.kmbo.numerical_methods.core.calculate.TaylorCalculate;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class TaylorCalculateTest {
 

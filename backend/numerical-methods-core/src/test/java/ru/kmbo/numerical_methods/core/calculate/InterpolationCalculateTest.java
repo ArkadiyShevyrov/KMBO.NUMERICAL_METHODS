@@ -1,16 +1,14 @@
-package ru.kmbo.numerical_methods.labs.calculate;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+package ru.kmbo.numerical_methods.core.calculate;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ru.kmbo.numerical_methods.core.calculate.InterpolationCalculate;
 import ru.kmbo.numerical_methods.core.model.function.implementation.OperandFunction;
 import ru.kmbo.numerical_methods.core.model.function.implementation.TabularFunction;
-import ru.kmbo.numerical_methods.core.model.operand.implementation.Variable;
 import ru.kmbo.numerical_methods.core.model.operand.Operand;
 import ru.kmbo.numerical_methods.core.model.operand.implementation.Add;
 import ru.kmbo.numerical_methods.core.model.operand.implementation.Sin;
+import ru.kmbo.numerical_methods.core.model.operand.implementation.Variable;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class InterpolationCalculateTest {
 

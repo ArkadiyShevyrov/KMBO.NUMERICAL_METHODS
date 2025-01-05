@@ -1,7 +1,6 @@
-package ru.kmbo.numerical_methods.labs.calculate.derivative.operand;
+package ru.kmbo.numerical_methods.core.calculate.derivative.operand;
 
 import org.junit.jupiter.api.Test;
-import ru.kmbo.numerical_methods.core.calculate.derivative.operand.DefaultOperandDerivative;
 import ru.kmbo.numerical_methods.core.model.operand.Operand;
 import ru.kmbo.numerical_methods.core.model.operand.implementation.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -18,7 +17,7 @@ class DefaultOperandDerivativeTest {
         );
         Operand differentiate = derivative.differentiate(operand, x);
 
-        assertEquals("", differentiate.toString());
+        assertEquals("(2 * x + 5)^(-1) + (2 * x + 5)^(-2) * -2 * x", differentiate.toString());
     }
 
     @Test
@@ -30,7 +29,7 @@ class DefaultOperandDerivativeTest {
         );
         Operand differentiate = derivative.differentiate(derivative.differentiate(operand, x), x);
 
-        assertEquals("", differentiate.toString());
+        assertEquals("(x^2 + 4)^(-2) * -2 + (x^2 + 4)^(-3) * 8 * x^1 * x^1", differentiate.toString());
     }
 
     @Test
@@ -52,7 +51,7 @@ class DefaultOperandDerivativeTest {
         );
         Operand differentiate = derivative.differentiate(operand, x);
 
-        assertEquals("", differentiate.toString());
+        assertEquals("(-(x^2) + 49)^(-0.5) * -(2 * x^1) * 0.5 * x + (-(x^2) + 49)^0.5", differentiate.toString());
     }
 
 

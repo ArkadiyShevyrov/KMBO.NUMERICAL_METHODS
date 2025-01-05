@@ -1,4 +1,4 @@
-package ru.kmbo.numerical_methods.labs;
+package ru.kmbo.numerical_methods.core;
 
 import org.junit.jupiter.api.Test;
 import ru.kmbo.numerical_methods.core.calculate.optimize.operand.DefaultOperandOptimizer;
@@ -60,7 +60,7 @@ class OperandTest {
                 x1
         );
         Operand optimize = new DefaultOperandOptimizer().optimize(operand);
-        assertEquals("3.0 + 4.0 * x", optimize.toString());
+        assertEquals("4 * x + 3", optimize.toString());
     }
 
     @Test
@@ -88,7 +88,7 @@ class OperandTest {
         );
 
         Operand optimize = new DefaultOperandOptimizer().optimize(operand);
-        assertEquals("2.0 * (3.0 + x) + 5.0", optimize.toString());
+        assertEquals("2 * (x + 3) + 5", optimize.toString());
     }
 
 

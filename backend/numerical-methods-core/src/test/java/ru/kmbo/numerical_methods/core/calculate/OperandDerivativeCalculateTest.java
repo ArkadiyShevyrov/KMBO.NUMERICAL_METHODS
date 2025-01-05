@@ -1,4 +1,4 @@
-package ru.kmbo.numerical_methods.labs.calculate;
+package ru.kmbo.numerical_methods.core.calculate;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
