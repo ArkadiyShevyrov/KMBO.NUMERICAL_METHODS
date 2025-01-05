@@ -1,4 +1,4 @@
-package ru.kmbo.numerical_methods.labs.lab;
+package ru.kmbo.numerical_methods.core.lab;
 
 import org.junit.jupiter.api.Test;
 import ru.kmbo.numerical_methods.core.calculate.DerivativeCalculate;
