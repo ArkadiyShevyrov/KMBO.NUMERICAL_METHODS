@@ -21,6 +21,15 @@ public class Neg implements Operand {
 
     @Override
     public String toString() {
-        return "-" + operand.toString();
+        StringBuilder br = new StringBuilder();
+        br.append("-");
+        if (operand instanceof Num || operand instanceof Variable) {
+            br.append(operand);
+        } else {
+            br.append("(");
+            br.append(operand);
+            br.append(")");
+        }
+        return br.toString();
     }
 }

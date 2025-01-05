@@ -5,6 +5,7 @@ import ru.kmbo.numerical_methods.calculate.optimize.operand.OperandOptimizer;
 import ru.kmbo.numerical_methods.model.operand.Operand;
 import ru.kmbo.numerical_methods.model.operand.implementation.Add;
 import ru.kmbo.numerical_methods.model.operand.implementation.Multiply;
+import ru.kmbo.numerical_methods.model.operand.implementation.Neg;
 import ru.kmbo.numerical_methods.model.operand.implementation.Num;
 import java.util.*;
 
@@ -66,10 +67,30 @@ public class AddOptimizationStrategy extends OperandOptimizationStrategy {
 
         finalOperands.sort(Comparator.comparing(Operand::toString));
 
-        if (finalOperands.size() == 1) {
-            return finalOperands.getFirst();
+        double d = 0;
+        List<Operand> finalOperands1 = new ArrayList<>();
+        for (Operand finalOperand : finalOperands) {
+            if (finalOperand instanceof Num num) {
+                d += num.getNum();
+            } else if (finalOperand instanceof Neg neg && neg.getOperand() instanceof Num num) {
+                d -= num.getNum();
+            }
+            else {
+                finalOperands1.add(finalOperand);
+            }
         }
-        return new Add(finalOperands);
+        if (d > 0) {
+            finalOperands1.add(new Num(d));
+        } else if (d <0) {
+            finalOperands1.add(new Neg(new Num(-d)));
+        }
+
+        if (finalOperands1.size() == 1) {
+            return finalOperands1.getFirst();
+        } else if (finalOperands1.isEmpty()) {
+            return new Num(0);
+        }
+        return new Add(finalOperands1);
     }
 
     private List<Operand> op(List<Operand> operands) {

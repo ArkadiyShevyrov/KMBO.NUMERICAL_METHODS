@@ -48,6 +48,23 @@ public class Pow implements Operand {
 
     @Override
     public String toString() {
-        return "((" + base + ")^" + exp + ')';
+        StringBuilder br = new StringBuilder();
+        if(base instanceof Num || base instanceof Variable) {
+            br.append(base);
+        } else {
+            br.append("(");
+            br.append(base);
+            br.append(")");
+        }
+        br.append("^");
+        if(exp instanceof Num || exp instanceof Variable) {
+            br.append(exp);
+        } else {
+            br.append("(");
+            br.append(exp);
+            br.append(")");
+        }
+        return br.toString();
+
     }
 }

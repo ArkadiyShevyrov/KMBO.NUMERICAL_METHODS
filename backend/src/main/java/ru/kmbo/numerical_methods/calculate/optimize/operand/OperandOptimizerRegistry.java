@@ -18,6 +18,7 @@ public class OperandOptimizerRegistry {
         register(Pow.class, new PowOptimizationStrategy(optimizer));
         register(Sin.class, new SinOptimizationStrategy(optimizer));
         register(Variable.class, new VariableOptimizationStrategy(optimizer));
+        register(Ln.class, new LnOptimizationStrategy(optimizer));
     }
 
     public void register(Class<? extends Operand> operandType, OperandOptimizationStrategy strategy) {

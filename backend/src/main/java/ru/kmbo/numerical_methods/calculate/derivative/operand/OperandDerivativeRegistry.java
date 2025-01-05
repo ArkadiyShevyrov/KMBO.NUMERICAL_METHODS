@@ -18,6 +18,7 @@ public class OperandDerivativeRegistry {
         register(Pow.class, new PowDerivativeStrategy(derivative));
         register(Sin.class, new SinDerivativeStrategy(derivative));
         register(Variable.class, new VariableDerivativeStrategy(derivative));
+        register(Ln.class, new LnDerivativeStrategy(derivative));
     }
 
     public void register(Class<? extends Operand> operandType, OperandDerivativeStrategy strategy) {

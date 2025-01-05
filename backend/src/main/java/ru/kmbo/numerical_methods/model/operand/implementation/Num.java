@@ -26,6 +26,9 @@ public class Num implements Operand {
 
     @Override
     public String toString() {
+        if (num % 1 == 0. ) {
+            return String.valueOf(num.intValue());
+        }
         return num.toString();
     }
 

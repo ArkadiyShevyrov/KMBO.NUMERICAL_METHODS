@@ -20,8 +20,14 @@ public class OperandUtils {
             case Pow pow -> setPow(variable, pow, value);
             case Sin sin -> setSin(variable, sin, value);
             case Variable var -> setVariable(variable, var, value);
+            case Ln ln -> setLn(variable, ln, value);
             case null, default -> throw new RuntimeException(operand.getClass().getTypeName());
         }
+    }
+
+    private static void setLn(Variable variable, Ln ln, Double value) {
+        Operand operand = ln.getOperand();
+        setOperand(variable, operand, value);
     }
 
     private static void setVariable(Variable variable, Variable var, Double value) {

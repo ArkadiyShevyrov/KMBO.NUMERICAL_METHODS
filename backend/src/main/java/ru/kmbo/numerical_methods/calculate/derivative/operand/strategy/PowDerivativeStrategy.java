@@ -25,7 +25,7 @@ public class PowDerivativeStrategy extends OperandDerivativeStrategy {
                                 pow.getBase(),
                                 new Add(
                                         pow.getExp(),
-                                        new Neg(new Num(-1))
+                                        new Neg(new Num(1))
                                 )
                         ),
                         derivative.differentiate(pow.getBase(), diffVariable)

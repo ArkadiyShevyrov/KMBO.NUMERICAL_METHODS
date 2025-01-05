@@ -20,10 +20,12 @@ public class NegOptimizationStrategy extends OperandOptimizationStrategy {
 
     private Operand optimize(Neg neg) {
         Operand optimizedOperand = optimizer.optimize(neg.getOperand());
-        if (optimizedOperand instanceof Num num) {
-            if (num.getNum() == 0.) {
-                return num;
+        if (optimizedOperand instanceof Num optimizedNum) {
+            if (optimizedNum.getNum() == 0.) {
+                return optimizedNum;
             }
+        } else if (optimizedOperand instanceof Neg optimizedNeg) {
+            return optimizedNeg.getOperand();
         }
         return new Neg(optimizedOperand);
     }

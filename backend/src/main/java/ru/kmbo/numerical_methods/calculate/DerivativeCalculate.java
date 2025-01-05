@@ -159,3 +159,5 @@ public class DerivativeCalculate {
         return derivativeOperandFunction.apply(x);
     }
 }
+
+
