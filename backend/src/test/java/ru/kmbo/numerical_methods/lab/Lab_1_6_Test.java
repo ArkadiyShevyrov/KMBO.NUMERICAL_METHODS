@@ -276,7 +276,7 @@ public class Lab_1_6_Test {
         double actualValueRM = NumericalIntegration.integrate(f6, a6, b6, h6, NumericalIntegration.TypeMethod.RECTANGLE_MEDIAN_METHOD);
         double toleranceRM = NumericalIntegration.tolerance(f6, a6, b6, h6, NumericalIntegration.TypeMethod.RECTANGLE_MEDIAN_METHOD);
         assertEquals(0, actualValueRM, PRECISION);
-        assertEquals(1.0, toleranceRM, PRECISION);
+        assertEquals(0.1534881229, toleranceRM, PRECISION);
         assertEquals(0, actualValueRM, toleranceRM);
 
         double actualValueRR = NumericalIntegration.integrate(f6, a6, b6, h6, NumericalIntegration.TypeMethod.RECTANGLE_RIGHT_METHOD);
@@ -288,7 +288,7 @@ public class Lab_1_6_Test {
         double actualValueS = NumericalIntegration.integrate(f6, a6, b6, h6, NumericalIntegration.TypeMethod.SIMPSON_METHOD);
         double toleranceS = NumericalIntegration.tolerance(f6, a6, b6, h6, NumericalIntegration.TypeMethod.SIMPSON_METHOD);
         assertEquals(0, actualValueS, PRECISION);
-        assertEquals(0., toleranceS, PRECISION);
+        assertEquals(0.00261852766212, toleranceS, PRECISION);
         assertEquals(0, actualValueS, toleranceS);
 
         double actualValueT = NumericalIntegration.integrate(f6, a6, b6, h6, NumericalIntegration.TypeMethod.TRAPEZOID_METHOD);

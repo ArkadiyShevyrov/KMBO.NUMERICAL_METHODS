@@ -21,7 +21,7 @@ public class RectangleMedianMethod implements NumericalIntegrationMethod {
 
     @Override
     public Double tolerance(OperandFunction f, double a, double b, double h) {
-        double maxSecondDerivative = DerivativeCalculate.findMaxSecondDerivative(f, a, b, h);
+        double maxSecondDerivative = DerivativeCalculate.findMaxDerivative(f,2, a, b, h);
         return ((b - a) / 24) * BasicCalculate.pow(h, 1) * maxSecondDerivative;
     }
 

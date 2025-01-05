@@ -21,7 +21,7 @@ public class RectangleRightMethod implements NumericalIntegrationMethod {
 
     @Override
     public Double tolerance(OperandFunction f, double a, double b, double h) {
-        double maxFirstDerivative = DerivativeCalculate.findMaxFirstDerivative(f, a, b, h);
+        double maxFirstDerivative = DerivativeCalculate.findMaxDerivative(f,1, a, b, h);
         return ((b - a) / 2) * BasicCalculate.pow(h, 1) * maxFirstDerivative;
     }
 

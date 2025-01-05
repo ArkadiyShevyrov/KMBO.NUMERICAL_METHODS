@@ -93,43 +93,12 @@ public class DerivativeCalculate {
         return (y2 - 2 * y1 + y0) / (Math.pow(h1, 2));
     }
 
-
-    public double findMaxFourthDerivative(OperandFunction f, double a, double b, double h) {
+    public double findMaxDerivative(OperandFunction f, int rang, double a, double b, double h) {
         List<Double> derivatives = new ArrayList<>();
         int N = (int) ((b - a) / h);
         for (int i = 0; i <= N; i++) {
             double x = a + i * h;
-            derivatives.add(Math.abs(derivative(f, x, 4)));
-        }
-        return Collections.max(derivatives);
-    }
-
-    public double findMaxThirdDerivative(OperandFunction f, double a, double b, double h) {
-        List<Double> derivatives = new ArrayList<>();
-        int N = (int) ((b - a) / h);
-        for (int i = 0; i <= N; i++) {
-            double x = a + i * h;
-            derivatives.add(Math.abs(derivative(f, x, 3)));
-        }
-        return Collections.max(derivatives);
-    }
-
-    public double findMaxSecondDerivative(OperandFunction f, double a, double b, double h) {
-        List<Double> derivatives = new ArrayList<>();
-        int N = (int) ((b - a) / h);
-        for (int i = 0; i <= N; i++) {
-            double x = a + i * h;
-            derivatives.add(Math.abs(derivative(f, x, 2)));
-        }
-        return Collections.max(derivatives);
-    }
-
-    public double findMaxFirstDerivative(OperandFunction f, double a, double b, double h) {
-        List<Double> derivatives = new ArrayList<>();
-        int N = (int) ((b - a) / h);
-        for (int i = 0; i <= N; i++) {
-            double x = a + i * h;
-            derivatives.add(Math.abs(derivative(f, x, 1)));
+            derivatives.add(Math.abs(derivative(f, x, rang)));
         }
         return Collections.max(derivatives);
     }

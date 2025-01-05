@@ -25,7 +25,7 @@ public class SimpsonMethod implements NumericalIntegrationMethod {
     //TODO
     @Override
     public Double tolerance(OperandFunction f, double a, double b, double h) {
-        double maxFourthDerivative = DerivativeCalculate.findMaxFourthDerivative(f, a, b, h);
+        double maxFourthDerivative = DerivativeCalculate.findMaxDerivative(f,4, a, b, h);
         return ((b - a) / 180) * BasicCalculate.pow(h, 4) * maxFourthDerivative;
     }
 
