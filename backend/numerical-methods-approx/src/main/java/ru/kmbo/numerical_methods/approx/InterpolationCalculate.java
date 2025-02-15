@@ -1,4 +1,4 @@
-package ru.kmbo.numerical_methods.core.calculate;
+package ru.kmbo.numerical_methods.approx;
 
 import lombok.experimental.UtilityClass;
 import ru.kmbo.numerical_methods.core.model.function.implementation.LagrangeInterpolationPolynomial;

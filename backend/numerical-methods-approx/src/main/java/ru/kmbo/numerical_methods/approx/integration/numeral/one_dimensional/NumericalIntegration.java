@@ -1,7 +1,7 @@
-package ru.kmbo.numerical_methods.core.calculate.integration.numeral.one_dimensional;
+package ru.kmbo.numerical_methods.approx.integration.numeral.one_dimensional;
 
 import lombok.experimental.UtilityClass;
-import ru.kmbo.numerical_methods.core.calculate.integration.numeral.one_dimensional.method.*;
+import ru.kmbo.numerical_methods.approx.integration.numeral.one_dimensional.method.*;
 import ru.kmbo.numerical_methods.core.model.function.implementation.OperandFunction;
 
 @UtilityClass

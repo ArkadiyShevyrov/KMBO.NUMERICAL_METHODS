@@ -1,10 +1,10 @@
-package ru.kmbo.numerical_methods.core.lab;
+package ru.kmbo.numerical_methods;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.kmbo.numerical_methods.core.calculate.PolynomialCalculate;
+import ru.kmbo.numerical_methods.approx.PolynomialCalculate;
 import ru.kmbo.numerical_methods.core.model.function.implementation.TabularFunction;
 import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -22,57 +22,57 @@ public class Lab_1_5_Test {
     @BeforeEach
     void setUp() {
         function1 = new TabularFunction(Map.of(
-                -1.0, -0.5,
-                0.0, 0.0,
-                1.0, 0.5,
-                2.0, 0.86603,
-                3.0, 1.0,
-                4.0, 0.86603
+            -1.0, -0.5,
+            0.0, 0.0,
+            1.0, 0.5,
+            2.0, 0.86603,
+            3.0, 1.0,
+            4.0, 0.86603
         ));
 
         function2 = new TabularFunction(Map.of(
-                -1.0, 0.86603,
-                0.0, 1.0,
-                1.0, 0.86603,
-                2.0, 0.50,
-                3.0, 0.0,
-                4.0, -0.50
+            -1.0, 0.86603,
+            0.0, 1.0,
+            1.0, 0.86603,
+            2.0, 0.50,
+            3.0, 0.0,
+            4.0, -0.50
         ));
 
         function3 = new TabularFunction(Map.of(
-                -0.9, -0.36892,
-                0.0, 0.0,
-                0.9, 0.36892,
-                1.8, 0.85408,
-                2.7, 1.7856,
-                3.6, 6.3138
+            -0.9, -0.36892,
+            0.0, 0.0,
+            0.9, 0.36892,
+            1.8, 0.85408,
+            2.7, 1.7856,
+            3.6, 6.3138
         ));
 
         function4 = new TabularFunction(Map.of(
-                1.0, 2.4142,
-                1.9, 1.0818,
-                2.8, 0.50953,
-                3.7, 0.11836,
-                4.6, -0.24008,
-                5.5, -0.66818
+            1.0, 2.4142,
+            1.9, 1.0818,
+            2.8, 0.50953,
+            3.7, 0.11836,
+            4.6, -0.24008,
+            5.5, -0.66818
         ));
 
         function5 = new TabularFunction(Map.of(
-                0.1, -2.3026,
-                0.5, -0.69315,
-                0.9, -0.10536,
-                1.3, 0.26236,
-                1.7, 0.53063,
-                2.1, 0.74194
+            0.1, -2.3026,
+            0.5, -0.69315,
+            0.9, -0.10536,
+            1.3, 0.26236,
+            1.7, 0.53063,
+            2.1, 0.74194
         ));
 
         function6 = new TabularFunction(Map.of(
-                -3.0, 0.04979,
-                -2.0, 0.13534,
-                -1.0, 0.36788,
-                0.0, 1.0,
-                1.0, 2.7183,
-                2.0, 7.3891
+            -3.0, 0.04979,
+            -2.0, 0.13534,
+            -1.0, 0.36788,
+            0.0, 1.0,
+            1.0, 2.7183,
+            2.0, 7.3891
         ));
     }
 

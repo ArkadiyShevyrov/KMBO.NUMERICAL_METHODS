@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import ru.kmbo.numerical_methods.core.calculate.PolynomialCalculate;
+import ru.kmbo.numerical_methods.approx.PolynomialCalculate;
 import ru.kmbo.numerical_methods.core.model.function.implementation.TabularFunction;
 
 @Slf4j

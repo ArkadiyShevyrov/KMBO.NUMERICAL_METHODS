@@ -1,8 +1,8 @@
-package ru.kmbo.numerical_methods.core.lab;
+package ru.kmbo.numerical_methods;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ru.kmbo.numerical_methods.core.calculate.CubicSplineInterpolatorCalculate;
+import ru.kmbo.numerical_methods.approx.CubicSplineInterpolatorCalculate;
 import ru.kmbo.numerical_methods.core.model.function.implementation.TabularFunction;
 import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;

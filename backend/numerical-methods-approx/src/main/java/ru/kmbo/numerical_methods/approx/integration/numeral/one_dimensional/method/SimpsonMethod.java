@@ -1,8 +1,8 @@
-package ru.kmbo.numerical_methods.core.calculate.integration.numeral.one_dimensional.method;
+package ru.kmbo.numerical_methods.approx.integration.numeral.one_dimensional.method;
 
+import ru.kmbo.numerical_methods.approx.integration.numeral.one_dimensional.NumericalIntegrationMethod;
 import ru.kmbo.numerical_methods.core.calculate.BasicCalculate;
 import ru.kmbo.numerical_methods.core.calculate.DerivativeCalculate;
-import ru.kmbo.numerical_methods.core.calculate.integration.numeral.one_dimensional.NumericalIntegrationMethod;
 import ru.kmbo.numerical_methods.core.model.function.implementation.OperandFunction;
 import java.util.HashMap;
 import java.util.Map;

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import ru.kmbo.numerical_methods.core.calculate.integration.numeral.one_dimensional.NumericalIntegration;
+import ru.kmbo.numerical_methods.approx.integration.numeral.one_dimensional.NumericalIntegration;
 import ru.kmbo.numerical_methods.core.model.function.implementation.OperandFunction;
 import ru.kmbo.numerical_methods.core.model.operand.Operand;
 import ru.kmbo.numerical_methods.core.model.operand.implementation.*;

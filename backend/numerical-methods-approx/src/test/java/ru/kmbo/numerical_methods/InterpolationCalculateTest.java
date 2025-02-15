@@ -1,7 +1,8 @@
-package ru.kmbo.numerical_methods.core.calculate;
+package ru.kmbo.numerical_methods;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import ru.kmbo.numerical_methods.approx.InterpolationCalculate;
 import ru.kmbo.numerical_methods.core.model.function.implementation.OperandFunction;
 import ru.kmbo.numerical_methods.core.model.function.implementation.TabularFunction;
 import ru.kmbo.numerical_methods.core.model.operand.Operand;

@@ -1,6 +1,7 @@
-package ru.kmbo.numerical_methods.core.calculate;
+package ru.kmbo.numerical_methods.approx;
 
 import lombok.experimental.UtilityClass;
+import ru.kmbo.numerical_methods.core.calculate.SystemLinearEquationsCalculate;
 import ru.kmbo.numerical_methods.core.model.basic.Matrix;
 import ru.kmbo.numerical_methods.core.model.basic.SystemLinearEquations;
 import ru.kmbo.numerical_methods.core.model.basic.Vector;
